@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:isa/upcoming_events.dart';
+import 'package:isa/DS_home.dart';
 import 'gallery_main.dart';
 import 'calender_main.dart';
 
@@ -231,15 +232,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => upcomingEvents()),
+                        MaterialPageRoute(builder: (context) => homePage()),
+                        // MaterialPageRoute(builder: (context) => homePage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       padding:
                           EdgeInsets.symmetric(horizontal: 140, vertical: 10),
                     ),
-                    child: Text('Upcoming Events'),
+                    // child: Text('Upcoming Events'),
+                    child: Text('Home'),
                   ),
                 ],
               ),
