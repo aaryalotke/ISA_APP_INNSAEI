@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:isa/upcoming_events.dart';
 import 'gallery_main.dart';
 import 'calender_main.dart';
 
@@ -16,7 +17,6 @@ import 'main_our_team.dart';
 import 'models/format_certi.dart';
 
 import 'developers.dart';
-
 
 import 'otp_n_members.dart';
 import 'main.dart';
@@ -85,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => profile_members()),
+                        MaterialPageRoute(
+                            builder: (context) => profile_members()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -108,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   //   ),
                   //   child: Text('Developers'),
                   // ),
-                
 
                   //aarya's pages
                   ElevatedButton(
@@ -145,7 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(widget.access);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SIForm(widget.access)),
+                        MaterialPageRoute(
+                            builder: (context) => SIForm(widget.access)),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -202,8 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => team_main()),
+                        MaterialPageRoute(builder: (context) => team_main()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -213,12 +213,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('Our Team'),
                   ),
 
-                   ElevatedButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => team_main()),
+                        MaterialPageRoute(builder: (context) => team_main()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -226,6 +225,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           EdgeInsets.symmetric(horizontal: 140, vertical: 10),
                     ),
                     child: Text('Profile'),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => upcomingEvents()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 140, vertical: 10),
+                    ),
+                    child: Text('Upcoming Events'),
                   ),
                 ],
               ),
