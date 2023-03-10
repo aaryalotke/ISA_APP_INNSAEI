@@ -3,6 +3,16 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:isa/calender_main.dart';
+
+import 'edi_main.dart';
+import 'email_n_members.dart';
+import 'gallery_main.dart';
+import 'main_developers.dart';
+import 'main_hw.dart';
+import 'main_our_team.dart';
+import 'main_profile.dart';
+import 'page_edi.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -32,6 +42,26 @@ class _homePageState extends State<homePage> {
   ];
 
   void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => edito()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => profile_members()),
+        );
+        break;
+    }
     setState(() {
       _selectedIndex = index;
     });
@@ -45,7 +75,6 @@ class _homePageState extends State<homePage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          //Top part of Homepage_task:need to solve margin error
           Container(
             height: screenheight * 0.4,
             decoration: const BoxDecoration(
@@ -57,44 +86,34 @@ class _homePageState extends State<homePage> {
                   margin: EdgeInsets.only(top: screenheight * 0.1, bottom: 20),
                   child: Image.asset(
                     'assets/images/ISA-header-white.png',
-                    // width: MediaQuery.of(context).size.width * 1,
-                    // height: screenheight * 0.4,
                     width: screenWidth * 0.4,
                   ),
                 ),
                 Center(
-                    child: AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Setting the standards for Automation',
-                      textStyle: const TextStyle(
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        'Setting the standards for Automation',
+                        textStyle: const TextStyle(
                           fontSize: 22.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                      textAlign: TextAlign.center,
-                      speed: const Duration(milliseconds: 200),
-                    ),
-                  ],
-                  totalRepeatCount: 15,
-                  pause: const Duration(milliseconds: 2000),
-                  displayFullTextOnTap: true,
-                  stopPauseOnTap: true,
-                )
-
-                    // Text(
-                    //   "Setting the standards for Automation",
-                    //   style: TextStyle(
-                    //     fontSize: 22,
-                    //     color: Colors.white,
-                    //   ),
-                    //   textAlign: TextAlign.center,
-                    // ),
-                    ),
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                        speed: const Duration(milliseconds: 200),
+                      ),
+                    ],
+                    totalRepeatCount: 15,
+                    pause: const Duration(milliseconds: 2000),
+                    displayFullTextOnTap: true,
+                    stopPauseOnTap: true,
+                  ),
+                ),
               ],
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 50, bottom: 20),
+            margin: const EdgeInsets.only(top: 40, bottom: 30),
             child: const Text(
               "Welcome to ISA-VESIT",
               style: TextStyle(fontSize: 25),
@@ -102,10 +121,10 @@ class _homePageState extends State<homePage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 0),
             child: SizedBox(
               height: screenheight * 0.39,
               child: ListView(
+                padding: EdgeInsets.only(top: 0),
                 children: [
                   Container(
                     child: GridView.count(
@@ -121,7 +140,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -129,6 +147,12 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Initiatives");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    // to be changed
+                                    builder: (context) => email_n_members()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -163,7 +187,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -171,6 +194,11 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Editorials");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => edito()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -205,7 +233,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -247,7 +274,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -255,6 +281,11 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("College Calender");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => calender_main()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -289,7 +320,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -331,14 +361,18 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
                               borderRadius: BorderRadius.circular(10.0)),
                           child: InkWell(
                             onTap: () {
-                              print("Hardware Inventort");
+                              print("Hardware Inventory");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => inventory()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -373,7 +407,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -381,6 +414,11 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Developers");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => trailDevelopers()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -415,7 +453,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -423,6 +460,11 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Council");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => team_main()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -457,7 +499,6 @@ class _homePageState extends State<homePage> {
                           elevation: 20,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                              //<-- SEE HERE
                               side: const BorderSide(
                                 color: Color(0xffD4D4D4),
                               ),
@@ -465,6 +506,11 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Gallery");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => gallery_main()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -493,253 +539,9 @@ class _homePageState extends State<homePage> {
                             ),
                           ),
                         ),
-
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.mail_outline,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: '',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Editorials",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.book_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Digital library',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Digital Library",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.calendar_month,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'college calender',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "College Calender",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.upcoming_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Inventory',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Upcoming Events",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.hardware_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Inventory',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Hardware Inventory",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.developer_mode_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Developers',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Developers",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.group_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Council',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Council",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(),
-                        //   ),
-                        //   padding: const EdgeInsets.only(top: 30),
-                        //   child: Column(
-                        //     children: [
-                        //       const Icon(
-                        //         Icons.camera_alt_outlined,
-                        //         color: Colors.black,
-                        //         size: 35.0,
-                        //         semanticLabel: 'Inventory',
-                        //       ),
-                        //       Container(
-                        //         margin: EdgeInsets.only(top: 10),
-                        //         child: const Text(
-                        //           "Gallery",
-                        //           textAlign: TextAlign.center,
-                        //           style: TextStyle(
-                        //             fontSize: 20,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
-
-                  // Positioned(
-                  //   top: 0,
-                  //   width: screenWidth,
-                  //   child: Container(
-                  //     height: screenheight * 0.4,
-                  //     color: Color(0xff00467F),
-                  //   ),
-                  // ),
-
-                  // Positioned(
-                  //   top: screenheight * 0.3,
-                  //   child: Image.asset(
-                  //     'assets/images/ISA-header-white.png',
-                  //     // width: MediaQuery.of(context).size.width * 1,
-                  //     height: screenheight * 0.4,
-                  //     width: screenWidth * 0.4,
-                  //   ),
-                  // ),
-
-                  // Stack(
-                  //   alignment: Alignment.center,
-                  //   children: <Widget>[
-                  //     Positioned(
-                  //       top: 0,
-                  //       width: screenWidth,
-                  //       child: Container(
-                  //         height: 350,
-                  //         color: Color(0xff00467F),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
@@ -755,8 +557,6 @@ class _homePageState extends State<homePage> {
                   color: Colors.white,
                 ),
                 label: 'Contact',
-
-                // backgroundColor: Color(0xff00467F),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -764,7 +564,6 @@ class _homePageState extends State<homePage> {
                   color: Colors.white,
                 ),
                 label: 'Home',
-                // backgroundColor: Color(0xff00467F),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -772,7 +571,6 @@ class _homePageState extends State<homePage> {
                   color: Colors.white,
                 ),
                 label: 'Profile',
-                // backgroundColor: Color(0xff00467F),
               ),
             ],
             unselectedLabelStyle:
@@ -782,132 +580,8 @@ class _homePageState extends State<homePage> {
             unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
           ),
-
-          // Stack(
-          //   alignment: Alignment.center,
-          //   children: <Widget>[
-          //     Positioned(
-          //       top: 0,
-          //       width: screenWidth,
-          //       child: Container(
-          //         height: 350,
-          //         color: Color(0xff00467F),
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
-    // children: [
-    //   Stack(
-    //     alignment: Alignment.center,
-    //     children: <Widget>[
-    //       Positioned(
-    //         top: 0,
-    //         width: screenWidth,
-    //         child: Container(
-    //           height: 350,
-    //           color: Color(0xff00467F),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // ],
-
-    // body: ListView(
-    //   children: <Widget>[
-    //     Stack(
-    //       alignment: Alignment.center,
-    //       children: <Widget>[
-    //         Positioned(
-    //           top: 0,
-    //           width: screenWidth,
-    //           child: Container(
-    //             height: 350,
-    //             color: Color(0xff00467F),
-    //           ),
-    //         ),
-    //         const Positioned(
-    //           top: 280,
-    //           // left: 40,
-    //           child: Center(
-    //             child: Text(
-    //               "Setting the standards for Automation",
-    //               style: TextStyle(
-    //                 fontSize: 22,
-    //                 color: Colors.white,
-    //               ),
-    //               textAlign: TextAlign.center,
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           top: 0,
-    //           child: Image.asset(
-    //             'assets/images/ISA-header-white.png',
-    //             // width: MediaQuery.of(context).size.width * 1,
-    //             height: screenheight * 0.4,
-    //             width: screenWidth * 0.4,
-    //           ),
-    //         ),
-    //         const Positioned(
-    //           top: 370,
-    //           // left: 40,
-    //           child: Center(
-    //             child: Text(
-    //               "Welcome to ISA-VESIT",
-    //               style: TextStyle(
-    //                 fontSize: 26,
-    //                 color: Colors.black,
-    //               ),
-    //               textAlign: TextAlign.center,
-    //             ),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //     GridView.count(
-    //       primary: false,
-    //       padding: const EdgeInsets.all(20),
-    //       crossAxisSpacing: 10,
-    //       mainAxisSpacing: 10,
-    //       crossAxisCount: 2,
-    //       children: <Widget>[
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[100],
-    //           child: const Text("He'd have you all unravel at the"),
-    //         ),
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[200],
-    //           child: const Text('Heed not the rabble'),
-    //         ),
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[300],
-    //           child: const Text('Sound of screams but the'),
-    //         ),
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[400],
-    //           child: const Text('Who scream'),
-    //         ),
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[500],
-    //           child: const Text('Revolution is coming...'),
-    //         ),
-    //         Container(
-    //           padding: const EdgeInsets.all(8),
-    //           color: Colors.teal[600],
-    //           child: const Text('Revolution, they...'),
-    //         ),
-    //       ],
-    //     ),
-    //     //   bottomNavigationBar:
-    //   ],
-    // ),
   }
 }
