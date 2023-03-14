@@ -7,7 +7,7 @@ import "./models/gallery.dart";
 import "gallery_main.dart";
 import "package:intl/intl.dart";
 import "./models/gallery_software.dart";
-import "home.dart";
+// import "home.dart";
 import "galleryClick.dart";
 
 class pageone extends StatefulWidget {

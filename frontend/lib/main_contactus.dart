@@ -4,7 +4,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import 'home.dart';
+import 'package:isa/home_new.dart';
+
+// import 'home.dart';
 
 // void main() {
 //   // runApp(
@@ -25,23 +27,25 @@ class SIForm extends StatefulWidget {
 }
 
 class _SIFormState extends State<SIForm> {
-
-  Future<String> sendFeedback(String name, String email, String phoneNumber, String message, String access) async {
+  Future<String> sendFeedback(String name, String email, String phoneNumber,
+      String message, String access) async {
     final response = await http.post(
-      Uri.parse(
-        "http://127.0.0.1:8000/app/api/users/ContactUs/"),
-        headers: <String, String>{
+      Uri.parse("http://127.0.0.1:8000/app/api/users/ContactUs/"),
+      headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization' : access,
+        'Authorization': access,
       },
-      body: jsonEncode(
-          <String, String>{'name': name, 'email': email, 'message':message, 'phoneNumber': phoneNumber}),
+      body: jsonEncode(<String, String>{
+        'name': name,
+        'email': email,
+        'message': message,
+        'phoneNumber': phoneNumber
+      }),
     );
-    if (response.statusCode == 200 || response.statusCode == 201){
+    if (response.statusCode == 200 || response.statusCode == 201) {
       print('feedback gaya');
       return response.body;
-    }
-    else{
+    } else {
       print('feedback nahi gaya');
       throw Exception('Failed to send feedback.');
     }
@@ -70,10 +74,8 @@ class _SIFormState extends State<SIForm> {
     //                       );
     //                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     //                     }
-
-
   }
-  
+
   final _minimumPadding = 5.0;
 
   final name = TextEditingController();
@@ -215,39 +217,38 @@ class _SIFormState extends State<SIForm> {
                                     print(phoneNumber.text);
                                     print(message.text);
                                     var res = await sendFeedback(
-                                        name.text,
-                                        email.text,
-                                        phoneNumber.text,
-                                        message.text,
-                                        widget.access,);
+                                      name.text,
+                                      email.text,
+                                      phoneNumber.text,
+                                      message.text,
+                                      widget.access,
+                                    );
                                     var jsonData = jsonDecode(res);
                                     var access = 'Bearer ' + widget.access;
 
                                     //snackbar
                                     if (jsonData["status"] == 1) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home(
-                              access,
-                            )),
-                          );
-                          // print('OTP sent to member - ' + otp_m.text);
-                        } else {
-                          final snackBar = SnackBar(
-                            content: const Text(
-                              'Feedback not sent!',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.red,
-                                fontFamily: 'Ubuntu',
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-
-
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => homePage()),
+                                      );
+                                      // print('OTP sent to member - ' + otp_m.text);
+                                    } else {
+                                      final snackBar = SnackBar(
+                                        content: const Text(
+                                          'Feedback not sent!',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.red,
+                                            fontFamily: 'Ubuntu',
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    }
                                   },
                                 ))
                               ],
