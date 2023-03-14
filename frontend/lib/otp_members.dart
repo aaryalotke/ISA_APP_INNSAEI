@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'home.dart';
+// import 'home.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:isa/models/users.dart';
 
+import 'home_new.dart';
 import 'otp_n_members.dart';
 import 'main.dart';
 import 'email_members.dart';
@@ -84,7 +85,7 @@ class _MyHomePageState_OTP extends State<otp_members> {
       //for chrome
       Uri.parse('http://127.0.0.1:8000/app/api/users/verifyotp/'),
       //for mobile
-     //Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
+      //Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': access,
@@ -204,9 +205,7 @@ class _MyHomePageState_OTP extends State<otp_members> {
                         if (jsonData["status"] == 1) {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Home(
-                              access,
-                            )),
+                            MaterialPageRoute(builder: (context) => homePage()),
                           );
                           print('OTP sent to member - ' + otp_m.text);
                         } else {
