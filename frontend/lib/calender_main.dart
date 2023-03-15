@@ -13,9 +13,8 @@ class calender_main extends StatefulWidget {
 class _calender_mainState extends State<calender_main> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DemoApp(),
+    return Scaffold(
+      body: DemoApp(),
     );
   }
 }

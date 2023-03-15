@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "./models/gallery.dart";
+import 'edi_main.dart';
 import "galleryFirst.dart";
 import "./models/gallery_software.dart";
 import "./models/gallery_others.dart";
@@ -13,6 +14,9 @@ import "./galleryThird.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
+
+import 'home_new.dart';
+import 'main_profile.dart';
 
 // Future<gallery> fetchAlbum() async {
 //   final response =
@@ -81,52 +85,89 @@ class gallery_main extends StatefulWidget {
 }
 
 class _gallery_mainState extends State<gallery_main> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Contact',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Profile',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => edito()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => profile_members()),
+        );
+        break;
+    }
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   // final List<gallery> _galleryImages = [
 
-
-List<gallery> hardware= [
- 
-];
-List<gallery> software = [
- 
-];
-List<gallery> others = [
- 
-];
+  List<gallery> hardware = [];
+  List<gallery> software = [];
+  List<gallery> others = [];
 
 // final hardware = <Map<String, dynamic>>[];
 // final software = <Map<String, dynamic>>[];
 // final others = <Map<String, dynamic>>[];
 
-bool isLoaded = false;
-void initState(){
-  super.initState();
-  getGym();
-}
+  bool isLoaded = false;
+  void initState() {
+    super.initState();
+    getGym();
+  }
+
   getGym() async {
-    List decoded = jsonDecode(await api().getGalleryList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos"))["post"];
+    List decoded = jsonDecode(await api().getGalleryList(
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos"))[
+        "post"];
     print(">>> Gym List retrieved successfully");
-    
+
     for (var element in decoded) {
       gallery item = gallery.fromJson(element);
 
-     if(item.type=="Hardware"){
-         hardware.add(item);
+      if (item.type == "Hardware") {
+        hardware.add(item);
+      } else if (item.type == "Software") {
+        software.add(item);
+      } else {
+        others.add(item);
       }
-      else if(item.type=="Software"){
-         software.add(item);
-      }
-      else{
-         others.add(item);
-      };
-      
+      ;
     }
-    Future.delayed(Duration(seconds: 2),(){
-   isLoaded = true;
-   setState(() {});
+    Future.delayed(Duration(seconds: 2), () {
+      isLoaded = true;
+      setState(() {});
     });
-    
-    
+
     print(hardware);
     print(software);
     print(others);
@@ -192,44 +233,77 @@ void initState(){
             ),
           ),
 
-          body: isLoaded?TabBarView(
-            children: [
-              Container(
-                padding: EdgeInsets.all(20),
-                child: ListView(
-                  children: <Widget>[
-                    //Code for images part
-                    galleryFirst(
-                        hardware) 
-                        //galleryFirst ko call kiya with images as arguments
+          body: isLoaded
+              ? TabBarView(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: ListView(
+                        children: <Widget>[
+                          //Code for images part
+                          galleryFirst(hardware)
+                          //galleryFirst ko call kiya with images as arguments
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: ListView(
+                        children: <Widget>[
+                          //Code for images part
+                          gallerySecond(software)
+                          //gallerySecond ko call kiya with images as arguments
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: ListView(
+                        children: <Widget>[
+                          //Code for images part
+                          galleryThird(others)
+                          //galleryThird ko call kiya with images as arguments
+                        ],
+                      ),
+                    )
                   ],
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
                 ),
+
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: const Color(0xff00467F),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.contact_phone,
+                  color: Colors.white,
+                ),
+                label: 'Contact',
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: ListView(
-                  children: <Widget>[
-                    //Code for images part
-                     gallerySecond(
-                        software)
-                        //gallerySecond ko call kiya with images as arguments
-                  ],
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.white,
                 ),
+                label: 'Home',
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: ListView(
-                  children: <Widget>[
-                    //Code for images part
-                     galleryThird(
-                        others) 
-                        //galleryThird ko call kiya with images as arguments
-                  ],
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.white,
                 ),
-              )
+                label: 'Profile',
+              ),
             ],
-          ):Center(child: CircularProgressIndicator(),),
-        
+            unselectedLabelStyle:
+                const TextStyle(color: Colors.white, fontSize: 14),
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            onTap: _onItemTapped,
+          ),
         ),
       ),
     );

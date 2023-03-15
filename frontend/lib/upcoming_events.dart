@@ -134,114 +134,109 @@ class _upcomingEventsState extends State<upcomingEvents> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : Column(
-              children: [
-                SizedBox(
-                  height: screenheight * 0.777,
-                  child: ListView(
-                    children: [
-                      Image.network(
-                        _upcomingEvent[0].PosterImage.toString(),
-                        height: MediaQuery.of(context).size.height * 0.4,
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Text(
-                          _upcomingEvent[0].EventName.toString(),
-                          style: TextStyle(
-                            fontFamily: 'Voces',
-                            fontSize: 25,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10, bottom: 30),
-                        child: Text(
-                          _upcomingEvent[0].DurationDate.toString(),
-                          style: TextStyle(
-                            fontFamily: 'Voces',
-                            fontSize: 20,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(30),
-                        height: 50,
-                        width: screenWidth * 0.2,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFF00467F),
-                            // padding:
-                            //     EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(3.0),
-                            ),
-                          ),
-                          onPressed: () {
-                            print('Register for upcoming event');
-                            launchurledi(_upcomingEvent[0].FormLink.toString());
-                          },
-                          child: Text('Register'),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(30),
-                        height: 3,
-                        width: screenWidth * 0.5,
-                        alignment: Alignment.center,
-                        color: Color(0xFFFE735D),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Text(
-                          _upcomingEvent[0].Description.toString(),
-                          style: TextStyle(
-                            fontFamily: 'Voces',
-                            fontSize: 25,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
+          : Container(
+              child: ListView(
+                children: [
+                  Image.network(
+                    _upcomingEvent[0].PosterImage.toString(),
+                    height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                ),
-                BottomNavigationBar(
-                  backgroundColor: const Color(0xff00467F),
-                  items: const <BottomNavigationBarItem>[
-                    BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.contact_phone,
-                        color: Colors.white,
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    child: Text(
+                      _upcomingEvent[0].EventName.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Voces',
+                        fontSize: 25,
                       ),
-                      label: 'Contact',
+                      textAlign: TextAlign.center,
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.home,
-                        color: Colors.white,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 30),
+                    child: Text(
+                      _upcomingEvent[0].DurationDate.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Voces',
+                        fontSize: 20,
                       ),
-                      label: 'Home',
+                      textAlign: TextAlign.center,
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.white,
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(30),
+                    height: 50,
+                    width: screenWidth * 0.2,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF00467F),
+                        // padding:
+                        //     EdgeInsets.symmetric(horizontal: 140, vertical: 10),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                        ),
                       ),
-                      label: 'Profile',
+                      onPressed: () {
+                        print('Register for upcoming event');
+                        launchurledi(_upcomingEvent[0].FormLink.toString());
+                      },
+                      child: Text('Register'),
                     ),
-                  ],
-                  unselectedLabelStyle:
-                      const TextStyle(color: Colors.white, fontSize: 14),
-                  currentIndex: _selectedIndex,
-                  selectedItemColor: Colors.white,
-                  unselectedItemColor: Colors.white,
-                  onTap: _onItemTapped,
-                ),
-              ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(30),
+                    height: 3,
+                    width: screenWidth * 0.5,
+                    alignment: Alignment.center,
+                    color: Color(0xFFFE735D),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    child: Text(
+                      _upcomingEvent[0].Description.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Voces',
+                        fontSize: 25,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff00467F),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.contact_phone,
+              color: Colors.white,
+            ),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Profile',
+          ),
+        ],
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }

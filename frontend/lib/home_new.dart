@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:isa/calender_main.dart';
 import 'package:isa/upcoming_events.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'edi_main.dart';
 import 'email_n_members.dart';
@@ -16,7 +17,6 @@ import 'main_profile.dart';
 import 'page_edi.dart';
 
 class homePage extends StatefulWidget {
-  
   const homePage({Key? key}) : super(key: key);
 
   @override
@@ -24,6 +24,14 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  launchurledi(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
@@ -553,41 +561,39 @@ class _homePageState extends State<homePage> {
               ),
             ),
           ),
-
-          //Bottom bar_task:iska width kam karna hai
-          BottomNavigationBar(
-            backgroundColor: const Color(0xff00467F),
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.contact_phone,
-                  color: Colors.white,
-                ),
-                label: 'Contact',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.white,
-                ),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                label: 'Profile',
-              ),
-            ],
-            unselectedLabelStyle:
-                const TextStyle(color: Colors.white, fontSize: 14),
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white,
-            onTap: _onItemTapped,
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff00467F),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.contact_phone,
+              color: Colors.white,
+            ),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Profile',
           ),
         ],
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: _onItemTapped,
       ),
     );
   }
