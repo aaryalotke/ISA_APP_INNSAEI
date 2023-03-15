@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:isa/calender_main.dart';
 import 'package:isa/upcoming_events.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'edi_main.dart';
 import 'email_n_members.dart';
@@ -23,6 +24,14 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  launchurledi(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
