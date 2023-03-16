@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:isa/main_contactus.dart';
 import "./models/gallery.dart";
 import 'edi_main.dart';
 import "galleryFirst.dart";
@@ -80,6 +81,8 @@ import 'main_profile.dart';
 //////////////////////////////////////////////////////
 
 class gallery_main extends StatefulWidget {
+  final String access;
+  gallery_main(this.access);
   @override
   State<gallery_main> createState() => _gallery_mainState();
 }
@@ -109,19 +112,20 @@ class _gallery_mainState extends State<gallery_main> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(
+              builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -146,9 +150,8 @@ class _gallery_mainState extends State<gallery_main> {
   }
 
   getGym() async {
-    List decoded = jsonDecode(await api().getGalleryList(
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos"))[
-        "post"];
+    List decoded =
+        jsonDecode(await api().getGalleryList(widget.access))["post"];
     print(">>> Gym List retrieved successfully");
 
     for (var element in decoded) {

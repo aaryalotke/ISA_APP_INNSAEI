@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+import 'package:isa/main_contactus.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'edi_main.dart';
@@ -8,6 +9,9 @@ import 'home_new.dart';
 import 'main_profile.dart';
 
 class DemoApp extends StatefulWidget {
+  final String access;
+  DemoApp(this.access);
+
   @override
   _DemoAppState createState() => _DemoAppState();
 }
@@ -37,19 +41,19 @@ class _DemoAppState extends State<DemoApp> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }

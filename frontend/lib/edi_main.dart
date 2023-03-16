@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isa/main_contactus.dart';
 import 'home_new.dart';
 import 'main_profile.dart';
 import 'models/format_edi.dart';
@@ -14,26 +15,28 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-void main() {
-  runApp(TabBarDemo());
-}
+// void main() {
+//   runApp(TabBarDemo());
+// }
 
-class TabBarDemo extends StatelessWidget {
-  // const TabBarDemo({Key? key}) : super(key: key);
+// class TabBarDemo extends StatelessWidget {
+//   // const TabBarDemo({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Voces',
-      ),
-      home: edito(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         fontFamily: 'Voces',
+//       ),
+//       home: edito(widget.access),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
 
 class edito extends StatefulWidget {
+  final String access;
+  edito(this.access);
   @override
   State<edito> createState() => _editoState();
 }
@@ -63,19 +66,19 @@ class _editoState extends State<edito> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -94,8 +97,8 @@ class _editoState extends State<edito> {
   }
 
   getedi() async {
-    var response = await api().getEditorialList(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTE2MzkyLCJpYXQiOjE2NzYxNDAzOTIsImp0aSI6IjJiZjBiMjY0OGJmYzRhNGViNDIxODk2YzBmMmI2NWIxIiwidXNlcl9pZCI6MX0._-pItytK8JG10c5nH_UeC57R23xLBGrPFFRYcCzzejQ");
+    print(widget.access);
+    var response = await api().getEditorialList(widget.access);
 
     print(response);
     // List decoded = jsonDecode(response);

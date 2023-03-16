@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'edi_main.dart';
 import 'email_n_members.dart';
 import 'gallery_main.dart';
+import 'main_contactus.dart';
 import 'main_developers.dart';
 import 'main_hw.dart';
 import 'main_our_team.dart';
@@ -17,7 +18,9 @@ import 'main_profile.dart';
 import 'page_edi.dart';
 
 class homePage extends StatefulWidget {
-  const homePage({Key? key}) : super(key: key);
+  final String access;
+  homePage(this.access);
+  // const homePage({Key? key, required this.access}) : super(key: key);
 
   @override
   State<homePage> createState() => _homePageState();
@@ -56,19 +59,19 @@ class _homePageState extends State<homePage> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -157,12 +160,13 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Initiatives");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    // to be changed
-                                    builder: (context) => email_n_members()),
-                              );
+                              print(widget.access);
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       // to be changed
+                              //       builder: (context) => email_n_members()),
+                              // );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -207,7 +211,7 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => edito()),
+                                    builder: (context) => edito(widget.access)),
                               );
                             },
                             child: Container(
@@ -294,7 +298,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => calender_main()),
+                                    builder: (context) =>
+                                        calender_main(widget.access)),
                               );
                             },
                             child: Container(
@@ -340,7 +345,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => upcomingEvents()),
+                                    builder: (context) =>
+                                        upcomingEvents(widget.access)),
                               );
                             },
                             child: Container(
@@ -432,7 +438,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => trailDevelopers()),
+                                    builder: (context) =>
+                                        trailDevelopers(widget.access)),
                               );
                             },
                             child: Container(
@@ -478,7 +485,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => team_main()),
+                                    builder: (context) =>
+                                        team_main(widget.access)),
                               );
                             },
                             child: Container(
@@ -521,10 +529,12 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Gallery");
+                              print(widget.access);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => gallery_main()),
+                                    builder: (context) =>
+                                        gallery_main(widget.access)),
                               );
                             },
                             child: Container(

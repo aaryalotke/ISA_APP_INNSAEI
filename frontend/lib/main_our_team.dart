@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isa/main_contactus.dart';
 import 'edi_main.dart';
 import 'home_new.dart';
 import 'main_profile.dart';
@@ -17,6 +18,8 @@ import 'dart:convert';
 import 'dart:async';
 
 class team_main extends StatefulWidget {
+  final String access;
+  team_main(this.access);
   @override
   State<team_main> createState() => _team_mainState();
 }
@@ -46,19 +49,19 @@ class _team_mainState extends State<team_main> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -80,8 +83,7 @@ class _team_mainState extends State<team_main> {
 
   getGym() async {
     //print("hehe");
-    var response = await api().getCouncilList(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos");
+    var response = await api().getCouncilList(widget.access);
 
     print(response);
     // List decoded = jsonDecode(response);

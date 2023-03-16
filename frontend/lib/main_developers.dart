@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:isa/main_contactus.dart';
 import './models/format_developers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,25 +16,27 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-void main() {
-  runApp(developersPagetwo());
-}
+// void main() {
+//   runApp(developersPagetwo());
+// }
 
-class developersPagetwo extends StatelessWidget {
-  // This widget is the root of your application.
+// class developersPagetwo extends StatelessWidget {
+//   // This widget is the root of your application.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Voces',
-      ),
-      home: trailDevelopers(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         fontFamily: 'Voces',
+//       ),
+//       home: trailDevelopers(),
+//     );
+//   }
+// }
 
 class trailDevelopers extends StatefulWidget {
+  final String access;
+  trailDevelopers(this.access);
   // String titleInput;
   // String amountInput;
   @override
@@ -65,19 +68,19 @@ class _traildevelopersState extends State<trailDevelopers> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -108,8 +111,7 @@ class _traildevelopersState extends State<trailDevelopers> {
     //trail2
 
     //var response = await api().getDevelopersList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos");
-    var response = await api().getDevelopersList(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTE2MzkyLCJpYXQiOjE2NzYxNDAzOTIsImp0aSI6IjJiZjBiMjY0OGJmYzRhNGViNDIxODk2YzBmMmI2NWIxIiwidXNlcl9pZCI6MX0._-pItytK8JG10c5nH_UeC57R23xLBGrPFFRYcCzzejQ");
+    var response = await api().getDevelopersList(widget.access);
 
     print(response);
     // List decoded = jsonDecode(response);
