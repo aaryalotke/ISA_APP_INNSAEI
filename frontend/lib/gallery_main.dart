@@ -124,7 +124,8 @@ class _gallery_mainState extends State<gallery_main> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(
+              builder: (context) => profile_members(widget.access)),
         );
         break;
     }

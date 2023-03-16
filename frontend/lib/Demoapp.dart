@@ -53,7 +53,7 @@ class _DemoAppState extends State<DemoApp> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members()),
+          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
         );
         break;
     }
