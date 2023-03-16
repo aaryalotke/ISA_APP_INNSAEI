@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'db_helper.dart';
-import 'cart_provider.dart';
+
 import 'package:badges/badges.dart';
 import 'models/format_hw.dart';
 //import 'package:passing_data/format.dart';
 
-class hw_detail extends StatelessWidget {
-  final Format Hw_dataModel;
-  const hw_detail({Key? key, required this.Hw_dataModel}) : super(key: key);
+class hw_detail extends StatefulWidget {
+   final  id;
+  final name;
+  final image;
+  final Small_Specs;
+  final Info;
+  hw_detail(this.id, this.name, this.image, this.Small_Specs, this.Info); 
+
+   @override
+  State<hw_detail> createState() => _hw_detailState();
+}
+
+class _hw_detailState extends State<hw_detail> {
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +66,8 @@ class hw_detail extends StatelessWidget {
               margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
               child: Text(
-                Hw_dataModel.small_desc,
+                // Hw_dataModel.small_desc,
+                widget.Small_Specs.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: 'Voces', fontSize: 25, color: Colors.black),
@@ -68,13 +78,15 @@ class hw_detail extends StatelessWidget {
           //photo
           Positioned(
             child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  alignment: FractionalOffset.topCenter,
-                  image: new AssetImage(Hw_dataModel.image),
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     fit: BoxFit.cover,
+              //     alignment: FractionalOffset.topCenter,
+              //     image: new AssetImage(Hw_dataModel.image),
+              //   ),
+               
+              // ),
+                
               margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
               height: 230,
@@ -91,7 +103,8 @@ class hw_detail extends StatelessWidget {
               margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               padding: EdgeInsets.fromLTRB(18, 0, 18, 0),
               child: Text(
-                Hw_dataModel.info,
+                // Hw_dataModel.info,
+                widget.Info.toString(),
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'Voces', fontSize: 17, color: Colors.black),

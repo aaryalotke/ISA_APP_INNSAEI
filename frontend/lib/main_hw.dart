@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'cart_screen.dart';
 import './models/format_hw.dart';
+import 'api_class1.dart';
 import 'hw_detail.dart';
-import 'db_helper.dart';
-import 'cart_provider.dart';
-import 'cart_screen.dart';
 import 'page_hw.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +11,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
+////////////////---INTEGRATION PART---///////////////////////////////////////
+
+//importing the packages required for integration
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,9 +25,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CartProvider(),
-      child: Builder(builder: (BuildContext context) {
+    
         return MaterialApp(
           theme: ThemeData(
             fontFamily: 'Voces',
@@ -32,8 +33,7 @@ class MyApp extends StatelessWidget {
           home: inventory(),
           debugShowCheckedModeBanner: false,
         );
-      }),
-    );
+     
   }
 }
 
@@ -46,102 +46,47 @@ class _inventoryState extends State<inventory> {
   // DBHelper dbHelper= DBHelper();
 
   //hardware list
-  final List<Format> hardware = [
-    Format(
-      id: '1',
-      image: 'assets/images/2.jpg',
-      name: 'a',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      //price: 100,
-    ),
-    Format(
-      id: '2',
-      image: 'assets/images/1.jpg',
-      name: 'b',
-      small_desc: 'yyyyyyyyyyyyyyy',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      //price: 100,
-    ),
-    Format(
-      id: '3',
-      image: 'assets/images/2.jpg',
-      name: 'c',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      //price: 100,
-    ),
-    Format(
-      id: '4',
-      image: 'assets/images/2.jpg',
-      name: 'd',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      //price: 100,
-    ),
-    Format(
-      id: '5',
-      image: 'assets/images/2.jpg',
-      name: 'e',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      // price: 100,
-    ),
-    Format(
-      id: '6',
-      image: 'assets/images/2.jpg',
-      name: 'f',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      // price: 100,
-    ),
-    Format(
-      id: '7',
-      image: 'assets/images/2.jpg',
-      name: 'g',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      // price: 100,
-    ),
-    Format(
-      id: '8',
-      image: 'assets/images/2.jpg',
-      name: 'h',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      // price: 100,
-    ),
-    Format(
-      id: '9',
-      image: 'assets/images/2.jpg',
-      name: 'i',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      // price: 100,
-    ),
-    Format(
-      id: '10',
-      image: 'assets/images/2.jpg',
-      name: 'j',
-      small_desc: 'xxxxxxxxxxxxxx',
-      info:
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit semper facilisis ultricies, lectus nulla senectus volutpat magna scelerisque feugiat accumsan curae.',
-      //price: 100,
-    ),
+  final List<Format> inventory = [
+    
   ];
+
+  bool isLoaded = false;
+void initState(){
+  super.initState();
+  getinventory();
+}
+  getinventory() async {
+
+    var response = await api().getInventoryList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTYxNjgyLCJpYXQiOjE2NzYxODU2ODIsImp0aSI6IjVhYmRkNDg5OWFhYTQzZjA4YjU5MDAxNWZjZWFhODdjIiwidXNlcl9pZCI6NX0.Tu_uJhVYIlqonbG6la0dkCUKL4X_nTt3uFcCjCfZSt0");
+
+    print(response);
+    // List decoded = jsonDecode(response);
+    List list = (jsonDecode(response) as List<dynamic>) ;
+    
+    print(">>> inventory list retrieved successfully");
+
+
+    
+    for (var element in list) {
+      print("----------------------------------------------------------");
+      print(element["ComponentList"]);
+      for( var coun in element["ComponentList"]){
+
+        Format item = Format.fromJson(coun);
+         inventory.add(item);
+      
+
+      }
+    }
+    
+    
+    print(inventory[0].name!);
+    
+  }
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context);
+    
     return Scaffold(
       //appbar
       appBar: AppBar(
@@ -149,31 +94,7 @@ class _inventoryState extends State<inventory> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        actions: [
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CartScreen(hardware)));
-            },
-            child: Center(
-              child: Badge(
-                badgeContent: Consumer<CartProvider>(
-                  builder: (context, value, child) {
-                    return Text(
-                      value.getCounter().toString(),
-                      style: TextStyle(color: Colors.white),
-                    );
-                  },
-                ),
-                animationDuration: Duration(milliseconds: 300),
-                child: Icon(Icons.add_shopping_cart, color: Colors.black),
-              ),
-            ),
-          ),
-          SizedBox(width: 18),
-        ],
+        
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -258,7 +179,7 @@ class _inventoryState extends State<inventory> {
             Positioned(
               child: Container(
                 margin: const EdgeInsets.fromLTRB(5, 300, 5, 0),
-                child: page_hw(hardware),
+                child: page_hw(inventory),
               ),
             ),
           ]),
