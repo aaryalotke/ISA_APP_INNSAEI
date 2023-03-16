@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+// import 'package:isa/Progress.dart';
 import 'dart:convert';
 import 'dart:async';
 
@@ -27,6 +28,8 @@ class SIForm extends StatefulWidget {
 }
 
 class _SIFormState extends State<SIForm> {
+  bool isLoading = false;
+
   Future<String> sendFeedback(String name, String email, String phoneNumber,
       String message, String access) async {
     final response = await http.post(
@@ -44,9 +47,14 @@ class _SIFormState extends State<SIForm> {
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
       print('feedback gaya');
+
+      setState(() {
+        isLoading = true;
+      });
       return response.body;
     } else {
       print('feedback nahi gaya');
+      print(response.body);
       throw Exception('Failed to send feedback.');
     }
     // else {
@@ -89,6 +97,10 @@ class _SIFormState extends State<SIForm> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
               backgroundColor: Colors.white,
               elevation: 0,
               title: Text(
@@ -203,54 +215,66 @@ class _SIFormState extends State<SIForm> {
                             child: Row(
                               children: <Widget>[
                                 Expanded(
-                                    child: ElevatedButton(
-                                  child: Text(
-                                    'Submit',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                  ),
-                                  //color: const Color(0xff00467F),
-                                  onPressed: () async {
-                                    print(widget.access);
-                                    print(name.text);
-                                    print(email.text);
-                                    print(phoneNumber.text);
-                                    print(message.text);
-                                    var res = await sendFeedback(
-                                      name.text,
-                                      email.text,
-                                      phoneNumber.text,
-                                      message.text,
-                                      widget.access,
-                                    );
-                                    var jsonData = jsonDecode(res);
-                                    var access = 'Bearer ' + widget.access;
+                                    child: isLoading
+                                        ? Center(
+                                            child: CircularProgressIndicator())
+                                        : ElevatedButton(
+                                            child: Text(
+                                              'Submit',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
+                                            //color: const Color(0xff00467F),
+                                            onPressed: () async {
+                                              setState(() {
+                                                isLoading = true;
+                                              });
+                                              print(widget.access);
+                                              print(name.text);
+                                              print(email.text);
+                                              print(phoneNumber.text);
+                                              print(message.text);
 
-                                    //snackbar
-                                    if (jsonData["status"] == 1) {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) => homePage()),
-                                      // );
-                                      // print('OTP sent to member - ' + otp_m.text);
-                                    } else {
-                                      final snackBar = SnackBar(
-                                        content: const Text(
-                                          'Feedback not sent!',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.red,
-                                            fontFamily: 'Ubuntu',
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackBar);
-                                    }
-                                  },
-                                ))
+                                              var res = await sendFeedback(
+                                                name.text,
+                                                email.text,
+                                                phoneNumber.text,
+                                                message.text,
+                                                'Bearer ' + widget.access,
+                                              );
+                                              var jsonData = jsonDecode(res);
+                                              var access =
+                                                  'Bearer ' + widget.access;
+
+                                              //snackbar
+
+                                              if (jsonData["status"] == 1) {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SIForm(
+                                                              widget.access)),
+                                                );
+                                                // print('OTP sent to member - ' + otp_m.text);
+                                              } else {
+                                                final snackBar = SnackBar(
+                                                  content: const Text(
+                                                    'Feedback not sent!',
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.red,
+                                                      fontFamily: 'Ubuntu',
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                );
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(snackBar);
+                                              }
+                                            },
+                                          )),
                               ],
                             )),
                       ),

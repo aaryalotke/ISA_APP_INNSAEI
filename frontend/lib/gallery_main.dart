@@ -80,6 +80,8 @@ import 'main_profile.dart';
 //////////////////////////////////////////////////////
 
 class gallery_main extends StatefulWidget {
+  final String access;
+  gallery_main(this.access);
   @override
   State<gallery_main> createState() => _gallery_mainState();
 }
@@ -107,16 +109,16 @@ class _gallery_mainState extends State<gallery_main> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => edito()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => edito(widget.access)),
+        );
         break;
       case 1:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => homePage()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
         break;
       case 2:
         Navigator.push(
@@ -146,9 +148,8 @@ class _gallery_mainState extends State<gallery_main> {
   }
 
   getGym() async {
-    List decoded = jsonDecode(await api().getGalleryList(
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos"))[
-        "post"];
+    List decoded =
+        jsonDecode(await api().getGalleryList(widget.access))["post"];
     print(">>> Gym List retrieved successfully");
 
     for (var element in decoded) {

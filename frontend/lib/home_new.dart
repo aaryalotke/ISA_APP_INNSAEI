@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'edi_main.dart';
 import 'email_n_members.dart';
 import 'gallery_main.dart';
+import 'main_contactus.dart';
 import 'main_developers.dart';
 import 'main_hw.dart';
 import 'main_our_team.dart';
@@ -58,7 +59,7 @@ class _homePageState extends State<homePage> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito(widget.access)),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
@@ -297,9 +298,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => calender_main(
-                                      widget.access
-                                    )),
+                                    builder: (context) =>
+                                        calender_main(widget.access)),
                               );
                             },
                             child: Container(
@@ -345,9 +345,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => upcomingEvents(
-                                      widget.access
-                                    )),
+                                    builder: (context) =>
+                                        upcomingEvents(widget.access)),
                               );
                             },
                             child: Container(
@@ -439,7 +438,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => trailDevelopers()),
+                                    builder: (context) =>
+                                        trailDevelopers(widget.access)),
                               );
                             },
                             child: Container(
@@ -485,7 +485,8 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => team_main()),
+                                    builder: (context) =>
+                                        team_main(widget.access)),
                               );
                             },
                             child: Container(
@@ -528,10 +529,12 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Gallery");
+                              print(widget.access);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => gallery_main()),
+                                    builder: (context) =>
+                                        gallery_main(widget.access)),
                               );
                             },
                             child: Container(
