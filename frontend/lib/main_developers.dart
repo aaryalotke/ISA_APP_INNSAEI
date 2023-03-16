@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:isa/main_contactus.dart';
 import './models/format_developers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -67,7 +68,7 @@ class _traildevelopersState extends State<trailDevelopers> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito(widget.access)),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:

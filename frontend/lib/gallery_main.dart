@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:isa/main_contactus.dart';
 import "./models/gallery.dart";
 import 'edi_main.dart';
 import "galleryFirst.dart";
@@ -111,7 +112,7 @@ class _gallery_mainState extends State<gallery_main> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito(widget.access)),
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
         );
         break;
       case 1:
