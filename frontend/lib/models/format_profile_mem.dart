@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 class Profile_mem {
-   List<User>? user;
+   User? user;
    String? role;
    String? github;
    String? linkedin;
@@ -25,13 +25,15 @@ class Profile_mem {
   });
 
     Profile_mem.fromJson(Map<String, dynamic> json) {
-       user = <User>[];
-    (json[user] as List).forEach((e) {
-      user!.add(User.fromJson(e));
-    });
+      //  user = <User>[User.fromJson(json['user'])];
+      user = User.fromJson(json['user']);
+    // (json[user] as List).forEach((e) {
+    //   print('hi');
+    //   user!.add(User.fromJson(e));
+    // });
     role = json['role'];
-    github = json['github'];
-    linkedin = json['linkedin'];
+    github = json['github'] ?? "base_profile";
+    linkedin = json['linkedin'] ?? "base_profile";
     profile_image = json['profile_image']?? "base_profile";
     phone_number = json['phone_number']?? 99;
     isMember = json['isMember'];
