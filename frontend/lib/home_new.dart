@@ -297,7 +297,9 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => calender_main()),
+                                    builder: (context) => calender_main(
+                                      widget.access
+                                    )),
                               );
                             },
                             child: Container(
@@ -343,7 +345,9 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => upcomingEvents()),
+                                    builder: (context) => upcomingEvents(
+                                      widget.access
+                                    )),
                               );
                             },
                             child: Container(

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:isa/home_new.dart';
 // import 'package:isa/home.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,9 @@ import 'api_class1.dart';
 import 'models/upcomingEvent_model.dart';
 
 class upcomingEvents extends StatefulWidget {
-  const upcomingEvents({Key? key}) : super(key: key);
+  final String access;
+  upcomingEvents(this.access);
+  // const upcomingEvents({Key? key}) : super(key: key);
 
   @override
   State<upcomingEvents> createState() => _upcomingEventsState();
@@ -53,16 +56,16 @@ class _upcomingEventsState extends State<upcomingEvents> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => edito()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => edito(widget.access)),
+        );
         break;
       case 1:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => edito()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
         break;
       case 2:
         Navigator.push(
@@ -82,8 +85,7 @@ class _upcomingEventsState extends State<upcomingEvents> {
   }
 
   getEvent() async {
-    var response = await api().getUpcomingEvent(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTE2MzkyLCJpYXQiOjE2NzYxNDAzOTIsImp0aSI6IjJiZjBiMjY0OGJmYzRhNGViNDIxODk2YzBmMmI2NWIxIiwidXNlcl9pZCI6MX0._-pItytK8JG10c5nH_UeC57R23xLBGrPFFRYcCzzejQ");
+    var response = await api().getUpcomingEvent(widget.access);
     print(response);
 
     List list = (jsonDecode(response) as List<dynamic>);
@@ -179,6 +181,7 @@ class _upcomingEventsState extends State<upcomingEvents> {
                       ),
                       onPressed: () {
                         print('Register for upcoming event');
+                        print(widget.access);
                         launchurledi(_upcomingEvent[0].FormLink.toString());
                       },
                       child: Text('Register'),

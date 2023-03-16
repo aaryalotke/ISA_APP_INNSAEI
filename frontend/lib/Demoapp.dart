@@ -8,6 +8,9 @@ import 'home_new.dart';
 import 'main_profile.dart';
 
 class DemoApp extends StatefulWidget {
+  final String access;
+  DemoApp(this.access);
+
   @override
   _DemoAppState createState() => _DemoAppState();
 }
@@ -35,16 +38,16 @@ class _DemoAppState extends State<DemoApp> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => edito()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => edito(widget.access)),
+        );
         break;
       case 1:
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => homePage()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
         break;
       case 2:
         Navigator.push(
