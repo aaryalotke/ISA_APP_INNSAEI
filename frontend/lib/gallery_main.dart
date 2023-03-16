@@ -107,16 +107,16 @@ class _gallery_mainState extends State<gallery_main> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => edito()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => edito()),
+        // );
         break;
       case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => homePage()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => homePage()),
+        // );
         break;
       case 2:
         Navigator.push(

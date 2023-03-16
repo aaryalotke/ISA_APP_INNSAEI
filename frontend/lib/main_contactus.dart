@@ -228,11 +228,11 @@ class _SIFormState extends State<SIForm> {
 
                                     //snackbar
                                     if (jsonData["status"] == 1) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => homePage()),
-                                      );
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //       builder: (context) => homePage()),
+                                      // );
                                       // print('OTP sent to member - ' + otp_m.text);
                                     } else {
                                       final snackBar = SnackBar(

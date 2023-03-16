@@ -53,16 +53,16 @@ class _upcomingEventsState extends State<upcomingEvents> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => edito()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => edito()),
+        // );
         break;
       case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => edito()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => edito()),
+        // );
         break;
       case 2:
         Navigator.push(

@@ -17,7 +17,9 @@ import 'main_profile.dart';
 import 'page_edi.dart';
 
 class homePage extends StatefulWidget {
-  const homePage({Key? key}) : super(key: key);
+  final String access;
+  homePage(this.access);
+  // const homePage({Key? key, required this.access}) : super(key: key);
 
   @override
   State<homePage> createState() => _homePageState();
@@ -56,13 +58,13 @@ class _homePageState extends State<homePage> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => edito()),
+          MaterialPageRoute(builder: (context) => edito(widget.access)),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => homePage()),
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
         );
         break;
       case 2:
@@ -157,12 +159,13 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Initiatives");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    // to be changed
-                                    builder: (context) => email_n_members()),
-                              );
+                              print(widget.access);
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       // to be changed
+                              //       builder: (context) => email_n_members()),
+                              // );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -207,7 +210,7 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => edito()),
+                                    builder: (context) => edito(widget.access)),
                               );
                             },
                             child: Container(
