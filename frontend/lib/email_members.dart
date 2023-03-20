@@ -65,6 +65,7 @@ class email_members extends StatefulWidget {
 }
 
 class _email_membersState extends State<email_members> {
+  bool isLoading = false;
   Future<String> sendEmail(String username, String password) async {
     final response = await http.post(
       Uri.parse(
@@ -78,6 +79,9 @@ class _email_membersState extends State<email_members> {
     );
 
     if (response.statusCode == 200) {
+      setState(() {
+        isLoading = true;
+      });
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print('OTP gaya!');
@@ -197,67 +201,74 @@ class _email_membersState extends State<email_members> {
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.73,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00467F),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                      ),
-                      onPressed: () async {
-                        //sendEmail function call kiya jo OTP bhejta h ! usko decode kiya , uska values otp page ko bheja
-                        // setState(() {
-                        //   var asli_email = email.text + '@ves.ac.in';
-                        //   _futureEmail = sendEmail(email.text, 'innsaei');
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFF00467F),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 140, vertical: 10),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              //sendEmail function call kiya jo OTP bhejta h ! usko decode kiya , uska values otp page ko bheja
+                              // setState(() {
+                              //   var asli_email = email.text + '@ves.ac.in';
+                              //   _futureEmail = sendEmail(email.text, 'innsaei');
 
-                        //   //controller h ye
-                        // });
-                        // print(_futureEmail);
+                              //   //controller h ye
+                              // });
+                              // print(_futureEmail);
 
-                        // ignore: avoid_print
-                        // if (widget.access != 'Hi') {
-                        var res = await sendEmail(
-                            email.text, 'innsaei'); //json data for response
-                        var jsonData = jsonDecode(res); //in json form
-                        print(email.text + '@ves.ac.in');
-                        print('Ye le access token ' + jsonData["access"]);
-                        Navigator.push(
-                          //sending to OTP page
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => otp_members(
-                              jsonData["username"],
-                              jsonData["access"],
+                              // ignore: avoid_print
+                              // if (widget.access != 'Hi') {
+                              var res = await sendEmail(email.text,
+                                  'innsaei'); //json data for response
+                              var jsonData = jsonDecode(res); //in json form
+                              print(email.text + '@ves.ac.in');
+                              print('Ye le access token ' + jsonData["access"]);
+                              Navigator.push(
+                                //sending to OTP page
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => otp_members(
+                                    jsonData["username"],
+                                    jsonData["access"],
+                                  ),
+                                ),
+                              );
+                              print(email.text + '@ves.ac.in');
+                              print('Ye le access token ' + jsonData["access"]);
+                              // } else {
+                              //   setState(() {
+                              //     CircularProgressIndicator(
+                              //       value: controller.value,
+                              //       semanticsLabel: 'Linear progress indicator',
+                              //     );
+                              //     widget.access = widget.access;
+                              //   });
+
+                              //   // Spinner(
+                              //   //   animationSpeed: 40,
+                              //   // );
+                              // }
+                            },
+                            child: Text(
+                              'Enter',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
-                        );
-                        print(email.text + '@ves.ac.in');
-                        print('Ye le access token ' + jsonData["access"]);
-                        // } else {
-                        //   setState(() {
-                        //     CircularProgressIndicator(
-                        //       value: controller.value,
-                        //       semanticsLabel: 'Linear progress indicator',
-                        //     );
-                        //     widget.access = widget.access;
-                        //   });
-
-                        //   // Spinner(
-                        //   //   animationSpeed: 40,
-                        //   // );
-                        // }
-                      },
-                      child: Text(
-                        'Enter',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.83,
