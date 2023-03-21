@@ -9,6 +9,15 @@ import 'package:provider/provider.dart';
 import 'package:badges/badges.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'dart:convert';
+
+
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:isa/home_new.dart';
+import 'package:isa/main_contactus.dart';
+import 'main_profile.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 ////////////////---INTEGRATION PART---///////////////////////////////////////
@@ -18,26 +27,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    
-        return MaterialApp(
-          theme: ThemeData(
-            fontFamily: 'Voces',
-          ),
-          home: inventory(),
-          debugShowCheckedModeBanner: false,
-        );
-     
-  }
-}
 
 class inventory extends StatefulWidget {
+   final String access;
+  inventory(this.access);
   @override
   State<inventory> createState() => _inventoryState();
 }
@@ -51,6 +45,52 @@ class _inventoryState extends State<inventory> {
   ];
 
   bool isLoaded = false;
+
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Contact',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Profile',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => profile_members(widget.access)),
+        );
+        break;
+    }
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 void initState(){
   super.initState();
   getinventory();
@@ -194,6 +234,40 @@ void initState(){
             ),
           ]),
         ),
+      ),
+
+
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff00467F),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.contact_phone,
+              color: Colors.white,
+            ),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Profile',
+          ),
+        ],
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: _onItemTapped,
       ),
     );
   }
