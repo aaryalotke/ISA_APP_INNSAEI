@@ -7,6 +7,7 @@ class Format {
    String? image;
    String? Small_Specs;
    String? Info;
+   bool? Is_available;
   
   
  
@@ -17,6 +18,7 @@ class Format {
      this.image,
      this.Small_Specs,
      this.Info,
+     this.Is_available,
   
     
   });
@@ -27,6 +29,7 @@ class Format {
     image = json['image']  ;
     Small_Specs = json['Small_Specs']  ;
     Info = json['Info']  ;
+    Is_available = json['Is_available']  ;
     
   }
 
@@ -37,6 +40,7 @@ class Format {
     data['image'] = this.image;
     data['Small_Specs'] = this.Small_Specs;
     data['Info'] = this.Info;
+    data['Is_available'] = this.Is_available;
     
     return data;
   }

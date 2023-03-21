@@ -94,12 +94,13 @@ class _homePageState extends State<homePage> {
               color: Color(0xff00467F),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                   margin: EdgeInsets.only(top: screenheight * 0.1, bottom: 20),
                   child: Image.asset(
                     'assets/images/ISA-white.png',
-                    width: screenWidth * 0.4,
+                    width: screenWidth * 0.3,
                   ),
                 ),
                 Center(
@@ -126,14 +127,18 @@ class _homePageState extends State<homePage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 40, bottom: 30),
-            child: const Text(
-              "Welcome to ISA-VESIT",
-              style: TextStyle(fontSize: 25),
-              textAlign: TextAlign.center,
+            // margin: const EdgeInsets.only(top: 40, bottom: 30),
+           height: screenheight * 0.1,
+            child: Center(
+              child: const Text(
+                "Welcome to ISA-VESIT",
+                style: TextStyle(fontSize: 25),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           Container(
+            
             child: SizedBox(
               height: screenheight * 0.39,
               child: ListView(
@@ -177,7 +182,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.inventory_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -223,7 +228,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.mail_outline,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -264,7 +269,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.book_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -311,7 +316,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.calendar_month_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -358,7 +363,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.upcoming_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -404,7 +409,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.hardware_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
@@ -451,7 +456,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.developer_mode_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: 'Developers',
                                   ),
                                   Container(
@@ -498,7 +503,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.group_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: 'Council',
                                   ),
                                   Container(
@@ -546,7 +551,7 @@ class _homePageState extends State<homePage> {
                                   const Icon(
                                     Icons.camera_alt_outlined,
                                     color: Colors.black,
-                                    size: 35.0,
+                                    size: 32.0,
                                     semanticLabel: '',
                                   ),
                                   Container(
