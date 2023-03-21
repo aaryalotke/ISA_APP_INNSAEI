@@ -58,13 +58,20 @@ class _profile_membersState extends State<profile_members> {
             child: Container(
               margin: const EdgeInsets.fromLTRB(0, 0, 0, 300),
               //padding: EdgeInsets.fromLTRB(57, 10, 10, 0),
-              height: 250,
+              height: 200,
               width: 500,
-              decoration: ShapeDecoration(
-                //color: Color(0xFF00467f),
+              // decoration: ShapeDecoration(
+
+              //   color: Color(0xFFFE735D),
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(35.0),
+              //   ),
+              // ),
+
+              decoration: BoxDecoration(
                 color: Color(0xFFFE735D),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(35.0),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(35),
                 ),
               ),
             ),
@@ -77,11 +84,11 @@ class _profile_membersState extends State<profile_members> {
               //padding: EdgeInsets.fromLTRB(57, 10, 10, 0),
               height: 270,
               width: 500,
-              decoration: ShapeDecoration(
+
+              decoration: BoxDecoration(
                 color: Color(0xFF00467f),
-                // color: Color(0xFFFE735D),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(35.0),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(35),
                 ),
               ),
             ),
@@ -138,7 +145,7 @@ class _profile_membersState extends State<profile_members> {
 
           //photo and name and branch
           Positioned(
-            top: 200,
+            top: 150,
             child: Container(
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -148,8 +155,8 @@ class _profile_membersState extends State<profile_members> {
                     //padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image(
-                        image: new AssetImage('assets/user (2).png'),
+                      child: Image.asset(
+                        'assets/images/user.png',
                         fit: BoxFit.cover,
                         alignment: FractionalOffset.topCenter,
                       ),
@@ -174,7 +181,7 @@ class _profile_membersState extends State<profile_members> {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                     child: Text(
-                      'CMPN',
+                      profile[0].role.toString(),
                       style: TextStyle(
                           fontFamily: 'Voces',
                           fontSize: 20,
@@ -203,30 +210,28 @@ class _profile_membersState extends State<profile_members> {
           Positioned(
             child: Container(
               margin: const EdgeInsets.fromLTRB(22, 330, 0, 0),
-              child: Row(children: [
-                //email-id
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Text(
-                    '2020.aarya.lotke@ves.ac.in',
-                    style: TextStyle(
-                        fontFamily: 'Voces', fontSize: 18, color: Colors.black),
-                  ),
-                ),
-
-                //icon
-                Container(
-                  padding: EdgeInsets.fromLTRB(80, 10, 0, 0),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.mail_rounded,
-                      color: Colors.black,
-                      size: 25,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 270,
+                    child: Text(
+                      profile[0].user!.email.toString(),
+                      //  '2020.nachiket.suryawanshi@ves.ac.in',
+                      maxLines: null,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      style: TextStyle(
+                          fontFamily: 'Voces',
+                          color: Colors.black,
+                          fontSize: 20),
                     ),
                   ),
-                )
-              ]),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      child: Icon(Icons.email_outlined, size: 35))
+                ],
+              ),
             ),
           ),
 
@@ -247,60 +252,51 @@ class _profile_membersState extends State<profile_members> {
           Positioned(
             child: Container(
               margin: const EdgeInsets.fromLTRB(22, 490, 0, 0),
-              child: Row(children: [
-                //email-id
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Text(
-                    '9833040673',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    profile[0].phone_number.toString(),
+                    maxLines: null,
+                    softWrap: true,
                     style: TextStyle(
-                        fontFamily: 'Voces', fontSize: 18, color: Colors.black),
+                        fontFamily: 'Voces', color: Colors.black, fontSize: 20),
                   ),
-                ),
-
-                //icon
-                Container(
-                  padding: EdgeInsets.fromLTRB(200, 10, 0, 0),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.call,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                  ),
-                ),
-              ]),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      child: Icon(Icons.call_outlined, size: 35)),
+                ],
+              ),
             ),
           ),
 
-          //button to upload
-          Positioned(
-            top: 180,
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(0, 450, 0, 0),
-              child: Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    //primary: Colors.bl,
-                    textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontStyle: FontStyle.normal),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Upload your photo',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Ubuntu',
-                        fontSize: 17,
-                        color: Colors.black),
-                  ),
-                ),
-              ),
-            ),
-          )
+          // //button to upload
+          // Positioned(
+          //   top: 180,
+          //   child: Container(
+          //     margin: const EdgeInsets.fromLTRB(0, 450, 0, 0),
+          //     child: Center(
+          //       child: ElevatedButton(
+          //         style: ElevatedButton.styleFrom(
+          //           //primary: Colors.bl,
+          //           textStyle: const TextStyle(
+          //               color: Colors.white,
+          //               fontSize: 10,
+          //               fontStyle: FontStyle.normal),
+          //         ),
+          //         onPressed: () {},
+          //         child: Text(
+          //           'Upload your photo',
+          //           textAlign: TextAlign.center,
+          //           style: TextStyle(
+          //               fontFamily: 'Ubuntu',
+          //               fontSize: 17,
+          //               color: Colors.black),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
