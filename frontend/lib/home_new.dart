@@ -397,7 +397,7 @@ class _homePageState extends State<homePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => inventory()),
+                                    builder: (context) => inventory(widget.access)),
                               );
                             },
                             child: Container(
