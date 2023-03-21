@@ -73,14 +73,18 @@ void initState(){
       for( var coun in element["ComponentList"]){
 
         Format item = Format.fromJson(coun);
+        print(item);
          inventory.add(item);
+         
       
 
       }
     }
     
     
+    print(inventory.length);
     print(inventory[0].name!);
+     setState(() {});
     
   }
 
@@ -142,7 +146,7 @@ void initState(){
                   Container(
                     height: 180,
                     width: 350,
-                    child: Image.asset(
+                    child: Image.network(
                       'assets/images/3.png',
                       height: MediaQuery.of(context).size.height * 0.3,
                       fit: BoxFit.cover,
@@ -165,7 +169,7 @@ void initState(){
               child: Container(
                 margin: const EdgeInsets.fromLTRB(20, 250, 20, 0),
                 child: Text(
-                  'Book your components now',
+                  'Available components',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'Ubuntu_Bold',
@@ -179,7 +183,13 @@ void initState(){
             Positioned(
               child: Container(
                 margin: const EdgeInsets.fromLTRB(5, 300, 5, 0),
-                child: page_hw(inventory),
+                child: ListView(
+                        children: <Widget>[
+                         
+                          page_hw(inventory)
+                        
+                        ],
+                      ),
               ),
             ),
           ]),

@@ -53,79 +53,85 @@ class _hw_detailState extends State<hw_detail> {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Column(
-        children: [
-
-          
-          //small_desc
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.1,
-            child: Container(
-              // height: 40,
-              // width: 250,
-              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-              padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-              child: Text(
-                // Hw_dataModel.small_desc,
-                widget.Small_Specs.toString(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Voces', fontSize: 25, color: Colors.black),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              
+              
+              //small_desc
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.1,
+                child: Container(
+                  // height: 40,
+                  // width: 250,
+                  // margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                  padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                  child: Center(
+                    child: Text(
+                      // Hw_dataModel.small_desc,
+                      widget.Small_Specs.toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'Voces', fontSize: 25, color: Colors.black),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-
-          //photo
-          Positioned(
-            child: Container(
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     fit: BoxFit.cover,
-              //     alignment: FractionalOffset.topCenter,
-              //     image: new AssetImage(Hw_dataModel.image),
+              
+              //photo
+              Positioned(
+                child: Container(
+                  child: Image.network(
+                                    widget.image.toString(),
+                                    alignment: FractionalOffset.topCenter,
+                                    fit: BoxFit.cover,
+                                    ),
+                    
+                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  height: 230,
+                  width: 350,
+                ),
+              ),
+              
+              //info
+              // Positioned(
+              //   top: MediaQuery.of(context).size.height * 0.1,
+              //   child: Container(
+              //     height: 500,
+              //     width: 250,
+              //     margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+              //     padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              //     child: Text(
+              //       // Hw_dataModel.info,
+              //       widget.Info.toString(),
+              //       textAlign: TextAlign.justify,
+              //       style: TextStyle(
+              //           fontFamily: 'Voces', fontSize: 17, color: Colors.black),
+              //     ),
               //   ),
-               
               // ),
-                
-              margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-              padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-              height: 230,
-              width: 350,
-            ),
+              
+              Positioned(
+                    top: MediaQuery.of(context).size.height * 0.6,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        widget.Info.toString(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Voces',
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+              
+            ],
           ),
-
-          //info
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.1,
-            child: Container(
-              // height: 40,
-              // width: 250,
-              margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-              padding: EdgeInsets.fromLTRB(18, 0, 18, 0),
-              child: Text(
-                // Hw_dataModel.info,
-                widget.Info.toString(),
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontFamily: 'Voces', fontSize: 17, color: Colors.black),
-              ),
-            ),
-          ),
-          //   //simple text
-          // Positioned(
-          //     child: Container(
-          //       margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-          //                  // padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
-          //                   child: Text('Add number of quantities',
-          //                     textAlign: TextAlign.center,
-          //                     style: TextStyle(
-          //                         fontFamily: 'Voces',
-          //                         fontSize: 20,
-          //                         color: Colors.black),
-          //                   ),
-          //     ),
-          //     ),
-        ],
+        ),
       ),
     );
   }

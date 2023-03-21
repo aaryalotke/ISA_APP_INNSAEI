@@ -128,14 +128,18 @@ class _homePageState extends State<homePage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 40, bottom: 30),
-            child: const Text(
-              "Welcome to ISA-VESIT",
-              style: TextStyle(fontSize: 25),
-              textAlign: TextAlign.center,
+            // margin: const EdgeInsets.only(top: 40, bottom: 30),
+           height: screenheight * 0.1,
+            child: Center(
+              child: const Text(
+                "Welcome to ISA-VESIT",
+                style: TextStyle(fontSize: 25),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           Container(
+            
             child: SizedBox(
               height: screenheight * 0.39,
               child: ListView(
