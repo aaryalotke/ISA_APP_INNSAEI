@@ -116,7 +116,13 @@ flutter:
     - assets/images/launch.png
     - assets/images/website.png
     - assets/images/ISA-white.png 
+<<<<<<< HEAD
     - assets/images/user.png 
+=======
+    - assets/images/newuser.png
+    - assets/images/newuser_email.png
+    - assets/images/newuser_mobile.png
+>>>>>>> a69c83e (non-members 5 frontend pages)
     
 
 

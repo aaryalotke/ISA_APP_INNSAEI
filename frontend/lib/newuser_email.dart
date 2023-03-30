@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'newuser_email.dart';
+import 'email_n_members.dart';
 import 'otp_n_members.dart';
+import 'newuser_mobile.dart';
 
-void main() => runApp(email_n_members());
+void main() => runApp(newuser_email());
 
-class email_n_members extends StatelessWidget {
+class newuser_email extends StatelessWidget {
  
 
   // This widget is the root of your application.
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.1,
                     child: Image.asset(
-                      'assets/images/Email_nonmemberspage.gif',
+                      'assets/images/newuser_email.png',
                       width: MediaQuery.of(context).size.width * 1,
                     ),
                   ),
@@ -83,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // ENTER BUTTON
+                  // PROCEED BUTTON
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.73,
                     child: ElevatedButton(
@@ -100,12 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => otp_n_members()),
+                              builder: (context) => newuser_mobile()),
                         );
                         print(email_n.text + '@ves.ac.in');
                       },
                       child: Text(
-                        'Enter',
+                        'Proceed',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -113,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // FOR NOT A MEMBER
+                  //  FOR ALREADY REGISTERED
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.83,
                     child: TextButton(
@@ -121,12 +122,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => newuser_email()),
+                              builder: (context) => email_n_members()),
                         );
                       },
                       child: RichText(
                         text: const TextSpan(
-                          text: ' Not a Member?',
+                          text: ' Already registered?',
                           style: TextStyle(
                             color: Colors.black,
                             fontFamily: 'Voces',

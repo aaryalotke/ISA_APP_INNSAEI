@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'email_members.dart';
+import 'main_newuser.dart';
 
 import 'otp_n_members.dart';
 import 'email_members.dart';
@@ -230,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           PageRouteBuilder(
-                              pageBuilder: (_, a, b) => email_n_members(),
+                              pageBuilder: (_, a, b) => newuser(),
                               transitionDuration: Duration(seconds: 2),
                               transitionsBuilder: (_, a, __, c) =>
                                   FadeTransition(

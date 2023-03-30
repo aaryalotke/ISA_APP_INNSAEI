@@ -1,13 +1,17 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'newuser_email.dart';
+// import 'home.dart';
+
 import 'otp_n_members.dart';
+import 'email_n_members.dart';
+// import 'main.dart';
+// import 'email_members.dart';
+import 'main_newuser.dart';
 
-void main() => runApp(email_n_members());
-
-class email_n_members extends StatelessWidget {
- 
-
+class newuser_mobile extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,19 +24,16 @@ class email_n_members extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
-
+  // String titleInput;
+  // String amountInput;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final email_n = TextEditingController();
-
- 
-
+  
   @override
- Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Color(0xFFFFFFFF),
@@ -45,16 +46,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   // FIRST GIF PAGE KA
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.1,
+                    top: MediaQuery.of(context).size.height * 0.13,
                     child: Image.asset(
-                      'assets/images/Email_nonmemberspage.gif',
-                      width: MediaQuery.of(context).size.width * 1,
+                      'assets/images/newuser_mobile.png',
+                      width: MediaQuery.of(context).size.width * 0.9,
                     ),
                   ),
-
-                  // Text field - EMAIL KA
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.52,
+                    top: MediaQuery.of(context).size.height * 0.56,
+                    child: Text(
+                      'Please enter your mobile number',
+                      style: TextStyle(
+                        fontSize: 23,
+                        color: Colors.black,
+                        fontFamily: 'Ubuntu',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  // Text field - OTP KA
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.61,
                     child: Container(
                       margin: const EdgeInsets.only(top: 30),
                       padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
@@ -63,17 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           // border: Border.all(),
                           ),
                       child: TextFormField(
-                        // controller: email_n,
+                        
+                       
                         keyboardType: TextInputType.text,
-                        // onChanged: (val) {
-                        //   // print(val);
-                        // },
                         decoration: const InputDecoration(
-                          // enabledBorder: UnderlineInputBorder(
-                          //   borderSide: BorderSide(color: Colors.black),
-                          // ),
-                          labelText: 'Email',
-                          suffixText: '@ves.ac.in',
+                          labelText: 'Mobile Number',
                           labelStyle: TextStyle(
                             fontFamily: 'Voces',
                             fontSize: 18,
@@ -83,9 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // ENTER BUTTON
+                  // DONE BUTTON
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.73,
+                    top: MediaQuery.of(context).size.height * 0.82,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00467F),
@@ -99,13 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => otp_n_members()),
+                          MaterialPageRoute(builder: (context) => newuser()),
                         );
-                        print(email_n.text + '@ves.ac.in');
+                        
                       },
                       child: Text(
-                        'Enter',
+                        '   Done   ',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -113,40 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // FOR NOT A MEMBER
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.83,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => newuser_email()),
-                        );
-                      },
-                      child: RichText(
-                        text: const TextSpan(
-                          text: ' Not a Member?',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Voces',
-                            // fontWeight: FontWeight.normal,
-                            fontSize: 17,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' Click here ',
-                              style: TextStyle(
-                                color: Color(0xFF00467F),
-                                fontFamily: 'Voces',
-                                fontSize: 17,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  
                   // UPAR KA ANIMATION
                   Positioned(
                     top: 0,
@@ -161,6 +133,5 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ); 
- 
+      );
 }
