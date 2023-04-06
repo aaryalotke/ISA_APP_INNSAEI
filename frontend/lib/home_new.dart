@@ -129,7 +129,7 @@ class _homePageState extends State<homePage> {
           ),
           Container(
             // margin: const EdgeInsets.only(top: 40, bottom: 30),
-           height: screenheight * 0.1,
+            height: screenheight * 0.1,
             child: Center(
               child: const Text(
                 "Welcome to ISA-VESIT",
@@ -139,7 +139,6 @@ class _homePageState extends State<homePage> {
             ),
           ),
           Container(
-            
             child: SizedBox(
               height: screenheight * 0.39,
               child: ListView(
@@ -397,8 +396,15 @@ class _homePageState extends State<homePage> {
                               print("Hardware Inventory");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => inventory(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        inventory(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(

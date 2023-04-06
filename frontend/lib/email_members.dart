@@ -68,9 +68,8 @@ class _email_membersState extends State<email_members> {
   bool isLoading = false;
   Future<String> sendEmail(String username, String password) async {
     final response = await http.post(
-      Uri.parse(
-          //"http://10.0.2.2:8000/app/api/users/login/"),
-          "http://127.0.0.1:8000/app/api/users/login/"),
+      Uri.parse("http://10.0.2.2:8000/app/api/users/login/"),
+      // "http://127.0.0.1:8000/app/api/users/login/"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

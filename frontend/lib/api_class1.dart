@@ -116,7 +116,6 @@ class api {
     }
   }
 
-
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
       //for chrome
@@ -145,15 +144,17 @@ class api {
     }
   }
 
-
   //inventory api
   Future<String> getInventoryList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse(
-        "http://127.0.0.1:8000/app/api/users/Product/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Product/");
+    // "http://127.0.0.1:8000/app/api/users/Product/");
 
-    Map<String, String> headers = {"Content-type": "application/json", "Authorization" : "Bearer $token"};
+    Map<String, String> headers = {
+      "Content-type": "application/json",
+      "Authorization": "Bearer $token"
+    };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
       print("Success");
@@ -164,7 +165,6 @@ class api {
     } else {
       print("Error");
       return response.body;
-
     }
   }
 }

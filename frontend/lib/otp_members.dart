@@ -84,9 +84,9 @@ class _MyHomePageState_OTP extends State<otp_members> {
       String otp, String access, String email, String password) async {
     final response = await http.post(
       //for chrome
-      Uri.parse('http://127.0.0.1:8000/app/api/users/verifyotp/'),
+      // Uri.parse('http://127.0.0.1:8000/app/api/users/verifyotp/'),
       //for mobile
-      //Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
+      Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': access,
