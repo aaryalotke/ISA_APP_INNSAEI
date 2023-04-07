@@ -41,7 +41,13 @@ class _DemoAppState extends State<DemoApp> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
+          PageRouteBuilder(
+              pageBuilder: (_, a, b) => SIForm(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
         );
         break;
       case 1:
@@ -53,7 +59,13 @@ class _DemoAppState extends State<DemoApp> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
+          PageRouteBuilder(
+              pageBuilder: (_, a, b) => profile_members(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
         );
         break;
     }

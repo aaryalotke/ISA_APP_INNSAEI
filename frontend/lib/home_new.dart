@@ -59,15 +59,13 @@ class _homePageState extends State<homePage> {
       case 0:
         Navigator.push(
           context,
-         PageRouteBuilder(
-                                    pageBuilder: (_, a, b) =>
-                                        SIForm(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
-                                    transitionsBuilder: (_, a, __, c) =>
-                                        FadeTransition(
-                                          opacity: a,
-                                          child: c,
-                                        )),
+          PageRouteBuilder(
+              pageBuilder: (_, a, b) => SIForm(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
         );
         break;
       case 1:
@@ -80,14 +78,12 @@ class _homePageState extends State<homePage> {
         Navigator.push(
           context,
           PageRouteBuilder(
-                                    pageBuilder: (_, a, b) =>
-                                        profile_members(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
-                                    transitionsBuilder: (_, a, __, c) =>
-                                        FadeTransition(
-                                          opacity: a,
-                                          child: c,
-                                        )),
+              pageBuilder: (_, a, b) => profile_members(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
         );
         break;
     }
@@ -154,7 +150,6 @@ class _homePageState extends State<homePage> {
             ),
           ),
           Container(
-            
             child: SizedBox(
               height: screenheight * 0.39,
               child: ListView(
@@ -182,15 +177,15 @@ class _homePageState extends State<homePage> {
                             onTap: () {
                               print("Initiatives");
                               PageRouteBuilder(
-                                    pageBuilder: (_, a, b) =>
-                                    ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
-                                        inventory(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
-                                    transitionsBuilder: (_, a, __, c) =>
-                                        FadeTransition(
-                                          opacity: a,
-                                          child: c,
-                                        ));
+                                  pageBuilder: (_, a, b) =>
+                                      ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
+                                      inventory(widget.access),
+                                  transitionDuration: Duration(seconds: 2),
+                                  transitionsBuilder: (_, a, __, c) =>
+                                      FadeTransition(
+                                        opacity: a,
+                                        child: c,
+                                      ));
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -289,7 +284,7 @@ class _homePageState extends State<homePage> {
                                 context,
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
-                                    ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
+                                        ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
                                         inventory(widget.access),
                                     transitionDuration: Duration(seconds: 2),
                                     transitionsBuilder: (_, a, __, c) =>
@@ -607,7 +602,7 @@ class _homePageState extends State<homePage> {
                               print(widget.access);
                               Navigator.push(
                                 context,
-                               PageRouteBuilder(
+                                PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         gallery_main(widget.access),
                                     transitionDuration: Duration(seconds: 2),

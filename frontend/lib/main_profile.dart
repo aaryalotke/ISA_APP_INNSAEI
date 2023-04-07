@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:isa/certi_main.dart';
 import 'api_class1.dart';
+import 'home_new.dart';
+import 'main_contactus.dart';
 import 'models/format_profile_mem.dart';
 
 //importing the packages required for integration
@@ -15,6 +18,52 @@ class profile_members extends StatefulWidget {
 }
 
 class _profile_membersState extends State<profile_members> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Contact',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Profile',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => profile_members(widget.access)),
+        );
+        break;
+    }
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   // list format
   final List<Profile_mem> profile = [];
 
@@ -25,8 +74,7 @@ class _profile_membersState extends State<profile_members> {
   }
 
   getpro() async {
-    var response = await api().getProfile_MemList(
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTYxNjgyLCJpYXQiOjE2NzYxODU2ODIsImp0aSI6IjVhYmRkNDg5OWFhYTQzZjA4YjU5MDAxNWZjZWFhODdjIiwidXNlcl9pZCI6NX0.Tu_uJhVYIlqonbG6la0dkCUKL4X_nTt3uFcCjCfZSt0");
+    var response = await api().getProfile_MemList(widget.access);
 //List decoded = jsonDecode(await api().getProfile_MemList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTYxNjgyLCJpYXQiOjE2NzYxODU2ODIsImp0aSI6IjVhYmRkNDg5OWFhYTQzZjA4YjU5MDAxNWZjZWFhODdjIiwidXNlcl9pZCI6NX0.Tu_uJhVYIlqonbG6la0dkCUKL4X_nTt3uFcCjCfZSt0"))["post"];
     print(response);
 
@@ -50,6 +98,38 @@ class _profile_membersState extends State<profile_members> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff00467F),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.contact_phone,
+              color: Colors.white,
+            ),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Profile',
+          ),
+        ],
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: _onItemTapped,
+      ),
       body: Stack(
         alignment: Alignment.center,
         children: <Widget>[
@@ -270,33 +350,44 @@ class _profile_membersState extends State<profile_members> {
             ),
           ),
 
-          // //button to upload
-          // Positioned(
-          //   top: 180,
-          //   child: Container(
-          //     margin: const EdgeInsets.fromLTRB(0, 450, 0, 0),
-          //     child: Center(
-          //       child: ElevatedButton(
-          //         style: ElevatedButton.styleFrom(
-          //           //primary: Colors.bl,
-          //           textStyle: const TextStyle(
-          //               color: Colors.white,
-          //               fontSize: 10,
-          //               fontStyle: FontStyle.normal),
-          //         ),
-          //         onPressed: () {},
-          //         child: Text(
-          //           'Upload your photo',
-          //           textAlign: TextAlign.center,
-          //           style: TextStyle(
-          //               fontFamily: 'Ubuntu',
-          //               fontSize: 17,
-          //               color: Colors.black),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // )
+          //button to upload
+          Positioned(
+            top: 180,
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(0, 450, 0, 0),
+              child: Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    //primary: Colors.bl,
+                    textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontStyle: FontStyle.normal),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          pageBuilder: (_, a, b) => certi_page(),
+                          transitionDuration: Duration(seconds: 2),
+                          transitionsBuilder: (_, a, __, c) => FadeTransition(
+                                opacity: a,
+                                child: c,
+                              )),
+                    );
+                  },
+                  child: Text(
+                    'View Certificates',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'Ubuntu',
+                        fontSize: 17,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
