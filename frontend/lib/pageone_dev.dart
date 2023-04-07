@@ -16,49 +16,48 @@ class pageone_dev extends StatefulWidget {
 }
 
 class _pageone_devState extends State<pageone_dev> {
-
- 
-
-   launchurlmail(String url) async {
+  launchurlmail(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
       throw 'Could not launch $url';
     }
   }
-   launchurlinsta(String url) async {
-     if (await canLaunchUrlString(url)) {
-       await launchUrlString(url);
-     } else {
-       throw 'Could not launch $url';
-     }
-   }
-   launchurlinlink(String url) async {
-     if (await canLaunchUrlString(url)) {
-       await launchUrlString(url);
-     } else {
-       throw 'Could not launch $url';
-     }
-   }
 
+  launchurlinsta(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  launchurlinlink(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
         height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width, //Necessary to prevent Renderbox error
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 150),
+        width: MediaQuery.of(context)
+            .size
+            .width, //Necessary to prevent Renderbox error
+        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: ListView.builder(
           shrinkWrap: true,
-           physics: ClampingScrollPhysics(),
-
+          physics: ClampingScrollPhysics(),
           itemBuilder: (ctx, index) {
             if (index % 2 == 0) {
-            //Itembuilder helps us loop through the list
-            //if (widget.people[index].id == 1 ||widget.people[index].id == 3 || widget.people[index].id == 5 || widget.people[index].id == 7 || widget.people[index].id == 9 || widget.people[index].id == 11 ||widget.people[index].id == 13) {
+              //Itembuilder helps us loop through the list
+              //if (widget.people[index].id == 1 ||widget.people[index].id == 3 || widget.people[index].id == 5 || widget.people[index].id == 7 || widget.people[index].id == 9 || widget.people[index].id == 11 ||widget.people[index].id == 13) {
 
-            //Main Image cards
+              //Main Image cards
               return Card(
                 elevation: 0,
                 color: Colors.transparent,
@@ -68,9 +67,9 @@ class _pageone_devState extends State<pageone_dev> {
                   onTap: () {
                     print("tapped");
                   },
-       //trail1
+                  //trail1
 
-                  // child: widget.people[index].id == 1  ? 
+                  // child: widget.people[index].id == 1  ?
 
                   //  Container(height: 0,width: 20,color: Colors.red,) : Container(child: Column(children:<Widget>[
                   //   const Padding(padding: EdgeInsets.fromLTRB(50, 0, 50, 0)),
@@ -91,12 +90,11 @@ class _pageone_devState extends State<pageone_dev> {
                   //   ),
                   // ],),),
 
-                                 child: Stack(
+                  child: Stack(
                     alignment: Alignment.centerLeft,
                     children: <Widget>[
                       //const Padding(padding: EdgeInsets.fromLTRB(50, 100, 50, 0)),
 
-                      
                       //name
                       Positioned(
                         top: MediaQuery.of(context).size.height * 0.1,
@@ -137,81 +135,102 @@ class _pageone_devState extends State<pageone_dev> {
                               borderRadius: BorderRadius.circular(7.0),
                             ),
                           ),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                widget.people[index].post!,
-                                textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Voces',fontSize: 17,color: Colors.white),),
-
-                               Container(
-
-                                child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          child: Column(children: <Widget>[
+                            Text(
+                              widget.people[index].post!,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: 'Voces',
+                                  fontSize: 17,
+                                  color: Colors.white),
+                            ),
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   Container(
-                                    margin: EdgeInsets.only(top: 14.0, left: 0.0, right: 0.0, bottom: 5.0),
+                                    margin: EdgeInsets.only(
+                                        top: 14.0,
+                                        left: 0.0,
+                                        right: 0.0,
+                                        bottom: 5.0),
                                     padding: EdgeInsets.all(.0),
                                     child: Material(
                                       color: Colors.transparent,
                                       child: InkWell(
-                                      splashColor: Colors.black,
-                                      highlightColor: Colors.black26,
-                                      child: IconButton(
-                                        onPressed: (){launchurlmail(widget.people[index].email!);},
-                                        icon: Icon(
-                                          Icons.mail_rounded,
-                                          color: Colors.black,
-                                          size: 37,
+                                        splashColor: Colors.black,
+                                        highlightColor: Colors.black26,
+                                        child: IconButton(
+                                          onPressed: () {
+                                            launchurlmail(
+                                                widget.people[index].email!);
+                                          },
+                                          icon: Icon(
+                                            Icons.mail_rounded,
+                                            color: Colors.black,
+                                            size: 37,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  ),
-
                                   Container(
-                                    margin: EdgeInsets.only(top: 12.0, left: 0.0, right: 0.0, bottom: .0),
+                                    margin: EdgeInsets.only(
+                                        top: 12.0,
+                                        left: 0.0,
+                                        right: 0.0,
+                                        bottom: .0),
                                     padding: EdgeInsets.all(0.0),
-                                    child:Material(
+                                    child: Material(
                                       color: Colors.transparent,
                                       child: InkWell(
-                                       splashColor: Colors.black,
-                                      highlightColor: Colors.black26,
-                                      child:  IconButton(
-                                      onPressed: (){launchurlinsta(widget.people[index].insta_id!);},
-                                      icon: Icon(
-                                      FontAwesomeIcons.instagram,
-                                      color: Colors.black,
-                                      size: 33,
+                                        splashColor: Colors.black,
+                                        highlightColor: Colors.black26,
+                                        child: IconButton(
+                                          onPressed: () {
+                                            launchurlinsta(
+                                                widget.people[index].insta_id!);
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.instagram,
+                                            color: Colors.black,
+                                            size: 33,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  ),
-                                    ),
-                                  ),
-
                                   Container(
-                                    margin: EdgeInsets.only(top: 12.0, left: 0.0, right: 0.0, bottom: 0.0),
+                                    margin: EdgeInsets.only(
+                                        top: 12.0,
+                                        left: 0.0,
+                                        right: 0.0,
+                                        bottom: 0.0),
                                     padding: EdgeInsets.all(0.0),
-                                     child:Material(
+                                    child: Material(
                                       color: Colors.transparent,
                                       child: InkWell(
-                                       splashColor: Colors.black,
-                                      highlightColor: Colors.black,
-                                     child: IconButton(
-                                      onPressed: (){launchurlinlink(widget.people[index].linked_in!);},
-                                      icon :Icon(
-                                      FontAwesomeIcons.linkedin,
-                                      color: Colors.black,
-                                      size: 33,
+                                        splashColor: Colors.black,
+                                        highlightColor: Colors.black,
+                                        child: IconButton(
+                                          onPressed: () {
+                                            launchurlinlink(widget
+                                                .people[index].linked_in!);
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.linkedin,
+                                            color: Colors.black,
+                                            size: 33,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  ),
-                                     ),
                                   ),
                                 ],
-                                 ),
                               ),
-                          ]
-                          ),
+                            ),
+                          ]),
                         ),
                       ),
 
@@ -245,48 +264,37 @@ class _pageone_devState extends State<pageone_dev> {
                       //   ),
                       // ),
 
-
-                        Positioned(
+                      Positioned(
                         child: Container(
                           decoration: BoxDecoration(
-
-                           image : new DecorationImage(
-                            image: NetworkImage(
-                            widget.people[index].image!,
-                              
+                              image: new DecorationImage(
+                                image: NetworkImage(
+                                  widget.people[index].image!,
+                                ),
+                                alignment: FractionalOffset.topCenter,
+                                fit: BoxFit.cover,
                               ),
-                               alignment: FractionalOffset.topCenter,
-                              fit: BoxFit.cover,
-                            ),
-                           
-                           
                               shape: BoxShape.circle,
                               boxShadow: [
-                                BoxShadow(color:  Color(0xFFFE735D),spreadRadius: 10.0),
-                              ]
-                          ),
+                                BoxShadow(
+                                    color: Color(0xFFFE735D),
+                                    spreadRadius: 10.0),
+                              ]),
                           margin: const EdgeInsets.fromLTRB(0, 74, 0, 0),
                           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           height: 150,
                           width: 150,
                         ),
                       ),
-
-
-                       
                     ],
                   ),
 
                   // child: Image.network(widget.TE[index].photo!,
                   //              alignment: FractionalOffset.topCenter,
                   //             fit: BoxFit.cover,)
-
-
-
-
-),
+                ),
               );
-         } else {
+            } else {
               return Card(
                 elevation: 0,
                 color: Colors.transparent,
@@ -324,10 +332,10 @@ class _pageone_devState extends State<pageone_dev> {
                               borderRadius: BorderRadius.circular(7.0),
                             ),
                           ),
-                          ),
                         ),
+                      ),
 
-                     //post
+                      //post
                       Positioned(
                         child: Container(
                           height: 110,
@@ -345,88 +353,104 @@ class _pageone_devState extends State<pageone_dev> {
                             children: <Widget>[
                               Text(
                                 widget.people[index].post!,
-                                textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Voces',fontSize: 17,color: Colors.white),),
-
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: 'Voces',
+                                    fontSize: 17,
+                                    color: Colors.white),
+                              ),
                               Container(
-                                   width: 900,
-                                   //height:25,
-                                    margin: EdgeInsets.only(top: 12.0, left: .0, right: 2.0, bottom: 0.0),
-                                        padding: EdgeInsets.all(1.0),
-                                  child: Row(                                  
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,                                   
-                                    children: <Widget>[
-                                      Container(                                                                           //padding: EdgeInsets.all(2.0),
-                                        //margin: EdgeInsets.only(top: 12.0, left: 0.0, right: 0.0, bottom: 0.0),
-                                        child:Material(
-                                      color: Colors.transparent,
-                                      child: InkWell(
-                                       splashColor: Colors.black,
-                                      highlightColor: Colors.black,
+                                width: 900,
+                                //height:25,
+                                margin: EdgeInsets.only(
+                                    top: 12.0,
+                                    left: .0,
+                                    right: 2.0,
+                                    bottom: 0.0),
+                                padding: EdgeInsets.all(1.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Container(
+                                      //padding: EdgeInsets.all(2.0),
+                                      //margin: EdgeInsets.only(top: 12.0, left: 0.0, right: 0.0, bottom: 0.0),
+                                      child: Material(
+                                        color: Colors.transparent,
                                         child: InkWell(
-                                          splashColor: Colors.black26,
-                                          highlightColor: Colors.white,
-
+                                          splashColor: Colors.black,
+                                          highlightColor: Colors.black,
+                                          child: InkWell(
+                                            splashColor: Colors.black26,
+                                            highlightColor: Colors.white,
+                                            child: IconButton(
+                                              onPressed: () {
+                                                launchurlinlink(widget
+                                                    .people[index].linked_in!);
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.linkedin,
+                                                color: Colors.black,
+                                                size: 33,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      // margin: EdgeInsets.only(top: 7.0, left: .0, right: 0.0, bottom: 0.0),
+                                      // padding: EdgeInsets.all(5.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          splashColor: Colors.black,
+                                          highlightColor: Colors.black,
                                           child: IconButton(
-                                             onPressed: (){launchurlinlink(widget.people[index].linked_in!);},
+                                            onPressed: () {
+                                              launchurlinsta(widget
+                                                  .people[index].insta_id!);
+                                            },
                                             icon: Icon(
-                                              FontAwesomeIcons.linkedin,
+                                              FontAwesomeIcons.instagram,
                                               color: Colors.black,
                                               size: 33,
                                             ),
                                           ),
                                         ),
                                       ),
-                                        ),
-                                      ),
-
-
-                                      Container(
-                                        // margin: EdgeInsets.only(top: 7.0, left: .0, right: 0.0, bottom: 0.0),
-                                        // padding: EdgeInsets.all(5.0),
-                                        child:Material(
-                                      color: Colors.transparent,
-                                      child: InkWell(
-                                       splashColor: Colors.black,
-                                      highlightColor: Colors.black,
-                                        child: IconButton(
-                                          onPressed: (){launchurlinsta(widget.people[index].insta_id!);},
-                                          icon:Icon(
-                                            FontAwesomeIcons.instagram,
-                                            color: Colors.black,
-                                            size: 33,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: .0,
+                                          left: 0.0,
+                                          right: 10.0,
+                                          bottom: 2.0),
+                                      // padding: EdgeInsets.all(5.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          splashColor: Colors.black,
+                                          highlightColor: Colors.black,
+                                          child: IconButton(
+                                            onPressed: () {
+                                              launchurlmail(
+                                                  widget.people[index].email!);
+                                            },
+                                            icon: Icon(
+                                              Icons.mail_rounded,
+                                              color: Colors.black,
+                                              size: 37,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                        ),
-                                      ),
-                                      Container(
-                                         margin: EdgeInsets.only(top: .0, left: 0.0, right: 10.0, bottom: 2.0),
-                                        // padding: EdgeInsets.all(5.0),
-                                        child:Material(
-                                      color: Colors.transparent,
-                                      child: InkWell(
-                                       splashColor: Colors.black,
-                                      highlightColor: Colors.black,
-                                        child: IconButton(
-                                         onPressed: (){launchurlmail(widget.people[index].email!);},
-                                          icon:Icon(
-                                            Icons.mail_rounded,
-                                            color: Colors.black,
-                                            size: 37,
-                                          ),
-                                        ),
-                                      ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
-
-
-
                         ),
                       ),
 
@@ -443,25 +467,25 @@ class _pageone_devState extends State<pageone_dev> {
                       Positioned(
                         //top: MediaQuery.of(context).size.height * 0.1,
                         child: Container(
-                          
                           margin: const EdgeInsets.fromLTRB(200, 70, 0, 0),
                           padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                           height: 150,
                           width: 150,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                              fit: BoxFit.cover,
-                              alignment: FractionalOffset.topCenter,
-                              image: NetworkImage( widget.people[index].image!),
-                            ),
+                                fit: BoxFit.cover,
+                                alignment: FractionalOffset.topCenter,
+                                image:
+                                    NetworkImage(widget.people[index].image!),
+                              ),
                               shape: BoxShape.circle,
                               boxShadow: [
-                                BoxShadow(color: Color(0xFF00467F),spreadRadius: 10.0),
-                              ]
-                          ),
+                                BoxShadow(
+                                    color: Color(0xFF00467F),
+                                    spreadRadius: 10.0),
+                              ]),
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -469,8 +493,6 @@ class _pageone_devState extends State<pageone_dev> {
             }
           },
           itemCount: widget.people.length,
-        )
-        );
+        ));
   }
 }
-

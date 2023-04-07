@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'email_members.dart';
 
-
 import 'otp_n_members.dart';
 import 'email_members.dart';
 import 'email_n_members.dart';
@@ -193,8 +192,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => email_members()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => email_members(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
                       },
                       child: Text(
@@ -224,8 +229,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => email_members()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => email_n_members(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
                       },
                       child: Text(

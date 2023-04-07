@@ -68,9 +68,8 @@ class _email_membersState extends State<email_members> {
   bool isLoading = false;
   Future<String> sendEmail(String username, String password) async {
     final response = await http.post(
-      Uri.parse(
-          //"http://10.0.2.2:8000/app/api/users/login/"),
-          "http://127.0.0.1:8000/app/api/users/login/"),
+      Uri.parse("http://10.0.2.2:8000/app/api/users/login/"),
+      // "http://127.0.0.1:8000/app/api/users/login/"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -238,12 +237,16 @@ class _email_membersState extends State<email_members> {
                               Navigator.push(
                                 //sending to OTP page
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => otp_members(
-                                    jsonData["username"],
-                                    jsonData["access"],
-                                  ),
-                                ),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) => otp_members(
+                                        jsonData["username"],
+                                        jsonData["access"]),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                               print(email.text + '@ves.ac.in');
                               print('Ye le access token ' + jsonData["access"]);
