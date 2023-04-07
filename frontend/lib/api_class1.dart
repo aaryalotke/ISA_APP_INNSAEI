@@ -8,7 +8,8 @@ class api {
   Future<String> getGalleryList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Gallery_2/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Gallery_2/");
+     var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -28,7 +29,8 @@ class api {
   Future<String> getDevelopersList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Developers/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Developers/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Developers/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -51,7 +53,8 @@ class api {
   Future<String> getCouncilList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Council/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Council/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Council/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -74,7 +77,8 @@ class api {
   Future<String> getProfile_MemList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/profile/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/profile/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/profile/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -97,7 +101,8 @@ class api {
   Future<String> getEditorialList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/editorial/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/editorial/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/editorial/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -120,7 +125,8 @@ class api {
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
       //for chrome
-      Uri.parse('http://127.0.0.1:8000/app/api/users/UpcomingWorkshop/'),
+      // Uri.parse('http://127.0.0.1:8000/app/api/users/UpcomingWorkshop/'),
+      Uri.parse('http://10.0.2.2:8000/app/api/users/UpcomingWorkshop/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': "Bearer $token",
@@ -175,7 +181,8 @@ class api2 {
   Future<String> getDevelopersList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Developers/");
+    // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Developers/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Developers/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",

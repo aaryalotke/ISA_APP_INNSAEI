@@ -59,7 +59,15 @@ class _homePageState extends State<homePage> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SIForm(widget.access)),
+         PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        SIForm(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
         );
         break;
       case 1:
@@ -71,8 +79,15 @@ class _homePageState extends State<homePage> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) => profile_members(widget.access)),
+          PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        profile_members(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
         );
         break;
     }
@@ -166,13 +181,16 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Initiatives");
-                              print(widget.access);
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       // to be changed
-                              //       builder: (context) => email_n_members()),
-                              // );
+                              PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                    ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
+                                        inventory(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        ));
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -216,8 +234,15 @@ class _homePageState extends State<homePage> {
                               print("Editorials");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => edito(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        edito(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
@@ -260,6 +285,19 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Digital Library");
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                    ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
+                                        inventory(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -303,9 +341,15 @@ class _homePageState extends State<homePage> {
                               print("College Calender");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        calender_main(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        calender_main(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
@@ -350,9 +394,15 @@ class _homePageState extends State<homePage> {
                               print("Upcoming events");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        upcomingEvents(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        upcomingEvents(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
@@ -450,9 +500,15 @@ class _homePageState extends State<homePage> {
                               print("Developers");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        trailDevelopers(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        trailDevelopers(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
@@ -497,9 +553,15 @@ class _homePageState extends State<homePage> {
                               print("Council");
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        team_main(widget.access)),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        team_main(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
@@ -545,9 +607,15 @@ class _homePageState extends State<homePage> {
                               print(widget.access);
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        gallery_main(widget.access)),
+                               PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        gallery_main(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                             },
                             child: Container(
