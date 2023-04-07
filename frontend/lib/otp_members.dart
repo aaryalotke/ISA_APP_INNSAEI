@@ -79,13 +79,14 @@ class otp_members extends StatefulWidget {
 }
 
 class _MyHomePageState_OTP extends State<otp_members> {
+  bool isLoading = false;
   Future<String> verifyOTP(
       String otp, String access, String email, String password) async {
     final response = await http.post(
       //for chrome
-      Uri.parse('http://127.0.0.1:8000/app/api/users/verifyotp/'),
+      // Uri.parse('http://127.0.0.1:8000/app/api/users/verifyotp/'),
       //for mobile
-      //Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
+      Uri.parse('http://10.0.2.2:8000/app/api/users/verifyotp/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': access,
@@ -106,6 +107,9 @@ class _MyHomePageState_OTP extends State<otp_members> {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print('OTP verify hua!');
+      setState(() {
+        isLoading = true;
+      });
       return response.body;
     } else {
       // If the server did not return a 201 CREATED response,
@@ -178,77 +182,85 @@ class _MyHomePageState_OTP extends State<otp_members> {
                   // BUTTON
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.82,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00467F),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                      ),
-                      onPressed: () async {
-                        // setState(() {
-                        //   var otp_e = otp_m.text;
-                        //   print(otp_m.value);
-                        //   _otpEntered = verifyOTP(otp_e, widget.email,
-                        //       'innsaei', 'Bearer ' + widget.access);
-                        //   print('Email ka value - ' + widget.email);
-                        //   print(' Access ka value -  ' + widget.access);
-                        //   // controller h ye
-                        // });
-                        var access = 'Bearer ' + widget.access;
-                        var res = await verifyOTP(
-                            otp_m.text, access, widget.email, 'innsaei');
-                        var jsonData = jsonDecode(res);
-                        if (jsonData["status"] == 1) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => homePage(
-                              widget.access
-                            )),
-                          );
-                          print('OTP sent to member - ' + otp_m.text);
-                        } else {
-                          final snackBar = SnackBar(
-                            content: const Text(
-                              'Invalid OTP!',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.red,
-                                fontFamily: 'Ubuntu',
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFF00467F),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 140, vertical: 10),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0),
                               ),
-                              textAlign: TextAlign.center,
                             ),
-                            // action: SnackBarAction(
-                            //   label: 'Try Again',
-                            //   onPressed: () {
-                            //     // Some code to undo the change.
-                            //     // Navigator.push(
-                            //     //   context,
-                            //     //   MaterialPageRoute(
-                            //     //       builder: (context) => new_main()),
-                            //     // );
-                            //   },
-                            // ),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => Home()),
-                        // );
-                        // print('OTP sent to member - ' + otp_m.text);
-                      },
-                      child: Text(
-                        'Proceed',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              // setState(() {
+                              //   var otp_e = otp_m.text;
+                              //   print(otp_m.value);
+                              //   _otpEntered = verifyOTP(otp_e, widget.email,
+                              //       'innsaei', 'Bearer ' + widget.access);
+                              //   print('Email ka value - ' + widget.email);
+                              //   print(' Access ka value -  ' + widget.access);
+                              //   // controller h ye
+                              // });
+                              var access = 'Bearer ' + widget.access;
+                              var res = await verifyOTP(
+                                  otp_m.text, access, widget.email, 'innsaei');
+                              var jsonData = jsonDecode(res);
+                              if (jsonData["status"] == 1) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          homePage(widget.access)),
+                                );
+                                print('OTP sent to member - ' + otp_m.text);
+                              } else {
+                                final snackBar = SnackBar(
+                                  content: const Text(
+                                    'Invalid OTP!',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.red,
+                                      fontFamily: 'Ubuntu',
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  // action: SnackBarAction(
+                                  //   label: 'Try Again',
+                                  //   onPressed: () {
+                                  //     // Some code to undo the change.
+                                  //     // Navigator.push(
+                                  //     //   context,
+                                  //     //   MaterialPageRoute(
+                                  //     //       builder: (context) => new_main()),
+                                  //     // );
+                                  //   },
+                                  // ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(builder: (context) => Home()),
+                              // );
+                              // print('OTP sent to member - ' + otp_m.text);
+                            },
+                            child: Text(
+                              'Proceed',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
                   ),
                   // TEXT BUTTON FOR Resend OTP
                   Positioned(
