@@ -216,9 +216,15 @@ class _MyHomePageState_OTP extends State<otp_members> {
                               if (jsonData["status"] == 1) {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          homePage(widget.access)),
+                                  PageRouteBuilder(
+                                      pageBuilder: (_, a, b) =>
+                                          homePage(widget.access),
+                                      transitionDuration: Duration(seconds: 2),
+                                      transitionsBuilder: (_, a, __, c) =>
+                                          FadeTransition(
+                                            opacity: a,
+                                            child: c,
+                                          )),
                                 );
                                 print('OTP sent to member - ' + otp_m.text);
                               } else {

@@ -80,7 +80,8 @@ class _traildevelopersState extends State<trailDevelopers> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => profile_members(widget.access)),
+          MaterialPageRoute(
+              builder: (context) => profile_members(widget.access)),
         );
         break;
     }
@@ -252,15 +253,9 @@ class _traildevelopersState extends State<trailDevelopers> {
       body: isLoaded
           ? Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height * 1,
               padding: EdgeInsets.all(10),
-              child: ListView(
-                children: <Widget>[
-                  //Code for images part
-                  pageone_dev(people)
-                  //galleryThird ko call kiya with images as arguments
-                ],
-              ),
+              child: pageone_dev(people),
             )
           : Center(
               child: CircularProgressIndicator(),

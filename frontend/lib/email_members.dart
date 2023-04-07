@@ -237,12 +237,16 @@ class _email_membersState extends State<email_members> {
                               Navigator.push(
                                 //sending to OTP page
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => otp_members(
-                                    jsonData["username"],
-                                    jsonData["access"],
-                                  ),
-                                ),
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) => otp_members(
+                                        jsonData["username"],
+                                        jsonData["access"]),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
                               );
                               print(email.text + '@ves.ac.in');
                               print('Ye le access token ' + jsonData["access"]);
