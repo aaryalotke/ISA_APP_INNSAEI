@@ -116,17 +116,10 @@ flutter:
     - assets/images/launch.png
     - assets/images/website.png
     - assets/images/ISA-white.png 
-<<<<<<< HEAD
-    - assets/images/user.png 
-=======
     - assets/images/newuser.png
     - assets/images/newuser_email.png
     - assets/images/newuser_mobile.png
->>>>>>> a69c83e (non-members 5 frontend pages)
-    
 
-
-   
     - assets/images/certi.jpg
     - assets/images/certi2.png
     - assets/images/certi3.jpg
