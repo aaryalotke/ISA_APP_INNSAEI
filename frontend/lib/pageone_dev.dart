@@ -141,7 +141,7 @@ class _pageone_devState extends State<pageone_dev> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: 'Voces',
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   color: Colors.white),
                             ),
                             Container(
@@ -356,7 +356,7 @@ class _pageone_devState extends State<pageone_dev> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontFamily: 'Voces',
-                                    fontSize: 17,
+                                    fontSize: 15,
                                     color: Colors.white),
                               ),
                               Container(
