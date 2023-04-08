@@ -1,5 +1,4 @@
-//import 'package:flutter/cupertino.dart';
-// import 'dart:ffi';
+
 
 import 'package:flutter/foundation.dart';
 //import 'package:url_launcher/url_launcher.dart';
@@ -35,7 +34,7 @@ class Profile_mem {
     github = json['github'] ?? "base_profile";
     linkedin = json['linkedin'] ?? "base_profile";
     profile_image = json['profile_image']?? "base_profile";
-    phone_number = json['phone_number']?? 99;
+    phone_number = json['phone_number'];
     isMember = json['isMember'];
    
     
@@ -86,6 +85,11 @@ class User{
     return data;
   }
 }
+
+
+
+
+
 
 
 
