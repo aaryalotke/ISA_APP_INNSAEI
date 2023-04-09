@@ -31,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -75,8 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           // border: Border.all(),
                           ),
                       child: TextFormField(
-                        
-                       
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
                           labelText: 'Mobile Number',
@@ -105,9 +102,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => newuser()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => newuser(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
-                        
                       },
                       child: Text(
                         '   Done   ',
@@ -118,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  
+
                   // UPAR KA ANIMATION
                   Positioned(
                     top: 0,

@@ -6,8 +6,6 @@ import 'newuser_email.dart';
 // void main() => runApp(newuser());
 
 class newuser extends StatelessWidget {
- 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,18 +19,13 @@ class newuser extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
- 
-
   @override
- Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Color(0xFFFFFFFF),
@@ -52,73 +45,81 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
 
-
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.73,
-                    
-                    
                     child: Column(
-  mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SizedBox(width: 10),
+                          ElevatedButton(
+                            child: Text("New User",
+                                style: TextStyle(fontSize: 18)),
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFF00467F),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 140, vertical: 10),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (_, a, b) => newuser_email(),
+                                  transitionDuration: Duration(seconds: 2),
+                                  transitionsBuilder: (_, a, __, c) =>
+                                      FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: TextButton(
+                              child: Text("    Login   ",
+                                  style: TextStyle(fontSize: 18)),
+                              style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.symmetric(
+                                        horizontal: 140, vertical: 10),
+                                  ),
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    Color(0xFF00467F),
+                                  ),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                          side: BorderSide(
+                                            color: Color(0xFF00467F),
+                                          )))),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (_, a, b) => email_n_members(),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                      opacity: a,
+                                      child: c,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ]),
+                  ),
 
-  children: [
-    
-    SizedBox(width: 10),
-    ElevatedButton(
-      child: Text(
-        "New User",
-        style: TextStyle(fontSize: 18)
-      ),
-          style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00467F),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                      ),
-      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => newuser_email()),
-                        );
-                      },
-    ),
-
-
-    Container(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      child: TextButton(
-        
-        child: Text(
-          "    Login   ",
-          style: TextStyle(fontSize: 18)
-        ),
-        style: ButtonStyle(
-          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(horizontal: 140, vertical: 10),),        
-          foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00467F),),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3.0),
-              side: BorderSide(color: Color(0xFF00467F),)
-            )
-          )
-        ),
-
- 
-        onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => email_n_members()),
-                        );
-                      },
-      ),
-    ),
-  ]
-),),
-                  
                   // UPAR KA ANIMATION
                   Positioned(
                     top: 0,
@@ -133,6 +134,5 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ); 
- 
+      );
 }

@@ -88,7 +88,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/otp_members.gif
-    - assets/images/Otp_nonmemberspage.gif
+    - assets/images/OTP_nonmemberspage.gif
     - assets/images/Email_memberspage.gif
     - assets/images/Email_nonmemberspage.gif
     - assets/images/logo_isa.png

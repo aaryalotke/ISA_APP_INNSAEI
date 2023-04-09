@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:isa/email_members.dart';
 import 'newuser_email.dart';
 import 'otp_n_members.dart';
 
 void main() => runApp(email_n_members());
 
 class email_n_members extends StatelessWidget {
- 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -20,8 +19,6 @@ class email_n_members extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -29,10 +26,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final email_n = TextEditingController();
 
- 
-
   @override
- Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Color(0xFFFFFFFF),
@@ -99,8 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => otp_n_members()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => otp_n_members(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
                         print(email_n.text + '@ves.ac.in');
                       },
@@ -121,12 +122,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => newuser_email()),
+                              builder: (context) => email_members()),
                         );
                       },
                       child: RichText(
                         text: const TextSpan(
-                          text: ' Not a Member?',
+                          text: ' Are you a member?',
                           style: TextStyle(
                             color: Colors.black,
                             fontFamily: 'Voces',
@@ -161,6 +162,5 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ); 
- 
+      );
 }

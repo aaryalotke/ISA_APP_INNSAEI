@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:isa/home_new.dart';
 // import 'home.dart';
 
 import 'otp_n_members.dart';
@@ -106,7 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         // Navigator.push(
                         //   context,
-                        //   MaterialPageRoute(builder: (context) => Home(),
+                        //   PageRouteBuilder(
+                        //       pageBuilder: (_, a, b) => homePage(),
+                        //       transitionDuration: Duration(seconds: 2),
+                        //       transitionsBuilder: (_, a, __, c) =>
+                        //           FadeTransition(
+                        //             opacity: a,
+                        //             child: c,
+                        //           )),
                         // );
                         print('OTP sent to non member - ' + otp_n.text);
                       },
@@ -120,25 +128,25 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   // TEXT BUTTON FOR Resend OTP
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.90,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => email_n_members()),
-                        );
-                      },
-                      child: Text(
-                        'Resend OTP',
-                        style: TextStyle(
-                          color: Color(0xFF00467F),
-                          fontSize: 17,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: MediaQuery.of(context).size.height * 0.90,
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => email_n_members()),
+                  //       );
+                  //     },
+                  //     child: Text(
+                  //       'Resend OTP',
+                  //       style: TextStyle(
+                  //         color: Color(0xFF00467F),
+                  //         fontSize: 17,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   // UPAR KA ANIMATION
                   Positioned(
                     top: 0,

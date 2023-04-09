@@ -6,8 +6,6 @@ import 'newuser_mobile.dart';
 void main() => runApp(newuser_email());
 
 class newuser_email extends StatelessWidget {
- 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,19 +19,16 @@ class newuser_email extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var finalText = "";
   final email_n = TextEditingController();
 
- 
-
   @override
- Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Color(0xFFFFFFFF),
@@ -64,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           // border: Border.all(),
                           ),
                       child: TextFormField(
-                        // controller: email_n,
+                        controller: email_n,
                         keyboardType: TextInputType.text,
                         // onChanged: (val) {
                         //   // print(val);
@@ -75,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           // ),
                           labelText: 'Email',
                           suffixText: '@ves.ac.in',
+                          // var asli_email = email_n.text() + 'ves.ac.in'
                           labelStyle: TextStyle(
                             fontFamily: 'Voces',
                             fontSize: 18,
@@ -100,8 +96,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => newuser_mobile()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => newuser_mobile(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
                         print(email_n.text + '@ves.ac.in');
                       },
@@ -162,6 +164,5 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ); 
- 
+      );
 }
