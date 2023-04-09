@@ -634,6 +634,13 @@ class _DemoAppState extends State<DemoApp> {
                 DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
             // description: 'A special event',
             color: Colors.orange),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
         ],
     DateTime (2023,4,12):
         [
@@ -644,6 +651,13 @@ class _DemoAppState extends State<DemoApp> {
                 DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
             // description: 'A special event',
             color: Colors.orange),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
         ],
     DateTime (2023,4,13):
         [
@@ -668,6 +682,13 @@ class _DemoAppState extends State<DemoApp> {
                 DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
             // description: 'A special event',
             color: Colors.purple),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.green),
         ],
     DateTime (2023,4,14):
         [
@@ -692,6 +713,13 @@ class _DemoAppState extends State<DemoApp> {
                 DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
             // description: 'A special event',
             color: Colors.purple),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.green),
         ],
     DateTime (2023,4,15):
         [
