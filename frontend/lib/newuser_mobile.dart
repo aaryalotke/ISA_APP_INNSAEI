@@ -9,21 +9,31 @@ import 'email_n_members.dart';
 // import 'email_members.dart';
 import 'main_newuser.dart';
 
-class newuser_mobile extends StatelessWidget {
-  // This widget is the root of your application.
+class newuser_mobile extends StatefulWidget {
+  final String email_n;
+  newuser_mobile(this.email_n);
 
+  @override
+  State<newuser_mobile> createState() => _newuser_mobileState();
+}
+
+class _newuser_mobileState extends State<newuser_mobile> {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Voces',
       ),
-      home: MyHomePage(),
+      home: MyHomePage(widget.email_n),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  final String email_n;
+  MyHomePage(this.email_n);
+
   // String titleInput;
   // String amountInput;
   @override
@@ -31,6 +41,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final mobile = TextEditingController();
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -74,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           // border: Border.all(),
                           ),
                       child: TextFormField(
-                        keyboardType: TextInputType.text,
+                        controller: mobile,
+                        keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                           labelText: 'Mobile Number',
                           labelStyle: TextStyle(
@@ -100,17 +112,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (_, a, b) => newuser(),
-                              transitionDuration: Duration(seconds: 2),
-                              transitionsBuilder: (_, a, __, c) =>
-                                  FadeTransition(
-                                    opacity: a,
-                                    child: c,
-                                  )),
-                        );
+                        print(widget.email_n);
+                        print(mobile.text);
+
+                        
+                        // Navigator.push(
+                        //   context,
+                        //   PageRouteBuilder(
+                        //       pageBuilder: (_, a, b) => newuser(),
+                        //       transitionDuration: Duration(seconds: 2),
+                        //       transitionsBuilder: (_, a, __, c) =>
+                        //           FadeTransition(
+                        //             opacity: a,
+                        //             child: c,
+                        //           )),
+                        // );
                       },
                       child: Text(
                         '   Done   ',

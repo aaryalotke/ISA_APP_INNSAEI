@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF00467F),
-                        padding: EdgeInsets.fromLTRB(20, 26.5, 20, 26.5),
+                        padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(3.0),
                         ),
@@ -212,44 +212,44 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        padding: EdgeInsets.fromLTRB(20, 13, 20, 13),
-                        side: BorderSide(
-                          width: 3,
-                          color: Color(0xFF00467F),
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                        elevation: 0,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (_, a, b) => newuser(),
-                              transitionDuration: Duration(seconds: 2),
-                              transitionsBuilder: (_, a, __, c) =>
-                                  FadeTransition(
-                                    opacity: a,
-                                    child: c,
-                                  )),
-                        );
-                      },
-                      child: Text(
-                        'Non\nMembers',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  //   child: ElevatedButton(
+                  //     style: ElevatedButton.styleFrom(
+                  //       primary: Colors.white,
+                  //       padding: EdgeInsets.fromLTRB(20, 13, 20, 13),
+                  //       side: BorderSide(
+                  //         width: 3,
+                  //         color: Color(0xFF00467F),
+                  //       ),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(3.0),
+                  //       ),
+                  //       elevation: 0,
+                  //     ),
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         PageRouteBuilder(
+                  //             pageBuilder: (_, a, b) => newuser(),
+                  //             transitionDuration: Duration(seconds: 2),
+                  //             transitionsBuilder: (_, a, __, c) =>
+                  //                 FadeTransition(
+                  //                   opacity: a,
+                  //                   child: c,
+                  //                 )),
+                  //       );
+                  //     },
+                  //     child: Text(
+                  //       'Non\nMembers',
+                  //       style: TextStyle(
+                  //         color: Colors.black,
+                  //         fontSize: 18,
+                  //       ),
+                  //       textAlign: TextAlign.center,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             )

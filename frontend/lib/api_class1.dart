@@ -9,7 +9,7 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Gallery_2/");
-     var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -121,7 +121,6 @@ class api {
     }
   }
 
-
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
       //for chrome
@@ -175,47 +174,7 @@ class api {
     }
   }
 
-  Future<String> registerNonmember(String username, String firstName, String lastName, String email) async {
-    final response = await http.post(
-      Uri.parse("http://10.0.2.2:8000/app/api/users/login/"),
-      // "http://127.0.0.1:8000/app/api/users/login/"),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(
-          <String, String>{'Username': username, 'First name' : firstName, 'Last name' : lastName, 'Email address' : email}),
-    );
 
-    if (response.statusCode == 200) {
-      
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
-      print('OTP gaya!');
-      print('Response ye aaya - ' + response.body);
-      
-      // var i = 300;
-      // String access = '';
-      // for (i = 253; i <= 480; i++) {
-      //   access = access + response.body[i];
-      // }
-      // ;
-      // print(access);
-      // email_members(access);
-      var jsonData = jsonDecode(response.body); // trial
-      print(jsonData["access"]);
-      String access = jsonData["access"];
-      String email = jsonData["username"];
-
-      return response.body;
-      // return User.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
-      print(response.body);
-      print('errorrrrr');
-      throw Exception('Failed to send email.');
-    }
-  }
 }
 
 class api2 {

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:isa/email_members.dart';
 import 'newuser_email.dart';
 import 'otp_n_members.dart';
+import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(email_n_members());
 
@@ -25,6 +28,51 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final email_n = TextEditingController();
+
+  bool isLoading = false;
+  Future<String> sendEmailNM(String username, String password) async {
+    final response = await http.post(
+      Uri.parse("http://10.0.2.2:8000/app/api/users/loginNONMEMBERS/"),
+      // "http://127.0.0.1:8000/app/api/users/login/"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(
+          <String, String>{'username': username, 'password': password}),
+    );
+
+    if (response.statusCode == 200) {
+      setState(() {
+        isLoading = true;
+      });
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print('OTP gaya!');
+      print('Response ye aaya - ' + response.body);
+      print('new time\n');
+      // var i = 300;
+      // String access = '';
+      // for (i = 253; i <= 480; i++) {
+      //   access = access + response.body[i];
+      // }
+      // ;
+      // print(access);
+      // email_members(access);
+      var jsonData = jsonDecode(response.body); // trial
+      print(jsonData["access"]);
+      String access = jsonData["access"];
+      String email = jsonData["username"];
+
+      return response.body;
+      // return User.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      print(response.body);
+      print('errorrrrr');
+      throw Exception('Failed to send email.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -58,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           // border: Border.all(),
                           ),
                       child: TextFormField(
-                        // controller: email_n,
+                        controller: email_n,
                         keyboardType: TextInputType.text,
                         // onChanged: (val) {
                         //   // print(val);
@@ -81,38 +129,78 @@ class _MyHomePageState extends State<MyHomePage> {
                   // ENTER BUTTON
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.73,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF00467F),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 140, vertical: 10),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (_, a, b) => otp_n_members(),
-                              transitionDuration: Duration(seconds: 2),
-                              transitionsBuilder: (_, a, __, c) =>
-                                  FadeTransition(
-                                    opacity: a,
-                                    child: c,
-                                  )),
-                        );
-                        print(email_n.text + '@ves.ac.in');
-                      },
-                      child: Text(
-                        'Enter',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFF00467F),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 140, vertical: 10),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+
+                              try {
+                                var res = await sendEmailNM(
+                                    email_n.text + '@ves.ac.in',
+                                    'innsaei'); //json data for response
+                                var jsonData = jsonDecode(res); //in json form
+                                print(email_n.text + '@ves.ac.in');
+                                print(
+                                    'Ye le access token ' + jsonData["access"]);
+
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                      pageBuilder: (_, a, b) => otp_n_members(jsonData["access"],jsonData["username"]),
+                                      transitionDuration: Duration(seconds: 2),
+                                      transitionsBuilder: (_, a, __, c) =>
+                                          FadeTransition(
+                                            opacity: a,
+                                            child: c,
+                                          )),
+                                );
+
+                                print('End of try');
+                              } catch (e) {
+                                print('error occured in status 500');
+                                const snackBar = SnackBar(
+                                  content: Text(
+                                    'Sorry! There was an issue',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.red,
+                                      fontFamily: 'Ubuntu',
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                print('Uh oh catch me aa gaye');
+                              }
+                              print(email_n.text + '@ves.ac.in');
+                            },
+                            child: Text(
+                              'Enter',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
                   ),
                   // FOR NOT A MEMBER
                   Positioned(
