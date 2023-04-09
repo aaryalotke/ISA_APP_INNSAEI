@@ -912,7 +912,7 @@ class _DemoAppState extends State<DemoApp> {
         title: Text(
           'CALENDER',
           style: TextStyle(
-              fontFamily: 'Ubuntu', fontSize: 25, color: Colors.black),
+              fontFamily:  'Ubuntu_Bold', fontSize: 30, color: Colors.black),
         ),
         centerTitle: true,
       ),
