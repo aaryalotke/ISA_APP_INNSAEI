@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-import 'package:isa/models/upcomingEvent_model.dart';
+import 'custom_exception.dart';
 
 class api {
   //gallery api
@@ -17,10 +15,11 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_GALLERY_LIST) Response received.");
       return response.body;
     } else {
-      throw Exception("Couldn't fetch the photos from server.");
+      print(">> (GET_GALLERY_LIST) Exception occurred.");
+      throw CustomException(message: "Couldn't fetch the photos from server.");
     }
   }
 
@@ -37,13 +36,13 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_DEVELOPERS_LIST) Response received.");
       final our = "[" + response.body + "]";
-      print(our);
-
       return our;
     } else {
-      throw Exception("Couldn't fetch the developers list from server.");
+      print(">> (GET_DEVELOPERS_LIST) Exception occurred.");
+      throw CustomException(
+          message: "Couldn't fetch the developers list from server.");
     }
   }
 
@@ -60,13 +59,13 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_COUNCIL_LIST) Response received.");
       final our = "[" + response.body + "]";
-      print(our);
-
       return our;
     } else {
-      throw Exception("Couldn't fetch the council members from server.");
+      print(">> (GET_COUNCIL_LIST) Exception occurred.");
+      throw CustomException(
+          message: "Couldn't fetch the council members from server.");
     }
   }
 
@@ -83,13 +82,12 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_PROFILE) Response received.");
       final our = "[" + response.body + "]";
-      print(our);
-
       return our;
     } else {
-      throw Exception("Couldn't fetch your profile.");
+      print(">> (GET_PROFILE) Exception occurred.");
+      throw CustomException(message: "Couldn't fetch your profile.");
     }
   }
 
@@ -106,19 +104,18 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_EDITORIAL_LIST) Response received.");
       final our = "[" + response.body + "]";
-      print(our);
-
       return our;
     } else {
-      throw Exception("Couldn't fetch the editorials from server.");
+      print(">> (GET_EDITORIAL_LIST) Exception occurred.");
+      throw CustomException(
+          message: "Couldn't fetch the editorials from server.");
     }
   }
 
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
-      //for chrome
       // Uri.parse('http://127.0.0.1:8000/app/api/users/UpcomingWorkshop/'),
       Uri.parse('http://10.0.2.2:8000/app/api/users/UpcomingWorkshop/'),
       headers: <String, String>{
@@ -132,16 +129,12 @@ class api {
         response.statusCode == 202 ||
         response.statusCode == 203 ||
         response.statusCode == 204) {
-      print('upcoming event recieved');
+      print(">> (GET_UPCOMING_EVENT) Response received.");
       final event = "[" + response.body + "]";
       return event;
     } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
-      print(response.body);
-
-      print('errorrrrr');
-      throw Exception('Failed to return event.');
+      print(">> (GET_UPCOMING_EVENT) Exception occurred.");
+      throw CustomException(message: 'Failed to return event.');
     }
   }
 
@@ -158,13 +151,13 @@ class api {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
+      print(">> (GET_INVENTORY_EVENT) Response received.");
       final our = "[" + response.body + "]";
-      print(our);
-
       return our;
     } else {
-      throw Exception("Couldn't fetch the inventory from server.");
+      print(">> (GET_INVENTORY_EVENT) Exception occurred.");
+      throw CustomException(
+          message: "Couldn't fetch the inventory from server.");
     }
   }
 }
@@ -183,13 +176,12 @@ class api2 {
     };
     http.Response response = await client.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      print("Success");
-      print(response.body);
+      print(">> (GET_DEVELOPERS_LIST) Response received.");
       return response.body;
     } else {
-      print("Error");
-      print(response.body);
-      return response.body;
+      print(">> (GET_DEVELOPERS_LIST) Exception occurred.");
+      throw CustomException(
+          message: "Couldn't fetch the developer list from server.");
     }
   }
 }

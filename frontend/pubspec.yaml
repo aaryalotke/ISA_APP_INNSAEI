@@ -119,6 +119,18 @@ flutter:
     - assets/images/newuser.png
     - assets/images/newuser_email.png
     - assets/images/newuser_mobile.png
+    - assets/images/user.png 
+    - assets/images/youtube.png
+    - assets/images/threeD.png
+    - assets/images/inventory.png
+    - assets/images/benbeyond.png
+    - assets/images/iotKit.png
+    - assets/images/pow.png
+    - assets/images/VR.png
+    - assets/images/Alumni_talk.png
+    - assets/images/Digital_library.png
+    - assets/images/DigitalNoticeBoard.png
+    
 
     - assets/images/certi.jpg
     - assets/images/certi2.png

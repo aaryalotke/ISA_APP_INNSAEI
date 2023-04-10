@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:isa/calender_main.dart';
+import 'package:isa/initiatives_main.dart';
 import 'package:isa/upcoming_events.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -176,16 +177,19 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Initiatives");
-                              PageRouteBuilder(
-                                  pageBuilder: (_, a, b) =>
-                                      ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
-                                      inventory(widget.access),
-                                  transitionDuration: Duration(seconds: 2),
-                                  transitionsBuilder: (_, a, __, c) =>
-                                      FadeTransition(
-                                        opacity: a,
-                                        child: c,
-                                      ));
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        initiatives_main(widget.access),
+                                    transitionDuration: Duration(seconds: 2),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                          opacity: a,
+                                          child: c,
+                                        )),
+                              );
+                              print("navigated to initiatives");
                             },
                             child: Container(
                               padding: EdgeInsets.only(
@@ -280,19 +284,21 @@ class _homePageState extends State<homePage> {
                           child: InkWell(
                             onTap: () {
                               print("Digital Library");
-                              Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                    pageBuilder: (_, a, b) =>
-                                        ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
-                                        inventory(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
-                                    transitionsBuilder: (_, a, __, c) =>
-                                        FadeTransition(
-                                          opacity: a,
-                                          child: c,
-                                        )),
-                              );
+                              launchurledi(
+                                  "https://drive.google.com/drive/folders/1rc4JpFtKFXwpxtZIzUMwQFuvbfk-AVz8?usp=sharing");
+                              // Navigator.push(
+                              //   context,
+                              //   PageRouteBuilder(
+                              //       pageBuilder: (_, a, b) =>
+                              //           ////////////////////////////add initiative ka page, for now its inventory/////////////////////////////////////////////////////////
+                              //           inventory(widget.access),
+                              //       transitionDuration: Duration(seconds: 2),
+                              //       transitionsBuilder: (_, a, __, c) =>
+                              //           FadeTransition(
+                              //             opacity: a,
+                              //             child: c,
+                              //           )),
+                              // );
                             },
                             child: Container(
                               padding: EdgeInsets.only(

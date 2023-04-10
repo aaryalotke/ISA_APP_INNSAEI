@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:isa/main_contactus.dart';
-import 'package:table_calendar/table_calendar.dart';
 
-import 'edi_main.dart';
 import 'home_new.dart';
 import 'main_profile.dart';
 
@@ -148,7 +145,6 @@ class _DemoAppState extends State<DemoApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     // selectedEvent = events[selectedDay] ?? [];
     super.initState();
   }
@@ -171,37 +167,35 @@ class _DemoAppState extends State<DemoApp> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Container(
-          child: Calendar(
-            startOnMonday: true,
-            selectedColor: Color(0xFF00467F),
-            todayColor: Color(0xFFFE735D),
-            eventColor: Colors.black,
-            eventDoneColor: Colors.green,
-            // bottomBarColor: Colors.deepOrange,
-            // onRangeSelected: (range) {
-            //   print('selected Day ${range.from},${range.to}');
-            // },
-            onDateSelected: (date) {
-              return _handleData(date);
-            },
-            events: events,
-            isExpanded: true,
-            // dayOfWeekStyle: TextStyle(
-            //   fontSize: 15,
-            //   color: Colors.black12,
-            //   fontWeight: FontWeight.w100,
-            // ),
-            dayOfWeekStyle: TextStyle(color: Color(0xFF00467F)),
+        child: Calendar(
+          startOnMonday: true,
+          selectedColor: Color(0xFF00467F),
+          todayColor: Color(0xFFFE735D),
+          eventColor: Colors.black,
+          eventDoneColor: Colors.green,
+          // bottomBarColor: Colors.deepOrange,
+          // onRangeSelected: (range) {
+          //   print('selected Day ${range.from},${range.to}');
+          // },
+          onDateSelected: (date) {
+            return _handleData(date);
+          },
+          events: events,
+          isExpanded: true,
+          // dayOfWeekStyle: TextStyle(
+          //   fontSize: 15,
+          //   color: Colors.black12,
+          //   fontWeight: FontWeight.w100,
+          // ),
+          dayOfWeekStyle: TextStyle(color: Color(0xFF00467F)),
 
-            bottomBarTextStyle: TextStyle(
-              color: Colors.white,
-            ),
-            hideBottomBar: false,
-            hideTodayIcon: true,
-            hideArrows: false,
-            weekDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          bottomBarTextStyle: TextStyle(
+            color: Colors.white,
           ),
+          hideBottomBar: false,
+          hideTodayIcon: true,
+          hideArrows: false,
+          weekDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
