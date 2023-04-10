@@ -154,7 +154,7 @@ class _SIFormState extends State<SIForm> {
             title: Text(
               'CONTACT US',
               style: TextStyle(
-              fontFamily:  'Ubuntu_Bold', fontSize: 30, color: Colors.black),
+                  fontFamily: 'Ubuntu_Bold', fontSize: 30, color: Colors.black),
             ),
             centerTitle: true,
           ),
@@ -309,11 +309,15 @@ class _SIFormState extends State<SIForm> {
                                               //snackbar
 
                                               if (jsonData["status"] == 1) {
-                                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                                  content: Text("Feedback sent successfully!"),
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                        const SnackBar(
+                                                  content: Text(
+                                                      "Feedback sent successfully!"),
                                                   backgroundColor: Colors.red,
                                                   elevation: 10,
-                                                  behavior: SnackBarBehavior.floating,
+                                                  behavior:
+                                                      SnackBarBehavior.floating,
                                                   margin: EdgeInsets.all(5),
                                                 ));
                                                 // Navigator.push(
@@ -343,17 +347,18 @@ class _SIFormState extends State<SIForm> {
                                                     .showSnackBar(snackBar);
                                               }
                                             } catch (e) {
-                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
                                                 content: Text(e.toString()),
                                                 backgroundColor: Colors.red,
                                                 elevation: 10,
-                                                behavior: SnackBarBehavior.floating,
+                                                behavior:
+                                                    SnackBarBehavior.floating,
                                                 margin: const EdgeInsets.all(5),
                                               ));
                                             }
                                             isLoading = false;
                                             setState(() {});
-
                                           },
                                         )),
                             ],
