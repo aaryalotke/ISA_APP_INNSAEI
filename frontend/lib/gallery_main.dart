@@ -255,7 +255,7 @@ class _gallery_mainState extends State<gallery_main> {
                       child: ListView(
                         children: <Widget>[
                           //Code for images part
-                          galleryFirst(hardware)
+                          galleryFirst(hardware,widget.access)
                           //galleryFirst ko call kiya with images as arguments
                         ],
                       ),
@@ -265,7 +265,7 @@ class _gallery_mainState extends State<gallery_main> {
                       child: ListView(
                         children: <Widget>[
                           //Code for images part
-                          gallerySecond(software)
+                          gallerySecond(software,widget.access)
                           //gallerySecond ko call kiya with images as arguments
                         ],
                       ),
@@ -275,7 +275,7 @@ class _gallery_mainState extends State<gallery_main> {
                       child: ListView(
                         children: <Widget>[
                           //Code for images part
-                          galleryThird(others)
+                          galleryThird(others,widget.access)
                           //galleryThird ko call kiya with images as arguments
                         ],
                       ),

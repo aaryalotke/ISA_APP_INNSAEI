@@ -10,7 +10,8 @@ import "galleryClick.dart";
 
 class galleryThird extends StatefulWidget {
   final List<gallery> others;
-  galleryThird(this.others); //Image List for others has been recieved
+   final String access;
+  galleryThird(this.others, this.access); //Image List for others has been recieved
 
   // final List<gallery_software> gallery_software;
   // galleryThird(this.gallery_software);//Image List for others has been recieved
@@ -40,6 +41,7 @@ class _gallerySecondState extends State<galleryThird> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => galleryClick(
+                        widget.access,
                           widget.others[index].id,
                           widget.others[index].name,
                           widget.others[index].gallaryPic1,
