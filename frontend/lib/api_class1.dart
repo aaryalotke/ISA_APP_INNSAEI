@@ -9,7 +9,7 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Gallery_2/");
-     var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -121,7 +121,6 @@ class api {
     }
   }
 
-
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
       //for chrome
@@ -174,6 +173,8 @@ class api {
       return response.body;
     }
   }
+
+
 }
 
 class api2 {

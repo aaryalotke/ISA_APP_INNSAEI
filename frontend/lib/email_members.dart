@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:isa/main_newuser.dart';
 
 import 'otp_n_members.dart';
 import 'main.dart';
@@ -279,8 +280,14 @@ class _email_membersState extends State<email_members> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => email_n_members()),
+                          PageRouteBuilder(
+                              pageBuilder: (_, a, b) => newuser(),
+                              transitionDuration: Duration(seconds: 2),
+                              transitionsBuilder: (_, a, __, c) =>
+                                  FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  )),
                         );
                       },
                       child: RichText(

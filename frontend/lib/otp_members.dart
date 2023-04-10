@@ -269,25 +269,25 @@ class _MyHomePageState_OTP extends State<otp_members> {
                           ),
                   ),
                   // TEXT BUTTON FOR Resend OTP
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.90,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => email_n_members()),
-                        );
-                      },
-                      child: Text(
-                        'Resend OTP',
-                        style: TextStyle(
-                          color: Color(0xFF00467F),
-                          fontSize: 17,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: MediaQuery.of(context).size.height * 0.90,
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => email_n_members()),
+                  //       );
+                  //     },
+                  //     child: Text(
+                  //       'Resend OTP',
+                  //       style: TextStyle(
+                  //         color: Color(0xFF00467F),
+                  //         fontSize: 17,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   // UPAR KA ANIMATION
                   Positioned(
                     top: 0,
