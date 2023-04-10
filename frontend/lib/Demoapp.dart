@@ -76,63 +76,809 @@ class _DemoAppState extends State<DemoApp> {
   // List <CleanCalendarEvent> selectedEvent  ;
 
   final Map<DateTime, List<CleanCalendarEvent>> events = {
-    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day): [
-      CleanCalendarEvent('Event A',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day, 10, 0),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day, 12, 0),
-          description: 'A special event',
-          color: Colors.orange),
-    ],
-    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2):
+    //jan
+    DateTime (2023,1,9):
         [
-      CleanCalendarEvent('Event B',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 10, 0),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 12, 0),
-          description: 'A special event',
-          color: Colors.orange),
-      CleanCalendarEvent('Event C',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 14, 30),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 17, 0),
-          description: 'A very special event',
-          color: Colors.pink),
-    ],
-    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 5):
+          CleanCalendarEvent('Beginning of the Term : UG program',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,1,12):
         [
-      CleanCalendarEvent('Event B',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 10, 0),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 12, 0),
-          description: 'A special event',
-          color: Colors.orange),
-      CleanCalendarEvent('Event C',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 14, 30),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 17, 0),
-          description: 'A very special event',
-          color: Colors.pink),
-      CleanCalendarEvent('Event D',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 14, 30),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 17, 0),
-          description: 'A very very special event',
-          color: Colors.blueAccent),
-      CleanCalendarEvent('Event E',
-          startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 14, 30),
-          endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 17, 0),
-          description: 'A very very  very special event',
-          color: Colors.purple),
-    ],
+          CleanCalendarEvent('Prarambh`22',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Swami Vivekanand Jayanti',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+           CleanCalendarEvent('Start of window period for society activities',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+        ],
+    DateTime (2023,1,13):
+        [
+          CleanCalendarEvent('Illusion',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,1,16):
+        [
+           CleanCalendarEvent('Start of subject group meeting 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Start of VESIT Premier League',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,1,21):
+        [
+           CleanCalendarEvent('End of subject group meeting 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('End of window period for society activities',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,1,25):
+        [
+          CleanCalendarEvent('End of VESIT Premier League',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,1,30):
+        [
+          CleanCalendarEvent('VESIT Premier League : Finals',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
+    //feb
+    DateTime (2023,2,5):
+        [
+          CleanCalendarEvent('Sort : Beach Cleaning Drive',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,7):
+        [
+          CleanCalendarEvent('Bliss Event',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,8):
+        [
+          CleanCalendarEvent('Bliss Event',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,9):
+        [
+          CleanCalendarEvent('First defaulter`s List',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,11):
+        [
+          CleanCalendarEvent('Satyanarayan Pooja',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,13):
+        [
+          CleanCalendarEvent('Umeed',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,15):
+        [
+          CleanCalendarEvent('Internal Assessment Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,16):
+        [
+          CleanCalendarEvent('Internal Assessment Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,17):
+        [
+          CleanCalendarEvent('Internal Assessment Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,20):
+        [
+          CleanCalendarEvent('Internal Assessment Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,22):
+        [
+          CleanCalendarEvent('Blood Donation Drive',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,23):
+        [
+          CleanCalendarEvent('Praxis',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Start of group advisor meeting 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,2,24):
+        [
+          CleanCalendarEvent('Praxis',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,2,25):
+        [
+          CleanCalendarEvent('Honor/Minor course Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Start of outdoor Sphurti',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+          CleanCalendarEvent('Start of VESIT Cricket League',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+            CleanCalendarEvent('Alumni Day',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.green),
+        ],
+    DateTime (2023,2,27):
+        [
+          CleanCalendarEvent('Honor/Minor course Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Marathi Rajya Bhasha Diwas',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+          CleanCalendarEvent('Photo Session',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+        ],
+    
+    DateTime (2023,2,28):
+        [
+          CleanCalendarEvent('End of group advisor meeting 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Honor/Minor course Test 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+          CleanCalendarEvent('Open Day 1',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+        ],
+
+     //march
+     DateTime (2023,3,1):
+        [
+          CleanCalendarEvent('ATKT Exams',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,2):
+        [
+          CleanCalendarEvent('ATKT Exams',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,3):
+        [
+          CleanCalendarEvent('ATKT Exams',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,10):
+        [
+          CleanCalendarEvent('Second defaulter`s List',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Octaves',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,3,13):
+        [
+          CleanCalendarEvent('LBS Utsav',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,14):
+        [
+          CleanCalendarEvent('LBS Utsav',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+     DateTime (2023,3,15):
+        [
+          CleanCalendarEvent('End of outdoor Sphurti',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('End of VESIT Cricket League',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,3,16):
+        [
+          CleanCalendarEvent('Utsav and Annual Day',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,17):
+        [
+          CleanCalendarEvent('Utsav and Annual Day',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,20):
+        [
+          CleanCalendarEvent('Technology Day',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+    DateTime (2023,3,23):
+        [
+          CleanCalendarEvent('Internal Assessment Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+     DateTime (2023,3,24):
+        [
+          CleanCalendarEvent('Internal Assessment Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+     DateTime (2023,3,25):
+        [
+          CleanCalendarEvent('Internal Assessment Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+     DateTime (2023,3,27):
+        [
+          CleanCalendarEvent('Internal Assessment Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          
+        ],
+
+        //april
+    DateTime (2023,4,5):
+        [
+          CleanCalendarEvent('Internship Mela',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
+    DateTime (2023,4,6):
+        [
+          CleanCalendarEvent('Internship Mela',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,7):
+        [
+          CleanCalendarEvent('Open Day for Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,8):
+        [
+          CleanCalendarEvent('DAB Meeting',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+      DateTime (2023,4,10):
+        [
+          CleanCalendarEvent('Critical defaulter`s List',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Honor/Minor course Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,4,11):
+        [
+          CleanCalendarEvent('Honor/Minor course Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,4,12):
+        [
+          CleanCalendarEvent('Honor/Minor course Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,4,13):
+        [
+          CleanCalendarEvent('Last Instructional Day (SE, TE, BE)',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Term Grant records submission',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+          CleanCalendarEvent('Honor/Minor course Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.green),
+        ],
+    DateTime (2023,4,14):
+        [
+          CleanCalendarEvent('Honor/Minor course Test 2',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Start of submissions and mock vivas',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+          CleanCalendarEvent('Subject group advisors meetings',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.purple),
+          CleanCalendarEvent('Prof societies symposium',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.green),
+        ],
+    DateTime (2023,4,15):
+        [
+          CleanCalendarEvent('MCA Farewell',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,17):
+        [
+          CleanCalendarEvent('Internal Assessment Test 3',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,18):
+        [
+          CleanCalendarEvent('Internal Assessment Test 3',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,19):
+        [
+          CleanCalendarEvent('Internal Assessment Test 3',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,20):
+        [
+          CleanCalendarEvent('Internal Assessment Test 3',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,4,21):
+        [
+          CleanCalendarEvent('BE Farewell',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('End of submissions and mock vivas',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,4,22):
+        [
+          CleanCalendarEvent('Open Day for Test 3',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+          CleanCalendarEvent('Term End',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.pink),
+        ],
+    DateTime (2023,4,24):
+        [
+          CleanCalendarEvent('Start of Oral/Practical Examination',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
+        //May
+    DateTime (2023,5,4):
+        [
+          CleanCalendarEvent('End of Oral/Practical Examination',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,5,10):
+        [
+          CleanCalendarEvent('Start of Theory Examination : Sem IV, VI, VIII',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,5,23):
+        [
+          CleanCalendarEvent('End of Theory Examination : Sem IV, VI, VIII',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+    DateTime (2023,5,24):
+        [
+          CleanCalendarEvent('Start of Theory Examination : Sem III, V, VII',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
+        //june
+    DateTime (2023,6,6):
+        [
+          CleanCalendarEvent('End of Theory Examination : Sem III, V, VII',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
+        //july
+    DateTime (2023,7,10):
+        [
+          CleanCalendarEvent('Commencement of New Term',
+          startTime: DateTime(
+              DateTime.now().year,DateTime.now().month,DateTime.now().day,8,30),
+            endTime:  DateTime(
+                DateTime.now().year,DateTime.now().month,DateTime.now().day,3,0),
+            // description: 'A special event',
+            color: Colors.orange),
+        ],
+
   };
 
   void _handleData(date) {
@@ -162,7 +908,7 @@ class _DemoAppState extends State<DemoApp> {
         title: Text(
           'CALENDER',
           style: TextStyle(
-              fontFamily: 'Ubuntu', fontSize: 25, color: Colors.black),
+              fontFamily:  'Ubuntu_Bold', fontSize: 30, color: Colors.black),
         ),
         centerTitle: true,
       ),
