@@ -252,33 +252,28 @@ class _gallery_mainState extends State<gallery_main> {
                   children: [
                     Container(
                       padding: EdgeInsets.all(20),
-                      child: ListView(
-                        children: <Widget>[
-                          //Code for images part
+                     
+                       child:
                           galleryFirst(hardware,widget.access)
                           //galleryFirst ko call kiya with images as arguments
-                        ],
-                      ),
+                        
+                    
                     ),
                     Container(
                       padding: EdgeInsets.all(20),
-                      child: ListView(
-                        children: <Widget>[
-                          //Code for images part
+                     child:
+                          
                           gallerySecond(software,widget.access)
                           //gallerySecond ko call kiya with images as arguments
-                        ],
-                      ),
+                    
+                 
                     ),
                     Container(
                       padding: EdgeInsets.all(20),
-                      child: ListView(
-                        children: <Widget>[
-                          //Code for images part
+                    child:
+                          
                           galleryThird(others,widget.access)
                           //galleryThird ko call kiya with images as arguments
-                        ],
-                      ),
                     )
                   ],
                 )
