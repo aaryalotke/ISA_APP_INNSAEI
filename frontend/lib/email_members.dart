@@ -8,10 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:isa/main_newuser.dart';
 
-import 'otp_n_members.dart';
+import 'custom_exception.dart';
 import 'main.dart';
-import 'email_members.dart';
-import 'email_n_members.dart';
 import 'package:isa/otp_members.dart';
 import 'package:isa/main.dart';
 // import 'package:spinner/spinner.dart';
@@ -102,12 +100,15 @@ class _email_membersState extends State<email_members> {
 
       return response.body;
       // return User.fromJson(jsonDecode(response.body));
+    } else if (response.statusCode == 401) {
+      print('You not a member ! Get lost');
+      throw CustomException(message: 'You are not a member!');
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       print(response.body);
       print('errorrrrr');
-      throw Exception('Failed to send email.');
+      throw CustomException(message: 'Failed to send email.');
     }
   }
 
@@ -154,7 +155,7 @@ class _email_membersState extends State<email_members> {
         child: Scaffold(
           backgroundColor: Color(0xFFFFFFFF),
           body: SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height,
               width: double.infinity,
               child: Stack(
@@ -235,7 +236,8 @@ class _email_membersState extends State<email_members> {
                                     'innsaei'); //json data for response
                                 var jsonData = jsonDecode(res); //in json form
                                 print(email.text + '@ves.ac.in');
-                                print('Ye le access token ' + jsonData["access"]);
+                                print(
+                                    'Ye le access token ' + jsonData["access"]);
                                 Navigator.push(
                                   //sending to OTP page
                                   context,
@@ -251,15 +253,20 @@ class _email_membersState extends State<email_members> {
                                           )),
                                 );
                                 print(email.text + '@ves.ac.in');
-                                print('Ye le access token ' + jsonData["access"]);
-                              } catch(e) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(e.toString()),
+                                print(
+                                    'Ye le access token ' + jsonData["access"]);
+                              } on CustomException catch (e) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text(e.message),
                                   backgroundColor: Colors.red,
                                   elevation: 10,
                                   behavior: SnackBarBehavior.floating,
                                   margin: const EdgeInsets.all(5),
                                 ));
+                                setState(() {
+                                  isLoading = false;
+                                });
                               }
                               // } else {
                               //   setState(() {

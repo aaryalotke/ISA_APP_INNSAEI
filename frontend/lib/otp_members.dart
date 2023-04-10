@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:isa/models/users.dart';
 
+import 'custom_exception.dart';
 import 'home_new.dart';
 import 'otp_n_members.dart';
 import 'main.dart';
@@ -115,7 +116,7 @@ class _MyHomePageState_OTP extends State<otp_members> {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       print('errorrrrr');
-      throw Exception('Failed to verify OTP.');
+      throw CustomException(message: 'Failed to verify OTP.');
     }
   }
 
@@ -211,8 +212,8 @@ class _MyHomePageState_OTP extends State<otp_members> {
                               // });
                               var access = 'Bearer ' + widget.access;
                               try {
-                                var res = await verifyOTP(
-                                    otp_m.text, access, widget.email, 'innsaei');
+                                var res = await verifyOTP(otp_m.text, access,
+                                    widget.email, 'innsaei');
                                 var jsonData = jsonDecode(res);
                                 if (jsonData["status"] == 1) {
                                   Navigator.push(
@@ -220,7 +221,8 @@ class _MyHomePageState_OTP extends State<otp_members> {
                                     PageRouteBuilder(
                                         pageBuilder: (_, a, b) =>
                                             homePage(widget.access),
-                                        transitionDuration: Duration(seconds: 2),
+                                        transitionDuration:
+                                            Duration(seconds: 2),
                                         transitionsBuilder: (_, a, __, c) =>
                                             FadeTransition(
                                               opacity: a,
@@ -230,14 +232,9 @@ class _MyHomePageState_OTP extends State<otp_members> {
                                   print('OTP sent to member - ' + otp_m.text);
                                 } else {
                                   final snackBar = SnackBar(
+                                    backgroundColor: Colors.red,
                                     content: const Text(
                                       'Invalid OTP!',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.red,
-                                        fontFamily: 'Ubuntu',
-                                      ),
-                                      textAlign: TextAlign.center,
                                     ),
                                     // action: SnackBarAction(
                                     //   label: 'Try Again',
@@ -253,9 +250,13 @@ class _MyHomePageState_OTP extends State<otp_members> {
                                   );
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackBar);
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 }
                               } catch (e) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
                                   content: Text("Unable to send the OTP"),
                                   backgroundColor: Colors.red,
                                   elevation: 10,

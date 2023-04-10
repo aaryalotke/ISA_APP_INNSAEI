@@ -4,14 +4,11 @@ import 'home_new.dart';
 import 'main_profile.dart';
 import 'models/format_edi.dart';
 import 'page_edi.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'api_class1.dart';
 // import 'models/format_edi.dart';
 
-import 'pageone_dev.dart';
 //importing the packages required for integration
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 

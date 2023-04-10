@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Demoapp.dart';
 
-// void main() {
-//   runApp(calender_main());
-// }
-
 class calender_main extends StatefulWidget {
   final String access;
   calender_main(this.access);
