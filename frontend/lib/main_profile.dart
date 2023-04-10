@@ -78,15 +78,13 @@ class _profile_membersState extends State<profile_members> {
       var response = await api().getProfile_MemList(widget.access);
 //List decoded = jsonDecode(await api().getProfile_MemList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTYxNjgyLCJpYXQiOjE2NzYxODU2ODIsImp0aSI6IjVhYmRkNDg5OWFhYTQzZjA4YjU5MDAxNWZjZWFhODdjIiwidXNlcl9pZCI6NX0.Tu_uJhVYIlqonbG6la0dkCUKL4X_nTt3uFcCjCfZSt0"))["post"];
       print(response);
-
       List list = (jsonDecode(response) as List<dynamic>);
-      print(jsonDecode(response));
       print(">>> profile list retrieved successfully");
-      print(profile.length);
-      Profile_mem item = Profile_mem.fromJson(
-          jsonDecode(response)[0]["profile"] as Map<String, dynamic>);
 
-      print(item);
+      print("Profile: ${list[0]["profile"]}");
+
+      Profile_mem item =
+          Profile_mem.fromJson(list[0]["profile"] as Map<String, dynamic>);
       profile.add(item);
       print(profile.length);
       print(profile[0]);
@@ -245,8 +243,8 @@ class _profile_membersState extends State<profile_members> {
                     //padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
-                        'assets/images/user.png',
+                      child: Image.network(
+                        'https://drive.google.com/uc?export=download&id=1-mYSwvSe_mlXsuRBLriygnnURC_NodEy',
                         fit: BoxFit.cover,
                         alignment: FractionalOffset.topCenter,
                       ),
