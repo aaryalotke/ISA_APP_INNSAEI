@@ -16,6 +16,14 @@ class pageone_dev extends StatefulWidget {
 }
 
 class _pageone_devState extends State<pageone_dev> {
+  void _sendEmail(String url) {
+    final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: url,
+        query: 'subject=Innsaei Connect&body=Hi! I wish to connect.');
+    launchUrl(emailLaunchUri);
+  }
+
   launchurlmail(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
@@ -163,7 +171,7 @@ class _pageone_devState extends State<pageone_dev> {
                                         highlightColor: Colors.black26,
                                         child: IconButton(
                                           onPressed: () {
-                                            launchurlmail(
+                                            _sendEmail(
                                                 widget.people[index].email!);
                                           },
                                           icon: Icon(
@@ -434,7 +442,7 @@ class _pageone_devState extends State<pageone_dev> {
                                           highlightColor: Colors.black,
                                           child: IconButton(
                                             onPressed: () {
-                                              launchurlmail(
+                                              _sendEmail(
                                                   widget.people[index].email!);
                                             },
                                             icon: Icon(

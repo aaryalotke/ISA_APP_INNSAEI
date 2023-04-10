@@ -22,6 +22,15 @@ class page_SE extends StatefulWidget {
 }
 
 class _page_SEState extends State<page_SE> {
+  void _sendEmail(String url) {
+    final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: url,
+        query: 'subject=Innsaei Connect&body=Hi! I wish to connect.');
+
+    launchUrl(emailLaunchUri);
+  }
+
   launchurlmail(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
@@ -315,7 +324,7 @@ class _page_SEState extends State<page_SE> {
                                     // highlightColor: Colors.black26,
                                     child: IconButton(
                                       onPressed: () {
-                                        launchurlmail(widget.SE[index].email!);
+                                        _sendEmail(widget.SE[index].email!);
                                       },
                                       icon: Icon(
                                         Icons.mail_rounded,
@@ -627,8 +636,7 @@ class _page_SEState extends State<page_SE> {
                                       highlightColor: Colors.black26,
                                       child: IconButton(
                                         onPressed: () {
-                                          launchurlmail(
-                                              widget.SE[index].email!);
+                                          _sendEmail(widget.SE[index].email!);
                                         },
                                         icon: Icon(
                                           Icons.mail_rounded,
