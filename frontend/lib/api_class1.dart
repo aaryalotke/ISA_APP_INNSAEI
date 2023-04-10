@@ -167,8 +167,6 @@ class api {
       throw Exception("Couldn't fetch the inventory from server.");
     }
   }
-
-
 }
 
 class api2 {
