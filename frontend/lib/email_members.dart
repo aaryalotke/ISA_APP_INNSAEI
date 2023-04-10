@@ -291,45 +291,45 @@ class _email_membersState extends State<email_members> {
                             ),
                           ),
                   ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.83,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (_, a, b) => newuser(),
-                              transitionDuration: Duration(seconds: 2),
-                              transitionsBuilder: (_, a, __, c) =>
-                                  FadeTransition(
-                                    opacity: a,
-                                    child: c,
-                                  )),
-                        );
-                      },
-                      child: RichText(
-                        text: const TextSpan(
-                          text: ' Not a Member?',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Voces',
-                            // fontWeight: FontWeight.normal,
-                            fontSize: 17,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' Click here ',
-                              style: TextStyle(
-                                color: Color(0xFF00467F),
-                                fontFamily: 'Voces',
-                                fontSize: 17,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: MediaQuery.of(context).size.height * 0.83,
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         PageRouteBuilder(
+                  //             pageBuilder: (_, a, b) => newuser(),
+                  //             transitionDuration: Duration(seconds: 2),
+                  //             transitionsBuilder: (_, a, __, c) =>
+                  //                 FadeTransition(
+                  //                   opacity: a,
+                  //                   child: c,
+                  //                 )),
+                  //       );
+                  //     },
+                  //     child: RichText(
+                  //       text: const TextSpan(
+                  //         text: ' Not a Member?',
+                  //         style: TextStyle(
+                  //           color: Colors.black,
+                  //           fontFamily: 'Voces',
+                  //           // fontWeight: FontWeight.normal,
+                  //           fontSize: 17,
+                  //         ),
+                  //         children: [
+                  //           TextSpan(
+                  //             text: ' Click here ',
+                  //             style: TextStyle(
+                  //               color: Color(0xFF00467F),
+                  //               fontFamily: 'Voces',
+                  //               fontSize: 17,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Positioned(
                     top: 0,
                     right: 0,

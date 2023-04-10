@@ -205,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                       },
                       child: Text(
-                        'Members',
+                        'Get Started',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -254,6 +254,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             )
+            ,
+            
           ],
         ),
       ),
