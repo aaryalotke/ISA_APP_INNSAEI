@@ -154,7 +154,7 @@ class _SIFormState extends State<SIForm> {
             title: Text(
               'CONTACT US',
               style: TextStyle(
-                  fontFamily: 'Ubuntu', fontSize: 20, color: Colors.black),
+              fontFamily:  'Ubuntu_Bold', fontSize: 30, color: Colors.black),
             ),
             centerTitle: true,
           ),
