@@ -7,6 +7,7 @@ import 'dart:async';
 
 import 'package:isa/home_new.dart';
 
+import 'custom_exception.dart';
 import 'main_profile.dart';
 
 // import 'home.dart';
@@ -81,7 +82,7 @@ class _SIFormState extends State<SIForm> {
   Future<String> sendFeedback(String name, String email, String phoneNumber,
       String message, String access) async {
     final response = await http.post(
-      Uri.parse("http://127.0.0.1:8000/app/api/users/ContactUs/"),
+      Uri.parse("http://10.0.2.2:8000/app/api/users/ContactUs/"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': access,
@@ -103,7 +104,7 @@ class _SIFormState extends State<SIForm> {
     } else {
       print('feedback nahi gaya');
       print(response.body);
-      throw Exception('Failed to send feedback.');
+      throw CustomException(message: 'Failed to send feedback.');
     }
     // else {
     //                       final snackBar = SnackBar(
@@ -160,279 +161,274 @@ class _SIFormState extends State<SIForm> {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
+              reverse: true,
               child: Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height,
                 margin: EdgeInsets.all(_minimumPadding * 3),
-                child: Stack(
-                  alignment: Alignment.center,
+                child: Column(
+                  // alignment: Alignment.center,
                   children: <Widget>[
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.008,
-                      child: Container(
-                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                        height: 290,
-                        width: 290,
-                        // child: Image.asset("assets/contact.png")
-                        child: Image(
-                          image: new AssetImage("assets/images/contact.png"),
-                          fit: BoxFit.cover,
-                          // alignment: FractionalOffset.topCenter,
-                        ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      height: 200,
+                      width: 200,
+                      // child: Image.asset("assets/contact.png")
+                      child: Image(
+                        image: new AssetImage("assets/images/contact.png"),
+                        fit: BoxFit.cover,
+                        // alignment: FractionalOffset.topCenter,
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.35,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: TextField(
-                          controller: name,
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Voces',
-                                fontSize: 15),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: TextField(
+                        controller: name,
+                        decoration: InputDecoration(
+                          filled: true,
+                          labelText: 'Name',
+                          fillColor: Colors.blue.shade100,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.42,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: TextField(
-                          controller: email,
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Voces',
-                                fontSize: 15),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: TextField(
+                        controller: email,
+                        decoration: InputDecoration(
+                          filled: true,
+                          labelText: 'Email',
+                          fillColor: Colors.blue.shade100,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.49,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: TextField(
-                          controller: phoneNumber,
-                          decoration: const InputDecoration(
-                            labelText: 'Phone Number',
-                            labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Voces',
-                                fontSize: 15),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: TextField(
+                        controller: phoneNumber,
+                        decoration: InputDecoration(
+                          filled: true,
+                          labelText: 'Phone No.',
+                          fillColor: Colors.blue.shade100,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.56,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: TextField(
-                          controller: message,
-                          decoration: const InputDecoration(
-                            labelText: 'Message',
-                            labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Voces',
-                                fontSize: 15),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: TextField(
+                        controller: message,
+                        decoration: InputDecoration(
+                          filled: true,
+                          labelText: 'Message',
+                          fillColor: Colors.blue.shade100,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.65,
-                      child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.only(top: 30),
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                  child: isLoading
-                                      ? const Center(
-                                          child: CircularProgressIndicator())
-                                      : ElevatedButton(
-                                          child: const Text(
-                                            'Submit',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: isLoading
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : ElevatedButton(
+                                        child: const Text(
+                                          'Submit',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: const Color(0xFF00467F),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 100, vertical: 10),
+                                          elevation: 0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           ),
-                                          style: ElevatedButton.styleFrom(
-                                            primary: const Color(0xFF00467F),
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 140, vertical: 10),
-                                            elevation: 0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(3.0),
-                                            ),
-                                          ),
-                                          //color: const Color(0xff00467F),
-                                          onPressed: () async {
-                                            setState(() {
-                                              isLoading = true;
-                                            });
-                                            print(widget.access);
-                                            print(name.text);
-                                            print(email.text);
-                                            print(phoneNumber.text);
-                                            print(message.text);
+                                        ),
+                                        onPressed: () async {
+                                          setState(() {
+                                            isLoading = true;
+                                          });
+                                          print(widget.access);
+                                          print(name.text);
+                                          print(email.text);
+                                          print(phoneNumber.text);
+                                          print(message.text);
 
-                                            try {
-                                              var res = await sendFeedback(
-                                                name.text,
-                                                email.text,
-                                                phoneNumber.text,
-                                                message.text,
-                                                'Bearer ' + widget.access,
-                                              );
-                                              var jsonData = jsonDecode(res);
-                                              var access =
-                                                  'Bearer ' + widget.access;
+                                          try {
+                                            var res = await sendFeedback(
+                                              name.text,
+                                              email.text,
+                                              phoneNumber.text,
+                                              message.text,
+                                              'Bearer ' + widget.access,
+                                            );
+                                            var jsonData = jsonDecode(res);
+                                            var access =
+                                                'Bearer ' + widget.access;
 
-                                              //snackbar
+                                            //snackbar
 
-                                              if (jsonData["status"] == 1) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                        const SnackBar(
-                                                  content: Text(
-                                                      "Feedback sent successfully!"),
-                                                  backgroundColor: Colors.red,
-                                                  elevation: 10,
-                                                  behavior:
-                                                      SnackBarBehavior.floating,
-                                                  margin: EdgeInsets.all(5),
-                                                ));
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //       builder: (context) =>
-                                                //           SIForm(widget.access)),
-                                                // );
-                                                // print('OTP sent to member - ' + otp_m.text);
-                                                message.clear();
-                                                phoneNumber.clear();
-                                                email.clear();
-                                                name.clear();
-                                              } else {
-                                                const snackBar = SnackBar(
-                                                  content: Text(
-                                                    'Feedback not sent!',
-                                                    style: TextStyle(
-                                                      fontSize: 18,
-                                                      color: Colors.red,
-                                                      fontFamily: 'Ubuntu',
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                );
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(snackBar);
-                                              }
-                                            } catch (e) {
+                                            if (jsonData["status"] == 1) {
                                               ScaffoldMessenger.of(context)
-                                                  .showSnackBar(SnackBar(
-                                                content: Text(e.toString()),
-                                                backgroundColor: Colors.red,
+                                                  .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    "Feedback sent successfully!"),
+                                                backgroundColor: Colors.green,
                                                 elevation: 10,
                                                 behavior:
                                                     SnackBarBehavior.floating,
-                                                margin: const EdgeInsets.all(5),
+                                                margin: EdgeInsets.all(5),
                                               ));
+                                              // Navigator.push(
+                                              //   context,
+                                              //   MaterialPageRoute(
+                                              //       builder: (context) =>
+                                              //           SIForm(widget.access)),
+                                              // );
+                                              // print('OTP sent to member - ' + otp_m.text);
+                                              message.clear();
+                                              phoneNumber.clear();
+                                              email.clear();
+                                              name.clear();
+                                            } else {
+                                              const snackBar = SnackBar(
+                                                content: Text(
+                                                  'Feedback not sent!',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    color: Colors.red,
+                                                    fontFamily: 'Ubuntu',
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              );
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(snackBar);
                                             }
-                                            isLoading = false;
-                                            setState(() {});
-                                          },
-                                        )),
-                            ],
-                          )),
+                                          } catch (e) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(e.toString()),
+                                              backgroundColor: Colors.red,
+                                              elevation: 10,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
+                                              margin: const EdgeInsets.all(5),
+                                            ));
+                                          }
+                                          isLoading = false;
+                                          setState(() {});
+                                        },
+                                      )),
+                          ],
+                        )),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: const Text('For any concern please contact:',
+                          style: TextStyle(
+                              fontFamily: 'Voces',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                          textAlign: TextAlign.left),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.73,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: const Text('For any concern please contact:',
-                            style: TextStyle(
-                                fontFamily: 'Voces',
-                                fontSize: 16,
-                                color: Colors.black),
-                            textAlign: TextAlign.left),
-                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: const Text('Hrutika Pakhale(President)',
+                          style: TextStyle(
+                              fontFamily: 'Voces',
+                              fontSize: 16,
+                              color: Colors.black),
+                          textAlign: TextAlign.left),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.77,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: Text('Hrutika Pakhale(President)',
-                            style: TextStyle(
-                                fontFamily: 'Voces',
-                                fontSize: 16,
-                                color: Colors.black),
-                            textAlign: TextAlign.left),
-                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: const Text('9819587707',
+                          style: TextStyle(
+                              fontFamily: 'Voces',
+                              fontSize: 15,
+                              color: Colors.black),
+                          textAlign: TextAlign.left),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.80,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: Text('9819587707',
-                            style: TextStyle(
-                                fontFamily: 'Voces',
-                                fontSize: 15,
-                                color: Colors.black),
-                            textAlign: TextAlign.left),
-                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: Text('Nidhi Mundhada(Vice President)',
+                          style: TextStyle(
+                              fontFamily: 'Voces',
+                              fontSize: 16,
+                              color: Colors.black),
+                          textAlign: TextAlign.left),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.84,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: Text('Nidhi Mundhada(Vice President)',
-                            style: TextStyle(
-                                fontFamily: 'Voces',
-                                fontSize: 16,
-                                color: Colors.black),
-                            textAlign: TextAlign.left),
-                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                      child: Text('8379926546',
+                          style: TextStyle(
+                              fontFamily: 'Voces',
+                              fontSize: 15,
+                              color: Colors.black),
+                          textAlign: TextAlign.left),
                     ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.87,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.only(top: 30),
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: Text('8379926546',
-                            style: TextStyle(
-                                fontFamily: 'Voces',
-                                fontSize: 15,
-                                color: Colors.black),
-                            textAlign: TextAlign.left),
-                      ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          bottom:
+                              MediaQuery.of(context).viewInsets.bottom * 0.75),
                     ),
                     // Positioned(top: MediaQuery.of(context).size.height * 0.91,
                     //   child: Container(
@@ -490,7 +486,7 @@ class _SIFormState extends State<SIForm> {
 }
 
 Widget getImageAsset() {
-  AssetImage assetImage = AssetImage('assets/img.jpg');
+  AssetImage assetImage = const AssetImage('assets/img.jpg');
   Image image = Image(
     image: assetImage,
     height: 300,
