@@ -1,94 +1,121 @@
 import 'package:flutter/material.dart';
+
+import 'package:isa/main_contactus.dart';
+import 'home_new.dart';
+// import 'page_certi.dart';
+import 'main_profile.dart';
 import 'models/format_certi.dart';
 import 'page_three.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
+// import 'page_certi.dart';
+import 'api_class1.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({ Key? key }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(
-//         fontFamily: 'Voces',
-//         ),
-//         home: certi_page(),
-
-//       debugShowCheckedModeBanner: false,
-//     );
-//   }
-// }
+//importing the packages required for integration
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class certi_page extends StatefulWidget {
-  const certi_page({Key? key}) : super(key: key);
+  final String access;
+  certi_page(this.access);
 
   @override
   State<certi_page> createState() => _certi_pageState();
 }
 
-// class certi_page extends StatefulWidget {
-//   final List<format_certi> certi;
-//      certi_page(this.certi);
-//   //const CartScreen({ Key? key }) : super(key: key);
+class _certi_pageState extends State<certi_page> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.white);
 
-//   @override
-//   State<certi_page> createState() => _certi_pageState();
-// }
-
-class _certi_pageState extends State<certi_page>
-    with SingleTickerProviderStateMixin {
-  late TabController controller;
-
-  final List<format_certi> certi = [
-    //all 9 people's detail
-    format_certi(
-      id: '1',
-      name: 'a',
-      link:
-          'https://drive.google.com/drive/u/0/folders/128FEZZDy_NjK2iaWkGYgyRHY9DlW8MoU',
-      photo: 'assets/images/certi.jpg',
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Contact',
+      style: optionStyle,
     ),
-    format_certi(
-      id: '2',
-      name: 'b',
-      link:
-          'https://drive.google.com/drive/u/0/folders/128FEZZDy_NjK2iaWkGYgyRHY9DlW8MoU',
-      photo: 'assets/images/certi2.png',
+    Text(
+      'Index 1: Home',
+      style: optionStyle,
     ),
-    format_certi(
-      id: '3',
-      name: 'c',
-      link:
-          'https://drive.google.com/file/d/17xacvh1sDsK6De656zmQmmldYpvOX7AE/view?usp=sharing',
-      photo: 'assets/images/certi3.jpg',
-    ),
-    format_certi(
-      id: '4',
-      name: 'd',
-      link:
-          'https://drive.google.com/drive/u/0/folders/128FEZZDy_NjK2iaWkGYgyRHY9DlW8MoU',
-      photo: 'assets/images/certi4.jpg',
+    Text(
+      'Index 2: Profile',
+      style: optionStyle,
     ),
   ];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    controller = TabController(length: 3, vsync: this);
-    controller.addListener(() {
-      setState(() {});
+  void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (_, a, b) => SIForm(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => homePage(widget.access)),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+              pageBuilder: (_, a, b) => profile_members(widget.access),
+              transitionDuration: Duration(seconds: 2),
+              transitionsBuilder: (_, a, __, c) => FadeTransition(
+                    opacity: a,
+                    child: c,
+                  )),
+        );
+        break;
+    }
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    controller.dispose();
-    super.dispose();
+  // list format
+  final List<Format> certi = [];
+
+  bool isLoaded = false;
+  void initState() {
+    super.initState();
+    getcerti();
+  }
+
+  getcerti() async {
+    print(widget.access);
+    var response = await api().getCertiList(widget.access);
+
+    print(response);
+    // List decoded = jsonDecode(response);
+    List list = (jsonDecode(response) as List<dynamic>);
+
+    print(">>> certis list retrieved successfully");
+
+    for (var element in list) {
+      print("----------------------------------------------------------");
+      print(element["link"]);
+      for (var coun in element["link"]) {
+        Format item = Format.fromJson(coun);
+        certi.add(item);
+      }
+    }
+    Future.delayed(Duration(seconds: 1), () {
+      isLoaded = true;
+      setState(() {});
+    });
+
+    print(certi[0]);
+    print(certi[1]);
   }
 
   @override
@@ -102,47 +129,6 @@ class _certi_pageState extends State<certi_page>
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        bottom: TabBar(
-          controller: controller,
-          indicatorColor: Color(0xFF00467f),
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorWeight: 5,
-          tabs: [
-            Tab(
-              child: Text(
-                '2021-22    ',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontFamily: 'Voces',
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Tab(
-              child: Text(
-                '2022-23    ',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontFamily: 'Voces',
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Tab(
-              child: Text(
-                '2023-24    ',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontFamily: 'Voces',
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
-        ),
         title: const Text(
           'My Certificates',
           style: TextStyle(
@@ -153,42 +139,47 @@ class _certi_pageState extends State<certi_page>
           textAlign: TextAlign.center,
         ),
       ),
-      body: SafeArea(
-        child: TabBarView(
-          controller: controller,
-          children: [
-            Container(
+      body: isLoaded
+          ? Container(
               // height: MediaQuery.of(context).size.height,
               //  width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(20),
-              child: ListView(
-                children: <Widget>[
-                  page_three(certi),
-                ],
-              ),
+              child: page_three(certi),
+            )
+          : Center(
+              child: CircularProgressIndicator(),
             ),
-            Container(
-              // height: MediaQuery.of(context).size.height,
-              //  width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(20),
-              child: ListView(
-                children: <Widget>[
-                  page_three(certi),
-                ],
-              ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff00467F),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.contact_phone,
+              color: Colors.white,
             ),
-            Container(
-              // height: MediaQuery.of(context).size.height,
-              //  width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(20),
-              child: ListView(
-                children: <Widget>[
-                  page_three(certi),
-                ],
-              ),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
             ),
-          ],
-        ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: 'Profile',
+          ),
+        ],
+        unselectedLabelStyle:
+            const TextStyle(color: Colors.white, fontSize: 14),
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: _onItemTapped,
       ),
     );
   }
