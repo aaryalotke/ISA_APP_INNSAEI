@@ -68,7 +68,7 @@ class _editoState extends State<edito> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -86,7 +86,7 @@ class _editoState extends State<edito> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -103,6 +103,7 @@ class _editoState extends State<edito> {
   final List<Format> editorial = [];
 
   bool isLoaded = false;
+  @override
   void initState() {
     super.initState();
     getedi();
@@ -110,33 +111,35 @@ class _editoState extends State<edito> {
 
   getedi() async {
     print(widget.access);
-    var response = await api().getEditorialList(widget.access);
+    try {
+      var response = await api().getEditorialList(widget.access);
 
-    print(response);
-    // List decoded = jsonDecode(response);
-    List list = (jsonDecode(response) as List<dynamic>);
+      print(response);
+      // List decoded = jsonDecode(response);
+      List list = (jsonDecode(response) as List<dynamic>);
 
-    print(">>> editorials list retrieved successfully");
+      print(">>> editorials list retrieved successfully");
 
-    for (var element in list) {
-      print("----------------------------------------------------------");
-      print(element["link"]);
-      for (var coun in element["link"]) {
-        Format item = Format.fromJson(coun);
-        editorial.add(item);
+      for (var element in list) {
+        print(element["link"]);
+        for (var count in element["link"]) {
+          Format item = Format.fromJson(count);
+          editorial.add(item);
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
     }
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       isLoaded = true;
       setState(() {});
     });
-
-    print(editorial[0]);
-    print(editorial[1]);
-    print(editorial[2]);
-    print(editorial[2].editorial_name!);
-    print(editorial[1].editorial_name!);
-    print(editorial[6].editorial_name!);
   }
 
   @override
@@ -144,7 +147,7 @@ class _editoState extends State<edito> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,

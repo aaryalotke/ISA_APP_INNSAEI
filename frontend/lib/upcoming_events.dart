@@ -98,22 +98,32 @@ class _upcomingEventsState extends State<upcomingEvents> {
   }
 
   getEvent() async {
-    var response = await api().getUpcomingEvent(widget.access);
-    print(response);
+    try {
+      var response = await api().getUpcomingEvent(widget.access);
+      print(response);
 
-    List list = (jsonDecode(response) as List<dynamic>);
+      List list = (jsonDecode(response) as List<dynamic>);
 
-    print(">>> Upcoming Event retrieved successfully");
+      print(">>> Upcoming Event retrieved successfully");
 
-    for (var element in list) {
-      print("----------------------------------------------------------");
-      print(element["link"]);
-      for (var coun in element["link"]) {
-        upcomingEvent item = upcomingEvent.fromJson(coun);
-        _upcomingEvent.add(item);
+      for (var element in list) {
+        print("----------------------------------------------------------");
+        print(element["link"]);
+        for (var coun in element["link"]) {
+          upcomingEvent item = upcomingEvent.fromJson(coun);
+          _upcomingEvent.add(item);
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
     }
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       isLoaded = true;
       setState(() {});
     });
@@ -160,7 +170,7 @@ class _upcomingEventsState extends State<upcomingEvents> {
                     margin: EdgeInsets.all(20),
                     child: Text(
                       _upcomingEvent[0].EventName.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Voces',
                         fontSize: 25,
                       ),
@@ -168,10 +178,10 @@ class _upcomingEventsState extends State<upcomingEvents> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 30),
+                    margin: const EdgeInsets.only(top: 10, bottom: 30),
                     child: Text(
                       _upcomingEvent[0].DurationDate.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Voces',
                         fontSize: 20,
                       ),
@@ -197,7 +207,7 @@ class _upcomingEventsState extends State<upcomingEvents> {
                         print(widget.access);
                         launchurledi(_upcomingEvent[0].FormLink.toString());
                       },
-                      child: Text('Register'),
+                      child: const Text('Register'),
                     ),
                   ),
                   Container(
@@ -208,10 +218,10 @@ class _upcomingEventsState extends State<upcomingEvents> {
                     color: Color(0xFFFE735D),
                   ),
                   Container(
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     child: Text(
                       _upcomingEvent[0].Description.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Voces',
                         fontSize: 25,
                       ),

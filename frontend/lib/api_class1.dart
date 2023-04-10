@@ -20,8 +20,7 @@ class api {
       print("Success");
       return response.body;
     } else {
-      print("Error");
-      return response.body;
+      throw Exception("Couldn't fetch the photos from server.");
     }
   }
 
@@ -44,8 +43,7 @@ class api {
 
       return our;
     } else {
-      print("Error");
-      return response.body;
+      throw Exception("Couldn't fetch the developers list from server.");
     }
   }
 
@@ -68,8 +66,7 @@ class api {
 
       return our;
     } else {
-      print("Error");
-      return response.body;
+      throw Exception("Couldn't fetch the council members from server.");
     }
   }
 
@@ -92,8 +89,7 @@ class api {
 
       return our;
     } else {
-      print("Error in profilee");
-      return response.body;
+      throw Exception("Couldn't fetch your profile.");
     }
   }
 
@@ -116,8 +112,7 @@ class api {
 
       return our;
     } else {
-      print("Error");
-      return response.body;
+      throw Exception("Couldn't fetch the editorials from server.");
     }
   }
 
@@ -169,8 +164,7 @@ class api {
 
       return our;
     } else {
-      print("Error");
-      return response.body;
+      throw Exception("Couldn't fetch the inventory from server.");
     }
   }
 

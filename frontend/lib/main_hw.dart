@@ -106,26 +106,36 @@ class _inventoryState extends State<inventory> {
   getinventory() async {
     print(widget.access);
 
-    var response = await api().getInventoryList(widget.access);
+    try {
+      var response = await api().getInventoryList(widget.access);
 
-    print(response);
-    // List decoded = jsonDecode(response);
-    List list = (jsonDecode(response) as List<dynamic>);
+      print(response);
+      // List decoded = jsonDecode(response);
+      List list = (jsonDecode(response) as List<dynamic>);
 
-    print(">>> inventory list retrieved successfully");
+      print(">>> inventory list retrieved successfully");
 
-    for (var element in list) {
-      print("----------------------------------------------------------");
-      print(element["ComponentList"]);
-      for (var coun in element["ComponentList"]) {
-        Format item = Format.fromJson(coun);
-        print(item);
-        inventory.add(item);
+      for (var element in list) {
+        print("----------------------------------------------------------");
+        print(element["ComponentList"]);
+        for (var coun in element["ComponentList"]) {
+          Format item = Format.fromJson(coun);
+          print(item);
+          inventory.add(item);
+        }
       }
-    }
 
-    print(inventory.length);
-    print(inventory[0].name!);
+      print(inventory.length);
+      print(inventory[0].name!);
+    } catch  (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
+    }
     isLoaded = true;
     setState(() {});
   }
@@ -136,13 +146,13 @@ class _inventoryState extends State<inventory> {
       //appbar
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Hardware Inventory',
           style: TextStyle(
             fontSize: 30,

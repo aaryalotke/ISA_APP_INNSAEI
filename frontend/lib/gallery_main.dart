@@ -114,7 +114,7 @@ class _gallery_mainState extends State<gallery_main> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -132,7 +132,7 @@ class _gallery_mainState extends State<gallery_main> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -161,23 +161,32 @@ class _gallery_mainState extends State<gallery_main> {
   }
 
   getGym() async {
-    List decoded =
-        jsonDecode(await api().getGalleryList(widget.access))["post"];
-    print(">>> Gym List retrieved successfully");
+    try {
+      List decoded =
+      jsonDecode(await api().getGalleryList(widget.access))["post"];
+      print(">>> Gallery List retrieved successfully");
 
-    for (var element in decoded) {
-      gallery item = gallery.fromJson(element);
+      for (var element in decoded) {
+        gallery item = gallery.fromJson(element);
 
-      if (item.type == "Hardware") {
-        hardware.add(item);
-      } else if (item.type == "Software") {
-        software.add(item);
-      } else {
-        others.add(item);
+        if (item.type == "Hardware") {
+          hardware.add(item);
+        } else if (item.type == "Software") {
+          software.add(item);
+        } else {
+          others.add(item);
+        };
       }
-      ;
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
     }
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       isLoaded = true;
       setState(() {});
     });

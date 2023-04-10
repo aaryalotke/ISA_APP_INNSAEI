@@ -226,7 +226,7 @@ class _SIFormState extends State<SIForm> {
                         padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                         child: TextField(
                           controller: phoneNumber,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Phone Number',
                             labelStyle: TextStyle(
                                 color: Colors.black,
@@ -244,7 +244,7 @@ class _SIFormState extends State<SIForm> {
                         padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                         child: TextField(
                           controller: message,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Message',
                             labelStyle: TextStyle(
                                 color: Colors.black,
@@ -264,18 +264,18 @@ class _SIFormState extends State<SIForm> {
                             children: <Widget>[
                               Expanded(
                                   child: isLoading
-                                      ? Center(
+                                      ? const Center(
                                           child: CircularProgressIndicator())
                                       : ElevatedButton(
-                                          child: Text(
+                                          child: const Text(
                                             'Submit',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16),
                                           ),
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFF00467F),
-                                            padding: EdgeInsets.symmetric(
+                                            primary: const Color(0xFF00467F),
+                                            padding: const EdgeInsets.symmetric(
                                                 horizontal: 140, vertical: 10),
                                             elevation: 0,
                                             shape: RoundedRectangleBorder(
@@ -294,42 +294,66 @@ class _SIFormState extends State<SIForm> {
                                             print(phoneNumber.text);
                                             print(message.text);
 
-                                            var res = await sendFeedback(
-                                              name.text,
-                                              email.text,
-                                              phoneNumber.text,
-                                              message.text,
-                                              'Bearer ' + widget.access,
-                                            );
-                                            var jsonData = jsonDecode(res);
-                                            var access =
-                                                'Bearer ' + widget.access;
-
-                                            //snackbar
-
-                                            if (jsonData["status"] == 1) {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        SIForm(widget.access)),
+                                            try {
+                                              var res = await sendFeedback(
+                                                name.text,
+                                                email.text,
+                                                phoneNumber.text,
+                                                message.text,
+                                                'Bearer ' + widget.access,
                                               );
-                                              // print('OTP sent to member - ' + otp_m.text);
-                                            } else {
-                                              final snackBar = SnackBar(
-                                                content: const Text(
-                                                  'Feedback not sent!',
-                                                  style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Colors.red,
-                                                    fontFamily: 'Ubuntu',
+                                              var jsonData = jsonDecode(res);
+                                              var access =
+                                                  'Bearer ' + widget.access;
+
+                                              //snackbar
+
+                                              if (jsonData["status"] == 1) {
+                                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                                  content: Text("Feedback sent successfully!"),
+                                                  backgroundColor: Colors.red,
+                                                  elevation: 10,
+                                                  behavior: SnackBarBehavior.floating,
+                                                  margin: EdgeInsets.all(5),
+                                                ));
+                                                // Navigator.push(
+                                                //   context,
+                                                //   MaterialPageRoute(
+                                                //       builder: (context) =>
+                                                //           SIForm(widget.access)),
+                                                // );
+                                                // print('OTP sent to member - ' + otp_m.text);
+                                                message.clear();
+                                                phoneNumber.clear();
+                                                email.clear();
+                                                name.clear();
+                                              } else {
+                                                const snackBar = SnackBar(
+                                                  content: Text(
+                                                    'Feedback not sent!',
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.red,
+                                                      fontFamily: 'Ubuntu',
+                                                    ),
+                                                    textAlign: TextAlign.center,
                                                   ),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              );
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(snackBar);
+                                                );
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(snackBar);
+                                              }
+                                            } catch (e) {
+                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                content: Text(e.toString()),
+                                                backgroundColor: Colors.red,
+                                                elevation: 10,
+                                                behavior: SnackBarBehavior.floating,
+                                                margin: const EdgeInsets.all(5),
+                                              ));
                                             }
+                                            isLoading = false;
+                                            setState(() {});
+
                                           },
                                         )),
                             ],
@@ -341,7 +365,7 @@ class _SIFormState extends State<SIForm> {
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.only(top: 30),
                         padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                        child: Text('For any concern please contact:',
+                        child: const Text('For any concern please contact:',
                             style: TextStyle(
                                 fontFamily: 'Voces',
                                 fontSize: 16,

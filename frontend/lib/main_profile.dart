@@ -74,21 +74,31 @@ class _profile_membersState extends State<profile_members> {
   }
 
   getpro() async {
-    var response = await api().getProfile_MemList(widget.access);
+    try {
+      var response = await api().getProfile_MemList(widget.access);
 //List decoded = jsonDecode(await api().getProfile_MemList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzOTYxNjgyLCJpYXQiOjE2NzYxODU2ODIsImp0aSI6IjVhYmRkNDg5OWFhYTQzZjA4YjU5MDAxNWZjZWFhODdjIiwidXNlcl9pZCI6NX0.Tu_uJhVYIlqonbG6la0dkCUKL4X_nTt3uFcCjCfZSt0"))["post"];
-    print(response);
+      print(response);
 
-    List list = (jsonDecode(response) as List<dynamic>);
-    print(jsonDecode(response));
-    print(">>> profile list retrieved successfully");
-    print(profile.length);
-    Profile_mem item = Profile_mem.fromJson(
-        jsonDecode(response)[0]["profile"] as Map<String, dynamic>);
+      List list = (jsonDecode(response) as List<dynamic>);
+      print(jsonDecode(response));
+      print(">>> profile list retrieved successfully");
+      print(profile.length);
+      Profile_mem item = Profile_mem.fromJson(
+          jsonDecode(response)[0]["profile"] as Map<String, dynamic>);
 
-    print(item);
-    profile.add(item);
-    print(profile.length);
-    print(profile[0]);
+      print(item);
+      profile.add(item);
+      print(profile.length);
+      print(profile[0]);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
+    }
 
     // print(decoded);
 
