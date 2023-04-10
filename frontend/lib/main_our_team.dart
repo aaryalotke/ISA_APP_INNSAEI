@@ -95,48 +95,58 @@ class _team_mainState extends State<team_main> {
 
   getGym() async {
     //print("hehe");
-    var response = await api().getCouncilList(widget.access);
+    try {
+      var response = await api().getCouncilList(widget.access);
 
-    print(response);
-    // List decoded = jsonDecode(response);
-    List list = (jsonDecode(response) as List<dynamic>);
+      print(response);
+      // List decoded = jsonDecode(response);
+      List list = (jsonDecode(response) as List<dynamic>);
 
-    print(">>> Gym List retrieved successfully");
+      print(">>> Gym List retrieved successfully");
 
-    for (var element in list) {
-      print("----------------------------------------------------------");
-      print(element["link"]);
-      for (var coun in element["link"]) {
-        Council item = Council.fromJson(coun);
-        if (item.council == "BE") {
-          BE.add(item);
-        } else if (item.council == "TE") {
-          TE.add(item);
+      for (var element in list) {
+        print("----------------------------------------------------------");
+        print(element["link"]);
+        for (var coun in element["link"]) {
+          Council item = Council.fromJson(coun);
+          if (item.council == "BE") {
+            BE.add(item);
+          } else if (item.council == "TE") {
+            TE.add(item);
+          }
+          // else{
+          //    SE.add(item);
+          // };
+          else if (item.council == "SE") {
+            SE.add(item);
+          } else {
+            FACULTY.add(item);
+          }
+          ;
         }
-        // else{
-        //    SE.add(item);
-        // };
-        else if (item.council == "SE") {
-          SE.add(item);
-        } else {
-          FACULTY.add(item);
-        }
-        ;
+        //   Council item = Council.fromJson(element);
+
+        //  if(item.council=="BE"){
+        //      BE.add(item);
+        //   }
+        //   else if(item.council=="TE"){
+        //      TE.add(item);
+        //   }
+        //   else{
+        //      SE.add(item);
+        //   };
+
       }
-      //   Council item = Council.fromJson(element);
-
-      //  if(item.council=="BE"){
-      //      BE.add(item);
-      //   }
-      //   else if(item.council=="TE"){
-      //      TE.add(item);
-      //   }
-      //   else{
-      //      SE.add(item);
-      //   };
-
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
     }
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       isLoaded = true;
       setState(() {});
     });

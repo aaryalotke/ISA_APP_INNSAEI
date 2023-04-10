@@ -229,27 +229,37 @@ class _email_membersState extends State<email_members> {
 
                               // ignore: avoid_print
                               // if (widget.access != 'Hi') {
-                              var res = await sendEmail(email.text,
-                                  'innsaei'); //json data for response
-                              var jsonData = jsonDecode(res); //in json form
-                              print(email.text + '@ves.ac.in');
-                              print('Ye le access token ' + jsonData["access"]);
-                              Navigator.push(
-                                //sending to OTP page
-                                context,
-                                PageRouteBuilder(
-                                    pageBuilder: (_, a, b) => otp_members(
-                                        jsonData["username"],
-                                        jsonData["access"]),
-                                    transitionDuration: Duration(seconds: 2),
-                                    transitionsBuilder: (_, a, __, c) =>
-                                        FadeTransition(
-                                          opacity: a,
-                                          child: c,
-                                        )),
-                              );
-                              print(email.text + '@ves.ac.in');
-                              print('Ye le access token ' + jsonData["access"]);
+                              try {
+                                var res = await sendEmail(email.text,
+                                    'innsaei'); //json data for response
+                                var jsonData = jsonDecode(res); //in json form
+                                print(email.text + '@ves.ac.in');
+                                print('Ye le access token ' + jsonData["access"]);
+                                Navigator.push(
+                                  //sending to OTP page
+                                  context,
+                                  PageRouteBuilder(
+                                      pageBuilder: (_, a, b) => otp_members(
+                                          jsonData["username"],
+                                          jsonData["access"]),
+                                      transitionDuration: Duration(seconds: 2),
+                                      transitionsBuilder: (_, a, __, c) =>
+                                          FadeTransition(
+                                            opacity: a,
+                                            child: c,
+                                          )),
+                                );
+                                print(email.text + '@ves.ac.in');
+                                print('Ye le access token ' + jsonData["access"]);
+                              } catch(e) {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text(e.toString()),
+                                  backgroundColor: Colors.red,
+                                  elevation: 10,
+                                  behavior: SnackBarBehavior.floating,
+                                  margin: const EdgeInsets.all(5),
+                                ));
+                              }
                               // } else {
                               //   setState(() {
                               //     CircularProgressIndicator(

@@ -210,48 +210,59 @@ class _MyHomePageState_OTP extends State<otp_members> {
                               //   // controller h ye
                               // });
                               var access = 'Bearer ' + widget.access;
-                              var res = await verifyOTP(
-                                  otp_m.text, access, widget.email, 'innsaei');
-                              var jsonData = jsonDecode(res);
-                              if (jsonData["status"] == 1) {
-                                Navigator.push(
-                                  context,
-                                  PageRouteBuilder(
-                                      pageBuilder: (_, a, b) =>
-                                          homePage(widget.access),
-                                      transitionDuration: Duration(seconds: 2),
-                                      transitionsBuilder: (_, a, __, c) =>
-                                          FadeTransition(
-                                            opacity: a,
-                                            child: c,
-                                          )),
-                                );
-                                print('OTP sent to member - ' + otp_m.text);
-                              } else {
-                                final snackBar = SnackBar(
-                                  content: const Text(
-                                    'Invalid OTP!',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.red,
-                                      fontFamily: 'Ubuntu',
+                              try {
+                                var res = await verifyOTP(
+                                    otp_m.text, access, widget.email, 'innsaei');
+                                var jsonData = jsonDecode(res);
+                                if (jsonData["status"] == 1) {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                        pageBuilder: (_, a, b) =>
+                                            homePage(widget.access),
+                                        transitionDuration: Duration(seconds: 2),
+                                        transitionsBuilder: (_, a, __, c) =>
+                                            FadeTransition(
+                                              opacity: a,
+                                              child: c,
+                                            )),
+                                  );
+                                  print('OTP sent to member - ' + otp_m.text);
+                                } else {
+                                  final snackBar = SnackBar(
+                                    content: const Text(
+                                      'Invalid OTP!',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.red,
+                                        fontFamily: 'Ubuntu',
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  // action: SnackBarAction(
-                                  //   label: 'Try Again',
-                                  //   onPressed: () {
-                                  //     // Some code to undo the change.
-                                  //     // Navigator.push(
-                                  //     //   context,
-                                  //     //   MaterialPageRoute(
-                                  //     //       builder: (context) => new_main()),
-                                  //     // );
-                                  //   },
-                                  // ),
-                                );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
+                                    // action: SnackBarAction(
+                                    //   label: 'Try Again',
+                                    //   onPressed: () {
+                                    //     // Some code to undo the change.
+                                    //     // Navigator.push(
+                                    //     //   context,
+                                    //     //   MaterialPageRoute(
+                                    //     //       builder: (context) => new_main()),
+                                    //     // );
+                                    //   },
+                                    // ),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text("Unable to send the OTP"),
+                                  backgroundColor: Colors.red,
+                                  elevation: 10,
+                                  behavior: SnackBarBehavior.floating,
+                                  margin: const EdgeInsets.all(5),
+                                ));
+                                Navigator.of(context).pop();
                               }
                               // Navigator.push(
                               //   context,

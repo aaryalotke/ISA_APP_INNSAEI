@@ -70,7 +70,7 @@ class _traildevelopersState extends State<trailDevelopers> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -88,7 +88,7 @@ class _traildevelopersState extends State<trailDevelopers> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 2),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -123,23 +123,33 @@ class _traildevelopersState extends State<trailDevelopers> {
     //trail2
 
     //var response = await api().getDevelopersList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MDY0NDEyLCJpYXQiOjE2NjYyODg0MTIsImp0aSI6IjNiMjE3YjdjOWRjMTRlNDM5NzdmNGU5MWM3ODYzNzE5IiwidXNlcl9pZCI6NX0.yAHpYbkrYj2ynio84iS_tZ7Z0z8LpQXMwtpirv-PIos");
-    var response = await api().getDevelopersList(widget.access);
+    try {
+      var response = await api().getDevelopersList(widget.access);
 
-    print(response);
-    // List decoded = jsonDecode(response);
-    List list = (jsonDecode(response) as List<dynamic>);
+      print(response);
+      // List decoded = jsonDecode(response);
+      List list = (jsonDecode(response) as List<dynamic>);
 
-    print(">>> developers list retrieved successfully");
+      print(">>> developers list retrieved successfully");
 
-    for (var element in list) {
-      print("----------------------------------------------------------");
-      print(element["link"]);
-      for (var coun in element["link"]) {
-        Format item = Format.fromJson(coun);
-        people.add(item);
+      for (var element in list) {
+        print("----------------------------------------------------------");
+        print(element["link"]);
+        for (var count in element["link"]) {
+          Format item = Format.fromJson(count);
+          people.add(item);
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.red,
+        elevation: 10,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(5),
+      ));
     }
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       isLoaded = true;
       setState(() {});
     });
@@ -249,12 +259,12 @@ class _traildevelopersState extends State<trailDevelopers> {
       //height: MediaQuery.of(context).size.height,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'DEVELOPERS',
           style: TextStyle(
               fontFamily: 'Ubuntu', fontSize: 25, color: Colors.black),
@@ -268,7 +278,7 @@ class _traildevelopersState extends State<trailDevelopers> {
               padding: EdgeInsets.all(10),
               child: pageone_dev(people),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(),
             ),
       bottomNavigationBar: BottomNavigationBar(
