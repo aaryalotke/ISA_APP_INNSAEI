@@ -376,7 +376,7 @@ class _profile_membersState extends State<profile_members> {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                          pageBuilder: (_, a, b) => certi_page(),
+                          pageBuilder: (_, a, b) => certi_page(widget.access),
                           transitionDuration: Duration(seconds: 2),
                           transitionsBuilder: (_, a, __, c) => FadeTransition(
                                 opacity: a,

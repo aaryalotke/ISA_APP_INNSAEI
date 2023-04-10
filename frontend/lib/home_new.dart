@@ -9,6 +9,8 @@ import 'package:isa/upcoming_events.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'edi_main.dart';
+import 'certi_main.dart';
+import 'page_three.dart';
 import 'email_n_members.dart';
 import 'gallery_main.dart';
 import 'main_contactus.dart';
@@ -235,6 +237,7 @@ class _homePageState extends State<homePage> {
                                 context,
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
+                                        // edito(widget.access),
                                         edito(widget.access),
                                     transitionDuration: Duration(seconds: 2),
                                     transitionsBuilder: (_, a, __, c) =>

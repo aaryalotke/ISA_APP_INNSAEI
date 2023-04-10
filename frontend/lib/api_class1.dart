@@ -160,6 +160,31 @@ class api {
           message: "Couldn't fetch the inventory from server.");
     }
   }
+//certi api
+  Future<String> getCertiList(String token) async {
+    final client = http.Client();
+
+    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/certificateList/");
+    // "http://127.0.0.1:8000/app/api/users/Product/");
+
+    Map<String, String> headers = {
+      "Content-type": "application/json",
+      "Authorization": "Bearer $token"
+    };
+    http.Response response = await client.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      print("Success");
+      final our = "[" + response.body + "]";
+      print(our);
+
+      return our;
+    } else {
+      print("Error");
+      return response.body;
+    }
+  }
+
+
 }
 
 class api2 {
