@@ -7,7 +7,9 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Gallery_2/");
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Gallery_2/");
+    var uri =
+        Uri.parse("http://innsaeiapp.isavesit.org.in/app/api/users/Gallery_2/");
+    // "http://10.0.2.2:8000/app/api/users/Gallery_2/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -28,7 +30,9 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Developers/");
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Developers/");
+    var uri = Uri.parse(
+        "http://innsaeiapp.isavesit.org.in/app/api/users/Developers/");
+    // "http://10.0.2.2:8000/app/api/users/Developers/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -51,7 +55,9 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/Council/");
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Council/");
+    var uri =
+        Uri.parse("http://innsaeiapp.isavesit.org.in/app/api/users/Council/");
+    // "http://10.0.2.2:8000/app/api/users/Council/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -74,7 +80,9 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/profile/");
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/profile/");
+    var uri =
+        Uri.parse("http://innsaeiapp.isavesit.org.in/app/api/users/profile/");
+    // "http://10.0.2.2:8000/app/api/users/profile/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -96,7 +104,9 @@ class api {
     final client = http.Client();
 
     // var uri = Uri.parse("http://127.0.0.1:8000/app/api/users/editorial/");
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/editorial/");
+    var uri =
+        Uri.parse("http://innsaeiapp.isavesit.org.in/app/api/users/editorial/");
+    // "http://10.0.2.2:8000/app/api/users/editorial/");
 
     Map<String, String> headers = {
       "Content-type": "application/json",
@@ -117,7 +127,9 @@ class api {
   Future<String> getUpcomingEvent(String token) async {
     final response = await http.get(
       // Uri.parse('http://127.0.0.1:8000/app/api/users/UpcomingWorkshop/'),
-      Uri.parse('http://10.0.2.2:8000/app/api/users/UpcomingWorkshop/'),
+      Uri.parse(
+          "http://innsaeiapp.isavesit.org.in/app/api/users/UpcomingWorkshop/"),
+      // 'http://10.0.2.2:8000/app/api/users/UpcomingWorkshop/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': "Bearer $token",
@@ -142,7 +154,9 @@ class api {
   Future<String> getInventoryList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/Product/");
+    var uri =
+        Uri.parse("http://innsaeiapp.isavesit.org.in/app/api/users/Product/");
+    // "http://10.0.2.2:8000/app/api/users/Product/");
     // "http://127.0.0.1:8000/app/api/users/Product/");
 
     Map<String, String> headers = {
@@ -156,15 +170,19 @@ class api {
       return our;
     } else {
       print(">> (GET_INVENTORY_EVENT) Exception occurred.");
+      print(response.statusCode);
       throw CustomException(
           message: "Couldn't fetch the inventory from server.");
     }
   }
+
 //certi api
   Future<String> getCertiList(String token) async {
     final client = http.Client();
 
-    var uri = Uri.parse("http://10.0.2.2:8000/app/api/users/certificateList/");
+    var uri = Uri.parse(
+        "http://innsaeiapp.isavesit.org.in/app/api/users/certificateList/");
+    // "http://10.0.2.2:8000/app/api/users/certificateList/");
     // "http://127.0.0.1:8000/app/api/users/Product/");
 
     Map<String, String> headers = {
@@ -183,8 +201,6 @@ class api {
       return response.body;
     }
   }
-
-
 }
 
 class api2 {

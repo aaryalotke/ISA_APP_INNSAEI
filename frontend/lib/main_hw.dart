@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isa/custom_exception.dart';
 import './models/format_hw.dart';
 import 'api_class1.dart';
 import 'hw_detail.dart';
@@ -127,9 +128,9 @@ class _inventoryState extends State<inventory> {
 
       print(inventory.length);
       print(inventory[0].name!);
-    } catch  (e) {
+    } on CustomException{
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(e.toString()),
+        content: Text("Could not fetch inventory"),
         backgroundColor: Colors.red,
         elevation: 10,
         behavior: SnackBarBehavior.floating,
