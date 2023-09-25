@@ -1,0 +1,238 @@
+name: isa
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+3
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  # otp_screen: 0.0.3
+  
+  http: ^0.13.4
+  intl: ^0.17.0
+  font_awesome_flutter: ^9.2.0
+  foundation_flutter: ^0.2.0
+  url_launcher: ^6.0.20
+  
+  google_fonts: ^2.0.0
+  flip_card: ^0.6.0
+  
+  
+  # fluttertoast: ^8.0.8
+  # spinner: ^1.0.1
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  flutter_clean_calendar: ^1.1.0
+  table_calendar: ^3.0.6
+  path_provider: ^2.0.8
+  sqflite: ^2.0.0+4
+  shared_preferences: ^2.0.15
+  carousel_slider: ^4.1.1
+  badges: ^2.0.1
+  provider: ^6.0.3
+  animated_text_kit: ^4.2.2
+  flutter_launcher_icons: ^0.11.0
+  rename: ^2.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
+  flutter_native_splash: ^2.1.0
+  chewie_audio: ^1.5.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/logo.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/logo.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/logo.png"
+
+flutter_native_splash:
+  background_image: "assets/images/launch2.png"
+
+  
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+      - assets/images/
+  #   - assets/images/OTP_nonmemberspage.gif
+  #   - assets/images/Email_memberspage.gif
+  #   - assets/images/Email_nonmemberspage.gif
+  #   - assets/images/logo_isa.png
+  #   - assets/images/Firstpage.png
+  #   - assets/images/Surfer.gif
+  #   - assets/images/initiatives pg.gif
+  #   - assets/images/Hardware_video.gif
+  #   - assets/images/software_video.gif
+  #   - assets/images/first_carousel.jpeg
+  #   - assets/images/logo_isa_black.png
+  #   - assets/images/Surfer-unscreen.gif
+  #   - assets/images/main_top.png
+  #   - assets/images/Hardware_vector.png
+  #   - assets/images/Software_vector.png
+  #   - assets/images/Initiatives_vector.png
+  #   - assets/images/ISAintro_vector.png
+  #   - assets/images/Email_memberspage.png
+  #   - assets/images/OTP_nonmemberspage.GIF
+  #   - assets/images/analog.jpg
+  #   - assets/images/embedded.jpg
+  #   - assets/images/Chartjs.png
+  #   - assets/images/innsaei.png
+  #   - assets/images/be&beyond.png
+  #   - assets/images/iot.png
+  #   - assets/images/launch.png
+  #   - assets/images/website.png
+  #   - assets/images/ISA-white.png 
+  #   - assets/images/newuser.png
+  #   - assets/images/newuser_email.png
+  #   - assets/images/newuser_mobile.png
+  #   - assets/images/user.png 
+  #   - assets/images/youtube.png
+  #   - assets/images/threeD.png
+  #   - assets/images/inventory.png
+  #   - assets/images/benbeyond.png
+  #   - assets/images/iotKit.png
+  #   - assets/images/pow.png
+  #   - assets/images/VR.png
+  #   - assets/images/Alumni_talk.png
+  #   - assets/images/Digital_library.png
+  #   - assets/images/DigitalNoticeBoard.png
+    
+
+  #   - assets/images/certi.jpg
+  #   - assets/images/certi2.png
+  #   - assets/images/certi3.jpg
+  #   - assets/images/certi4.jpg
+  #   - assets/images/contact.png
+  #   - assets/images/1.jpg
+  #   - assets/images/2.jpg
+  #   - assets/images/3.png
+  #   - assets/images/cart_bg.png
+
+  #   #SE'S
+  #   - assets/images/Aarya Lotke.jpg
+  #   - assets/images/Yash Chavan.jpg
+  #   - assets/images/Nilesh Sharma.jpg
+  #   - assets/images/Sanchit Mhadgut.jpg
+  #   - assets/images/Aman Rajbhar.jpg
+  #   - assets/images/Ashiqa Shervegar.jpg
+  #   - assets/images/Pooja Narayanan.jpeg
+  #   - assets/images/Sarthak Deshmukh.jpeg
+  #   - assets/images/Vrundali Patil.jpg
+  #   - assets/images/Prathamesh Komte.jpg
+  #   - assets/images/Nachiket Suryawanshi.jpg
+  #   - assets/images/Nikhil Gore.jpeg
+  #   - assets/images/Rajnandini Verma.jpeg
+  #   - assets/images/im.jpg
+
+  # #TE'S
+  #   - assets/images/_Shripad Kulkarni.jpg
+  #   - assets/images/Asmita Bhangare.jpeg
+  #   - assets/images/Dhruvisha Mondhe.jpeg
+  #   - assets/images/Esha_Kadam.jpeg
+  #   - assets/images/Gaurav Govilkar .jpg
+  #   - assets/images/Hrutika Pakhale.jpg
+  #   - assets/images/Janhavi Bhutki.jpg
+  #   - assets/images/MadhuraPadge.jpg
+  #   - assets/images/Mrunal Murudkar.jpeg
+  #   - assets/images/Muskan_Hassanandani.jpg
+  #   - assets/images/Nidhi Mundhada.jpg
+  #   - assets/images/Om Shetty.jpg
+  #   - assets/images/Prajna Moorthy.JPG
+  #   - assets/images/Rashmi Singh.jpg
+  #   - assets/images/Saritha_Tharakan.jpg
+  #   - assets/images/Omkar Hirugade.jpg
+  #   - assets/images/_Shripad Kulkarni.jpg
+    
+
+    
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Neuton
+      fonts:
+        - asset: assets/fonts/Neuton-Regular.ttf
+          weight: 200
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+    - family: Voces
+      fonts:
+        - asset: assets/fonts/Voces-Regular.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
+    - family: Ubuntu_Bold
+      fonts:
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+    - family: Libre_Baskerville
+      fonts:
+        - asset: assets/fonts/LibreBaskerville-Bold.ttf
+
