@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "a5201ff9bcb4a7536a4f3f907816972044e5a04c3fc054ac47c85a3f3e0d7bca"
+build_start_time: [1681047544, 232484000]
+build_end_time: [1681047550, 377270000]
+inputs:
+  "/Users/dhruvishamondhe/Desktop/Innsaei-march/ISA_APP_INNSAEI/frontend/macos/Flutter/GeneratedPluginRegistrant.swift": [1681047531, 295871116]
+  "/Users/dhruvishamondhe/Desktop/Innsaei-march/ISA_APP_INNSAEI/frontend/macos/Runner/AppDelegate.swift": [1678819173, 524698619]
+  "/Users/dhruvishamondhe/Desktop/Innsaei-march/ISA_APP_INNSAEI/frontend/macos/Runner/MainFlutterWindow.swift": [1678819173, 526543622]

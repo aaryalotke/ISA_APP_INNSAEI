@@ -386,7 +386,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: const Text('Nikhil Gore(President)',
+                      child: const Text('Nikhil Gore (President)',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 16,
@@ -408,7 +408,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: const Text('Yash Chavan(Vice President)',
+                      child: const Text('Yash Chavan (Vice President)',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 16,
