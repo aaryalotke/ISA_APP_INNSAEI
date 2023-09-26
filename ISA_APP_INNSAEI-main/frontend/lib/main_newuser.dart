@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+import 'email_n_members.dart';
+import 'newuser_email.dart';
+
+// void main() => runApp(newuser());
+
+class newuser extends StatelessWidget {
+  const newuser({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Voces',
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          backgroundColor: const Color(0xFFFFFFFF),
+          body: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              child: Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  // FIRST GIF PAGE KA
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.2,
+                    child: Image.asset(
+                      'assets/images/newuser.png',
+                      width: MediaQuery.of(context).size.width * 1,
+                    ),
+                  ),
+
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.73,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const SizedBox(width: 10),
+                          ElevatedButton(
+                            child: const Text("New User",
+                                style: TextStyle(fontSize: 18)),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF00467F),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 140, vertical: 10),
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (_, a, b) =>
+                                      const newuser_email(),
+                                  transitionDuration:
+                                      const Duration(seconds: 1),
+                                  transitionsBuilder: (_, a, __, c) =>
+                                      FadeTransition(
+                                    opacity: a,
+                                    child: c,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: TextButton(
+                              child: const Text("    Login   ",
+                                  style: TextStyle(fontSize: 18)),
+                              style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(
+                                        horizontal: 140, vertical: 10),
+                                  ),
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    const Color(0xFF00467F),
+                                  ),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                          side: const BorderSide(
+                                            color: Color(0xFF00467F),
+                                          )))),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (_, a, b) =>
+                                        const email_n_members(),
+                                    transitionDuration:
+                                        const Duration(seconds: 1),
+                                    transitionsBuilder: (_, a, __, c) =>
+                                        FadeTransition(
+                                      opacity: a,
+                                      child: c,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ]),
+                  ),
+
+                  // UPAR KA ANIMATION
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Image.asset(
+                      'assets/images/Surfer-unscreen.gif',
+                      width: MediaQuery.of(context).size.width * 0.45,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+}
