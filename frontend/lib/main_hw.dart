@@ -68,7 +68,7 @@ class _inventoryState extends State<inventory> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -86,7 +86,7 @@ class _inventoryState extends State<inventory> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
