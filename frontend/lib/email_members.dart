@@ -246,7 +246,7 @@ class _email_membersState extends State<email_members> {
                                       pageBuilder: (_, a, b) => otp_members(
                                           jsonData["username"],
                                           jsonData["access"]),
-                                      transitionDuration: Duration(seconds: 2),
+                                      transitionDuration: Duration(seconds: 1),
                                       transitionsBuilder: (_, a, __, c) =>
                                           FadeTransition(
                                             opacity: a,
