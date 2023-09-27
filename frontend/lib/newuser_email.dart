@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     PageRouteBuilder(
                                         pageBuilder: (_, a, b) => newuser(),
                                         transitionDuration:
-                                            Duration(seconds: 2),
+                                            Duration(seconds: 1),
                                         transitionsBuilder: (_, a, __, c) =>
                                             FadeTransition(
                                               opacity: a,
