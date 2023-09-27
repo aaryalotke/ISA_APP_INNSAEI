@@ -223,7 +223,7 @@ class _MyHomePageState_OTP extends State<otp_members> {
                                         pageBuilder: (_, a, b) =>
                                             homePage(widget.access),
                                         transitionDuration:
-                                            Duration(seconds: 2),
+                                            Duration(seconds: 1),
                                         transitionsBuilder: (_, a, __, c) =>
                                             FadeTransition(
                                               opacity: a,
