@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 context,
                                 PageRouteBuilder(
                                   pageBuilder: (_, a, b) => newuser_email(),
-                                  transitionDuration: Duration(seconds: 2),
+                                  transitionDuration: Duration(seconds: 1),
                                   transitionsBuilder: (_, a, __, c) =>
                                       FadeTransition(
                                     opacity: a,
@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   context,
                                   PageRouteBuilder(
                                     pageBuilder: (_, a, b) => email_n_members(),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                       opacity: a,
