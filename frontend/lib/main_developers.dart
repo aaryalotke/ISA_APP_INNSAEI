@@ -70,7 +70,7 @@ class _traildevelopersState extends State<trailDevelopers> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: const Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -88,7 +88,7 @@ class _traildevelopersState extends State<trailDevelopers> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: const Duration(seconds: 2),
+              transitionDuration: const Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
