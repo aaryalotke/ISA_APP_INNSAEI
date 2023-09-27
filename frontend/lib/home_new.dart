@@ -64,7 +64,7 @@ class _homePageState extends State<homePage> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => SIForm(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -82,7 +82,7 @@ class _homePageState extends State<homePage> {
           context,
           PageRouteBuilder(
               pageBuilder: (_, a, b) => profile_members(widget.access),
-              transitionDuration: Duration(seconds: 2),
+              transitionDuration: Duration(seconds: 1),
               transitionsBuilder: (_, a, __, c) => FadeTransition(
                     opacity: a,
                     child: c,
@@ -184,7 +184,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         initiatives_main(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -239,7 +239,7 @@ class _homePageState extends State<homePage> {
                                     pageBuilder: (_, a, b) =>
                                         // edito(widget.access),
                                         edito(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -348,7 +348,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         calender_main(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -401,7 +401,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         upcomingEvents(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -454,7 +454,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         inventory(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -507,7 +507,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         trailDevelopers(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -560,7 +560,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         team_main(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
@@ -614,7 +614,7 @@ class _homePageState extends State<homePage> {
                                 PageRouteBuilder(
                                     pageBuilder: (_, a, b) =>
                                         gallery_main(widget.access),
-                                    transitionDuration: Duration(seconds: 2),
+                                    transitionDuration: Duration(seconds: 1),
                                     transitionsBuilder: (_, a, __, c) =>
                                         FadeTransition(
                                           opacity: a,
