@@ -386,7 +386,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: const Text('Hrutika Pakhale(President)',
+                      child: const Text('Nikhil Gore (President)',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 16,
@@ -397,7 +397,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: const Text('9819587707',
+                      child: const Text('9325453710',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 15,
@@ -408,7 +408,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: Text('Nidhi Mundhada(Vice President)',
+                      child: Text('Yash Chavan (Vice President)',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 16,
@@ -419,7 +419,7 @@ class _SIFormState extends State<SIForm> {
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(top: 5),
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: Text('8379926546',
+                      child: Text('7777089810',
                           style: TextStyle(
                               fontFamily: 'Voces',
                               fontSize: 15,
