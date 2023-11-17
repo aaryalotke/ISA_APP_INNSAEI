@@ -625,10 +625,10 @@
 //                     children: <Widget>[
 //                       Image.asset(
 //                         "assets/images/DigitalNoticeBoard.png",
-//                         width: MediaQuery.of(context).size.width * 0.37,
+//                         width: MediaQuery.of(context).size.width * 0.315,
 //                       ),
 //                       SizedBox(
-//                         height: 25,
+//                         height: 30,
 //                       ),
 //                       Text(
 //                         "Digital Notice Board",
