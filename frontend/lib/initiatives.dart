@@ -1192,10 +1192,10 @@ class _initiativesState extends State<initiatives> {
                     children: <Widget>[
                       Image.asset(
                         "assets/images/digital.jpg",
-                        width: MediaQuery.of(context).size.width * 0.37,
+                        width: MediaQuery.of(context).size.width * 0.315,
                       ),
                       SizedBox(
-                        height: 37,
+                        height: 30,
                       ),
                       Text(
                         "Digital Library",
