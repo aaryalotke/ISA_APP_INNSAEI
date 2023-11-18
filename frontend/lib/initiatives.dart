@@ -647,7 +647,6 @@
 //   }
 // }
 
-
 // The 'initiatives_main' file will contain all the list and the other code except the gridview. The gridview will be in intiatives.dart , and there will be an import of the models code in initiatives.dart.  And the route will pass the title and description variable to the initdetail.dart file. The initdetail file has to just print it
 
 // ignore_for_file: prefer_const_constructors
@@ -1192,10 +1191,10 @@ class _initiativesState extends State<initiatives> {
                     children: <Widget>[
                       Image.asset(
                         "assets/images/digital.jpg",
-                        width: MediaQuery.of(context).size.width * 0.315,
+                        width: MediaQuery.of(context).size.width * 0.37,
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 36,
                       ),
                       Text(
                         "Digital Library",
